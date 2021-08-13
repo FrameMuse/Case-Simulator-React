@@ -5,7 +5,6 @@
 
 import { combineReducers } from "redux"
 import upgrade from "./upgrade"
-import statistics from "./statistics"
 import translation from "./translation"
 import user from "./user"
 import viewport from "./viewport"
@@ -23,7 +22,6 @@ export const reducers = {
   popup,
   viewport,
   translation,
-  statistics,
   upgrade,
   liveFeed,
   localInventory,

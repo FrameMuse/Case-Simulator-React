@@ -6,7 +6,6 @@
 import SocketIO from "./master"
 import { User } from "../../resources/interfaces/user"
 import { BattleJoin } from "../../views/battle/battle"
-import { stat } from "../../views/footer/Statistics"
 import { LiveFeedElementProps } from "views/header/live_feed"
 import { TicketChatMessage } from "views/support/Tickets"
 import { getActionT, getUserInventory } from "app/api/actions"
@@ -24,7 +23,6 @@ export interface SocketActions {
     liveList: LiveFeedElementProps[]
   }
   USER_INFO_UPDATE: User
-  STATISTIC_UPDATE: Record<stat, number>
   WITHDRAW_UPDATE_STATUS: {
     status: number
     drop_id: number
