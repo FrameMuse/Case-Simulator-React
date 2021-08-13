@@ -13,7 +13,7 @@ Route.path("/contract", view("contract"), ["ExactPath", "DemoExclude"])
 Route.path("/bonuses", view("bonuses"), ["ExactPath", "DemoExclude"])
 Route.path("/top", view("top"), ["DemoExclude"])
 Route.path("/support", view("support"))
-Route.path("/payment", view("payment"), ["DemoExclude"])
+// Route.path("/payment", view("payment"), ["DemoExclude"])
 
 export const BonusAccessPoint = String(Math.random()).slice(2, 12)
 Route.path("/bonus!" + BonusAccessPoint, view("bonusCase"), ["ExactPath"])
