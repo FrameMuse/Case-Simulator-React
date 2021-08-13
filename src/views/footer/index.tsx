@@ -13,19 +13,16 @@ import yandexImage from "../../assets/images/pay_systems/yandex.png"
 import webmoneyImage from "../../assets/images/pay_systems/webmoney.png"
 // STAFF
 import GoUp from "./GoUp"
-import Statistics from "./Statistics"
-import Logo, { StandoffLogo } from "../../app/components/UI/Logo"
+import { StandoffLogo } from "../../app/components/UI/Logo"
 import SocialNets from "./SocialNets"
 import { Link } from "react-router-dom"
 import useTranslation from "resources/hooks/useTranslation"
-import OuterLink from "app/components/other/OuterLink"
 
 export default function Footer() {
   const footer = useTranslation(trans => trans.footer)
   return (
     <footer>
       <section>
-        <Statistics />
         <GoUp />
       </section>
       <section>
