@@ -4,7 +4,6 @@
 */
 
 import { SocketActions } from "app/socket/ClientSocket"
-import { LiveFeedElementProps } from "../../views/header/live_feed"
 
 type Action = { type: "LIVE", payload: typeof initState }
 

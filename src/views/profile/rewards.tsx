@@ -12,7 +12,7 @@ import ContractPNG from "assets/images/stats/contract.png"
 import UpgradePNG from "assets/images/stats/upgrade.png"
 import { ReactComponent as SVGArrow } from "../../assets/svg/arrow.svg"
 // STAFF
-import { Component, ForwardedRef, forwardRef, LegacyRef, useContext, useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { classWithModifiers, getCaseImage, getWeaponImage } from "resources/utils"
 import Skeleton from "../../app/skeletons/skeleton"
 import useTranslation from "../../resources/hooks/useTranslation"

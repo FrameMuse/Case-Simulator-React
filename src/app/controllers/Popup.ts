@@ -6,7 +6,6 @@
 // SCSS
 import "../../assets/scss/popup.scss"
 // STAFF
-import { FunctionComponent } from "react"
 import { PopupProviderState } from "../components/popup/PopupProvider"
 import { AnyIfEmpty } from "react-redux"
 

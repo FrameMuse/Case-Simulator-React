@@ -4,7 +4,6 @@
 */
 
 // SVG
-import { ReactComponent as SVGChevron } from "../../../assets/svg/chevron-left.svg"
 // STAFF
 import SelectorComponent from "./SelectorComponent"
 import { classAssign, classWithModifiers } from "../../../resources/utils"

@@ -3,7 +3,6 @@
 ** Full License is in the root directory
 */
 
-import { Component, lazy } from "react"
 import { useSelector } from "react-redux"
 import { classWithModifiers } from "../../../resources/utils"
 

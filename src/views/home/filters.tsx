@@ -6,10 +6,8 @@
 // SCSS
 import "../../assets/scss/views/filters.scss"
 // SVG
-import { ReactComponent as SVGSearch } from "../../assets/svg/search.svg"
 // STAFF
 import { PriceRange } from "../../app/helpers/PriceRange"
-import Input from "../../app/components/UI/Input"
 import useTranslation from "../../resources/hooks/useTranslation"
 import { useDispatch, useSelector } from "react-redux"
 import { setFilter } from "../../resources/reducers/filters"

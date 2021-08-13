@@ -6,7 +6,6 @@
 import { WeaponDropProps } from "resources/interfaces/weapon"
 import { addNotify } from "resources/reducers/errors-stack"
 import BrowserHistory from "resources/stores/BrowserHistory"
-import { BonusAccessPoint } from "routes/origin"
 import { BonusProps } from "views/profile/bonuses"
 import WebStore from "../../resources/stores/store"
 import { fetchBonusActivation, fetchWithdrawCancel, postSellItem } from "../api/actions"

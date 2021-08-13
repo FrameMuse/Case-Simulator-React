@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux"
 import "../../assets/scss/views/home-menu.scss"
 // STAFF
 import useTranslation from "../../resources/hooks/useTranslation"
-import { setFilter, setMenuChoice } from "../../resources/reducers/filters"
+import { setMenuChoice } from "../../resources/reducers/filters"
 import { classWithModifiers } from "../../resources/utils"
 
 interface MenuProps {

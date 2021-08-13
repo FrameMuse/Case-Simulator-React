@@ -6,8 +6,7 @@
 import WebStore from "resources/stores/store"
 import { delay } from "resources/utils"
 import { LiveFeedElementProps } from "views/header/live_feed"
-import { TicketContext } from "views/support/TicketFactory"
-import ClientSocket, { SocketActions } from "./ClientSocket"
+import { SocketActions } from "./ClientSocket"
 
 const { dispatch } = WebStore.store
 

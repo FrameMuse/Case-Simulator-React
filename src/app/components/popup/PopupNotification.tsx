@@ -5,7 +5,7 @@
 
 // SCSS
 import "assets/scss/popups/popup-notificaiton.scss"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 // STAFF
 import Button from "../UI/Button"
 import { PopupArticle } from "./PopupProvider"

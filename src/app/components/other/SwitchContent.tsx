@@ -6,9 +6,8 @@
 // SCSS
 import "../../../assets/scss/components/switch-content.scss"
 // STAFF
-import { Fragment, ReactElement, useEffect, useMemo, useState } from "react"
+import { Fragment, ReactElement, useEffect, useState } from "react"
 import { classWithModifiers } from "../../../resources/utils"
-import { RegularObject } from "../../../resources/interfaces/Object"
 
 interface SwitchContentProps {
   menu: string | string[]

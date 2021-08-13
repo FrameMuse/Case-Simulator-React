@@ -10,8 +10,6 @@ import UnkwonUserImage from "../../assets/svg/unknown.svg"
 // STAFF
 import { useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchUploadAvatar } from "../../app/api/actions"
-import { ClientAPI } from "../../app/api/client"
 import Button from "../../app/components/UI/Button"
 import { XHRSendForm } from "../../resources/utils/XHRSendForm"
 import { BranchContainer, BranchHeader, BranchSection } from "../../app/components/formatting/branch"

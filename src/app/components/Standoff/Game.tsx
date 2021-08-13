@@ -18,7 +18,7 @@ import BrowserHistory from "resources/stores/BrowserHistory"
 import useTranslation from "resources/hooks/useTranslation"
 import Standoff from "app/controllers/Standoff"
 import { trianglesCount } from "./Weapon"
-import SoundController, { SoundName } from "app/controllers/SoundController"
+import { SoundName } from "app/controllers/SoundController"
 import WebStore from "resources/stores/store"
 import ClientSocket from "app/socket/ClientSocket"
 

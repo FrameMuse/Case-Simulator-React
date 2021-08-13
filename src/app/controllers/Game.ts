@@ -3,7 +3,6 @@
 ** Full License is in the root directory
 */
 
-import { PureComponent } from "react"
 
 type GameStatus = "waiting" | "running" | "finished"
 interface GameState {

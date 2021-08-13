@@ -6,7 +6,6 @@
 import { User } from "../../../resources/interfaces/user"
 // SCSS
 import "../../../assets/scss/components/table.scss"
-import { Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import BrowserHistory from "resources/stores/BrowserHistory"
 

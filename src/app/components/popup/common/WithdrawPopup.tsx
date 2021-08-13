@@ -6,7 +6,7 @@
 // IMAGES
 import Snayper from "../../../../assets/images/snayper.png"
 // STAFF
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Article } from "../../formatting/article"
 import Button from "../../UI/Button"
 import { fetchWithdrawCreate, fetchWithdrawItems } from "../../../api/actions"
@@ -21,7 +21,6 @@ import useAddNotify from "resources/hooks/useAddNotify"
 import { useSelector } from "react-redux"
 import useTranslation from "resources/hooks/useTranslation"
 import { inter } from "resources/utils"
-import BrowserHistory from "resources/stores/BrowserHistory"
 import { Link, useHistory } from "react-router-dom"
 import Popup from "app/controllers/Popup"
 

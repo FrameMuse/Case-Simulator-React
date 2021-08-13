@@ -2,7 +2,7 @@ import { Article } from "../../app/components/formatting/article"
 import { FAQ, FAQClause } from "../../app/components/other/FAQ"
 import SwitchContent, { SwitchContentRoute } from "../../app/components/other/SwitchContent"
 import useTranslation from "resources/hooks/useTranslation"
-import { TranslationJSON, TranslationJSONRaw } from "app/controllers/Translation"
+import { TranslationJSONRaw } from "app/controllers/Translation"
 
 export default function FrequentQuestions({ defaultQuestion }: { defaultQuestion: keyof TranslationJSONRaw["frequentQuestions"]["pages"] }) {
   const frequentQuestions = useTranslation(trans => trans.frequentQuestions)

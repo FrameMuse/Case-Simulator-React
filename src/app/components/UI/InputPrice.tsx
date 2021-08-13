@@ -4,7 +4,6 @@
 */
 
 import { Component } from "react"
-import { ComplicatedString } from "../../../resources/interfaces/Class"
 import Price from "../../helpers/Price"
 import Input from "./Input"
 

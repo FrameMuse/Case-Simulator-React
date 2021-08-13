@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { createRef, PureComponent } from "react"
+import { PureComponent } from "react"
 
 type TaskComponentStatus = "waiting" | "running" | "finished"
 

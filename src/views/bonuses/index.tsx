@@ -3,8 +3,6 @@
 ** Full License is in the root directory
 */
 
-import AuthRequired from "app/components/other/AuthRequired"
-import useRestrictedArea from "resources/hooks/useRestrictedArea"
 import useTranslation from "resources/hooks/useTranslation"
 import { inter } from "resources/utils"
 import FrequentQuestions from "views/support/FrequentQuestions"

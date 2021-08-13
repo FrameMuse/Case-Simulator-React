@@ -4,7 +4,6 @@
 */
 
 // SCSS
-import Button from "app/components/UI/Button"
 import "assets/scss/views/paleta.scss"
 
 namespace Paleta {

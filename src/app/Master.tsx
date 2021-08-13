@@ -35,7 +35,6 @@ import BrowserHistory from "../resources/stores/BrowserHistory"
 import BonusCaseNotify from "./components/UI/BonusCaseNotify"
 import PopupNotification from "./components/popup/PopupNotification"
 import useTranslation from "resources/hooks/useTranslation"
-import { updateUserInfo } from "resources/reducers/user"
 // import * as serviceWorker from "serviceWorker"
 
 const Header = React.lazy(() => import("../views/header"))

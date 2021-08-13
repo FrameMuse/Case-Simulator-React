@@ -3,12 +3,12 @@
 ** Full License is in the root directory
 */
 
-import { Attributes, HtmlHTMLAttributes, useMemo } from "react"
+import { HtmlHTMLAttributes } from "react"
 import { NavLink } from "react-router-dom"
 
 // SCSS
 import "../../../assets/scss/components/branch.scss"
-import { classAssign, classWithModifiers } from "../../../resources/utils"
+import { classAssign } from "../../../resources/utils"
 import { Article } from "./article"
 
 interface BranchElement {

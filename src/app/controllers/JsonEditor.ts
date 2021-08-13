@@ -3,7 +3,6 @@
 ** Full License is in the root directory
 */
 
-import { PathLike, write } from "fs"
 import { RegularObject } from "../../resources/interfaces/Object"
 
 class JsonEditor {

@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { createContext, CSSProperties, memo, PureComponent } from "react"
+import { createContext, CSSProperties, PureComponent } from "react"
 import { addNotify } from "resources/reducers/errors-stack"
 import WebStore from "resources/stores/store"
 import usePopupContext from "../../../resources/hooks/usePopupContext"

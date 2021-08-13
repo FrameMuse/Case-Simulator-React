@@ -4,7 +4,7 @@
 */
 
 import SocketIO from "./master"
-import { Person, User } from "../../resources/interfaces/user"
+import { User } from "../../resources/interfaces/user"
 import { BattleJoin } from "../../views/battle/battle"
 import { stat } from "../../views/footer/Statistics"
 import { LiveFeedElementProps } from "views/header/live_feed"

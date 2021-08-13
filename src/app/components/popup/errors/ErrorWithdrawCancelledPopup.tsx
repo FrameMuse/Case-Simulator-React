@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { fetchWithdrawCancel, fetchWithdrawNotify as fetchWithdrawMarkAsRead, getActionT, getUserInventory } from "app/api/actions"
+import { fetchWithdrawNotify as fetchWithdrawMarkAsRead, getActionT, getUserInventory } from "app/api/actions"
 import { ClientAPI } from "app/api/client"
 import { BulletPointsContainer } from "app/components/UI/BulletPointsContainer"
 import Button from "app/components/UI/Button"

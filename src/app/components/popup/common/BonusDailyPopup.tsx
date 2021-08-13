@@ -10,7 +10,6 @@ import { QueryProvider, useContextQuery } from "app/components/other/MutuableQue
 import Button from "app/components/UI/Button"
 import { TimerCountDown } from "app/components/UI/Timer"
 import Skeleton from "app/skeletons/skeleton"
-import ClientSocket from "app/socket/ClientSocket"
 import "assets/scss/popups/bonus-daily.scss"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"

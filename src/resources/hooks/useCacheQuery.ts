@@ -5,9 +5,8 @@
 
 import { ErrorObject } from "app/components/other/Error"
 import { useEffect, useMemo } from "react"
-import { Action, QueryResponse, useQuery, UseQueryResponse } from "react-fetching-library"
-import { DefaultReducers, useDispatch, useSelector, useStore } from "react-redux"
-import { reducers } from "resources/reducers/master"
+import { Action, useQuery, UseQueryResponse } from "react-fetching-library"
+import { DefaultReducers, useSelector } from "react-redux"
 import WebStore from "resources/stores/store"
 
 let lastPromise: Promise<any> | null = null

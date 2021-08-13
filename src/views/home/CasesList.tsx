@@ -3,7 +3,6 @@
 ** Full License is in the root directory
 */
 
-import { memo, useMemo } from "react"
 import { useSelector } from "react-redux"
 import { classWithModifiers } from "resources/utils"
 import useTranslation from "../../resources/hooks/useTranslation"

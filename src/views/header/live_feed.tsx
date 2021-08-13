@@ -6,8 +6,6 @@
 // SCSS
 import "../../assets/scss/views/live-feed.scss"
 // IMAGES
-import BattlePNG from "assets/images/stats/battle.png"
-import CasesPNG from "assets/images/stats/cases.png"
 import ContractPNG from "assets/images/stats/contract.png"
 import UpgradePNG from "assets/images/stats/upgrade.png"
 // STAFF
@@ -23,7 +21,7 @@ import { Link } from "react-router-dom"
 // TimeAgo
 import Ru from "timeago.js/lib/lang/ru"
 import { register } from "timeago.js"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 register("ru", Ru)
 
 function LiveFeed() {

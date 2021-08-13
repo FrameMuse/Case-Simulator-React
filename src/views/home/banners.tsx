@@ -5,7 +5,6 @@
 
 import React from "react"
 import { Link } from "react-router-dom"
-import useTranslation from "../../resources/hooks/useTranslation"
 // SCSS
 import "../../assets/scss/views/banners.scss"
 

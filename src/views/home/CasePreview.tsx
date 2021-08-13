@@ -5,8 +5,6 @@
 
 import Icon from "app/components/UI/Icon"
 import { TimerCountDown } from "app/components/UI/Timer"
-import ClientSocket, { SocketActions } from "app/socket/ClientSocket"
-import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import useTranslation from "resources/hooks/useTranslation"

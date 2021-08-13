@@ -3,7 +3,6 @@
 ** Full License is in the root directory
 */
 
-import { useLayoutEffect } from "react"
 import { useSelector } from "react-redux"
 import BrowserHistory from "resources/stores/BrowserHistory"
 

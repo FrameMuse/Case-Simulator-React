@@ -11,7 +11,6 @@ import Button from "../../app/components/UI/Button"
 import MutuableQuery from "app/components/other/MutuableQuery"
 import useTranslation from "resources/hooks/useTranslation"
 import { fetchNewsList } from "app/api/actions"
-import { getlast } from "resources/utils"
 import SoundController from "app/controllers/SoundController"
 import { useEffect } from "react"
 

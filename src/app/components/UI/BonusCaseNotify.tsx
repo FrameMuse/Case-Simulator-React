@@ -8,11 +8,9 @@ import Popup from "app/controllers/Popup"
 import "assets/scss/components/bonus-case-notify.scss"
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
 // STAFF
 import useTranslation from "resources/hooks/useTranslation"
 import { getCaseImage } from "resources/utils"
-import { BonusAccessPoint } from "routes/origin"
 import BonusCasePopup from "../popup/common/BonusCasePopup"
 
 const TIMER_TIMEOUT = 200

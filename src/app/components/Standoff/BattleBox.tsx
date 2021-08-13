@@ -14,7 +14,6 @@ import { classWithModifiers, getCaseImage, getWeaponImage } from "../../../resou
 import { BattleItem } from "../../../views/profile/battles"
 import { WeaponItemProps } from "resources/interfaces/weapon"
 import Icon from "../UI/Icon"
-import { Link } from "react-router-dom"
 
 function BattleWeapon(props: WeaponItemProps) {
   const modifiers: string[] = []

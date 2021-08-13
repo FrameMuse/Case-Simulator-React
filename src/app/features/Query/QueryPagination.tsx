@@ -1,6 +1,5 @@
 import { Action, ClientAPI } from "app/api/client"
-import { useEffect, useState } from "react"
-import { PaginationType } from "resources/interfaces/Object"
+import { useState } from "react"
 import Button from "../../components/UI/Button"
 import Empty from "../../components/other/Empty"
 import { useContextQuery } from "../../components/other/MutuableQuery"

@@ -7,7 +7,7 @@
 import "../../assets/scss/components/case-state.scss"
 // STAFF
 import { Fragment, memo, useEffect, useState } from "react"
-import { classAssign, classWithModifiers, inter, scrollIntoView } from "../../resources/utils"
+import { classAssign, classWithModifiers, scrollIntoView } from "../../resources/utils"
 import Button from "../../app/components/UI/Button"
 import { CaseStateConditionProps, CaseOpenState } from "../../resources/interfaces/case"
 import useTranslation from "../../resources/hooks/useTranslation"
@@ -15,8 +15,6 @@ import { useSelector } from "react-redux"
 import { useHistory } from "react-router"
 import Popup from "app/controllers/Popup"
 import LevelDescPopup from "app/components/popup/common/LevelDescPopup"
-import AuthRequired from "app/components/other/AuthRequired"
-import AuthPopup from "app/components/popup/common/AuthPopup"
 
 function CaseStateTemplateExp({ children, title, icon }: { children: any; title: any; icon: string }) {
   const user = useSelector(state => state.user)

@@ -6,7 +6,7 @@
 // SCSS
 import "../../../assets/scss/components/selector.scss"
 // STAFF
-import { Component, Fragment } from "react"
+import { Component } from "react"
 
 interface SelectorProps<T, options = T[] | undefined> {
   choice?: number

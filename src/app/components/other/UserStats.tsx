@@ -7,7 +7,6 @@
 import { useHistory } from "react-router-dom"
 import "../../../assets/scss/components/user-stats.scss"
 // STAFF
-import Box from "../UI/Box"
 import Button from "../UI/Button"
 
 export interface UserStatsStats {

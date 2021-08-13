@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { Component, useEffect, useRef, useState } from "react"
+import { Component, useState } from "react"
 import { classWithModifiers } from "../../../resources/utils"
 // SCSS
 import "../../../assets/scss/components/faq.scss"

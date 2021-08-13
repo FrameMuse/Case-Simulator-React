@@ -4,7 +4,6 @@
 */
 
 import { useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
 import useTranslation from "resources/hooks/useTranslation"
 import { fetchBattles, getUserStats } from "../../app/api/actions"
 import { BranchContainer, BranchHeader, BranchSection } from "../../app/components/formatting/branch"

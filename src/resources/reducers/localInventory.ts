@@ -3,7 +3,6 @@
 ** Full License is in the root directory
 */
 
-import { getInventoryRequest } from "app/api/requests"
 import { WeaponDropProps } from "../interfaces/weapon"
 
 type Action = { type: string, payload?: initState & { id: number } }

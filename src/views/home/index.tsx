@@ -6,7 +6,6 @@
 import { Fragment } from "react"
 import { getCases } from "../../app/api/actions"
 import MutuableQuery from "../../app/components/other/MutuableQuery"
-import useMutableQuery from "../../resources/hooks/useCacheQuery"
 import Banners from "./banners"
 import CasesLists from "./cases_lists"
 import Filters from "./filters"

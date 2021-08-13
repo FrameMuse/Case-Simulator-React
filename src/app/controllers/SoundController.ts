@@ -3,8 +3,6 @@
 ** Full License is in the root directory
 */
 
-import { addNotify } from "resources/reducers/errors-stack"
-import WebStore from "resources/stores/store"
 
 export type SoundName = "cases" | "contract" | "getItem" | "roulette" | "wheelItem" | "notice" | "upgrade" | "rouletteBattle" | "getItemBattle"
 

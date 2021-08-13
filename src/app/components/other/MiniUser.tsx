@@ -8,7 +8,7 @@ import "../../../assets/scss/components/mini-user.scss"
 // STAFF
 import { useSelector } from "react-redux"
 import { Link as a } from "react-router-dom"
-import { LevelInfo, Person, User } from "../../../resources/interfaces/user"
+import { LevelInfo, Person } from "../../../resources/interfaces/user"
 import LevelImage from "../UI/LevelImage"
 import useTranslation from "resources/hooks/useTranslation"
 

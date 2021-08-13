@@ -4,7 +4,6 @@
 */
 
 import React from "react"
-import { memo } from "react"
 import { Route as DOMRoute, RouteComponentProps, Switch } from "react-router-dom"
 import useRestrictedArea from "resources/hooks/useRestrictedArea"
 import { RouteFlag, RouterComponentProps, RouterProps, Routes, View } from "../resources/interfaces/router"

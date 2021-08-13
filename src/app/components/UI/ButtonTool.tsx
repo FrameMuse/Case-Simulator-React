@@ -6,7 +6,7 @@
 import { classAssign, classWithModifiers, stopBubbling } from "../../../resources/utils"
 // SCSS
 import "../../../assets/scss/components/button.scss"
-import { memo, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface ButtonProps {
   type?: "magic" | "left-coll" | "right-coll"
