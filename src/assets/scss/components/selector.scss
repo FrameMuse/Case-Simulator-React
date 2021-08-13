@@ -1,0 +1,86 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.selector {}
+
+.selector__menu {
+  display: inline-flex;
+  width: 100%;
+  
+  border-radius: 0.75em;
+  overflow: hidden;
+
+  &--list {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    visibility: hidden;
+    display: grid;
+    z-index: 9;
+    overflow: auto;
+    max-height: 20em;
+  }
+
+  &--display {
+    visibility: visible;
+  }
+}
+
+.selector__current {
+  @include display(flex, items, center);
+
+  padding: 1em;
+  background: color(Blue-3);
+  border-radius: 0.5em;
+
+  @include font(1.25rem, 600) {
+    cursor: pointer;
+  }
+}
+
+.selector__option {
+  padding: 1em;
+  background: color(Blue-3);
+  transition: 200ms color, 200ms background-color;
+
+  @include font(1.25rem, 600) {
+    cursor: pointer;
+  }
+
+  &--active {
+    color: color(Blue-4);
+    background: color(Broom);
+  }
+}
+
+.selector__icon {
+  --icon-size: 1.5em;
+  color: color(Blue-1);
+  margin-left: auto;
+}
+
+/* Rarity Selector */
+
+.rarity-selector {}
+
+.rarity-selector__circle {
+  $color: color(Blue-2);
+
+  display: inline-block;
+
+  vertical-align: middle;
+  margin-left: 0.25em;
+  margin-right: 1em;
+
+  width: 0.5em;
+  height: 0.5em;
+  background: currentColor;
+  border-radius: 100%;
+  box-shadow: 0 0 0.5em 0.1em currentColor;
+
+  @include Rarity;
+}

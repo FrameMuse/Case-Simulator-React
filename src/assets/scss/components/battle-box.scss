@@ -1,0 +1,131 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.battle-box {
+  display: grid;
+  justify-items: center;
+  @include Box(1.5em);
+
+  @function gradient($where: center) {
+    @return radial-gradient(circle at $where, color(Green-1) -20%, transparent 15%);
+  }
+
+  &--creator-win {
+    background-image: gradient(left bottom);
+
+    .battle-box__weapon--opponent {
+      opacity: 0.3;
+    }
+
+    .battle-box-user--opponent {
+      opacity: 0.3;
+    }
+  }
+
+  &--opponent-win {
+    background-image: gradient(right bottom);
+
+    .battle-box__weapon--creator {
+      opacity: 0.3;
+    }
+
+    .battle-box-user--creator {
+      opacity: 0.3;
+    }
+  }
+
+  &--draw {
+    background-image: gradient(left bottom), gradient(right bottom);
+  }
+}
+
+/* Weapons */
+
+.battle-box__weapons {
+  display: flex;
+  align-items: center;
+}
+
+.battle-weapon__image {
+  &:hover~.battle-box-hint {
+    opacity: 1;
+    transform: translateY(50%);
+  }
+}
+
+.battle-box-hint {
+  @include Hint;
+}
+
+/* Case */
+
+.battle-box-case {
+  display: grid;
+  justify-items: center;
+
+  // padding: 1.5em;
+}
+
+.battle-box__splitter {
+  position: absolute;
+  width: 5em;
+  height: 100%;
+  background: url("../../images/battle-figura.png") no-repeat center/100%;
+}
+
+.battle-box-case__image {
+  width: 7rem;
+}
+
+.battle-box-case__price {
+  position: absolute;
+  bottom: 0;
+
+  padding: 0.6em;
+  background: color(Green-1);
+  border-radius: 0.4em;
+  @include font(1.1rem, 700);
+}
+
+/* Users */
+
+.battle-box__users {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.battle-box-user {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &--align-right {
+    flex-direction: row-reverse;
+  }
+}
+
+.battle-box-user__avatar {
+  @include Image(2.5em, cover) {
+    border-radius: 100%;
+  }
+}
+
+.battle-box-user__prize {
+  @include font(1.25rem, 600) {
+    margin: 0 0.5em;
+  }
+}
+
+.battle-box-user__win-circle {
+  --icon-size: 1.1em;
+
+  display: flex;
+  padding: 0.35em;
+  background: color(Green-1);
+  border-radius: 100%;
+}

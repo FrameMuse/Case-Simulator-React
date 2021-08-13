@@ -1,0 +1,133 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.contract-box {
+  --rarity-color: white;
+  @include Rarity(--rarity-color);
+}
+
+/* Header */
+
+.contract-box-header {
+  $blue: #{color(Blue-3)};
+  $rarity: var(--rarity-color);
+
+  display: flex;
+  justify-content: space-between;
+
+  background: color(Blue-3);
+  border-radius: 0.5em 0.5em 0 0;
+
+  background:
+    linear-gradient(to right, transparent, $blue 90%),
+    linear-gradient(to right, $blue 10%, $rarity 100%),
+}
+
+.contract-box-header__left,
+.contract-box-header__right {
+  display: flex;
+  align-items: center;
+
+  width: 28%;
+  padding: 1.5em;
+}
+
+.contract-box-header__right {
+  justify-content: flex-end;
+}
+
+.contract-box-header__name {
+  width: 100%;
+
+  &--0 {
+    @include font(1.25em, 800) {
+      color: color(Blue-2);
+    }
+  }
+
+  &--1 {
+    @include font(1.25em, 600);
+    margin-top: 0.5rem;
+  }
+}
+
+.contract-box-header__rarity {
+  // width: 15em;
+  height: 0.25em;
+  background: var(--rarity-color);
+  box-shadow: 0 0 20px 5px var(--rarity-color);
+  border-radius: 10em;
+}
+
+.contract-box-header__image {
+  display: grid;
+  width: 44%;
+}
+
+.contract-box-header__weapon-image {
+  height: 5em;
+  margin: 0 auto;
+}
+
+.contract-box-header__price {
+  padding: 0.5em;
+  background: #11171b;
+  border: 1px solid color(Blue-2);
+  border-radius: 0.35em;
+  @include font(1.25em, 550);
+}
+
+/* Container */
+
+.contract-box__container {
+  display: grid;
+  padding: 1.5em;
+  background: #11171b;
+  border: 1px solid color(Blue-3);
+  border-top: unset;
+  border-radius: 0 0 0.5em 0.5em;
+}
+
+.contract-box-list {
+  @include grid(null, repeat(2, 1fr), repeat(4, minmax(2em, 1fr))) {
+    justify-content: space-around;
+    justify-items: center;
+  }
+}
+
+.contract-box-list__weapon {
+  display: grid;
+  place-items: center;
+}
+
+.contract-box-list__weapon-image {
+  height: 5em;
+  cursor: help;
+}
+
+.contract-box-hint {
+  @include Hint;
+}
+
+/* Bottom */
+
+.contract-box__bottom {
+  padding-top: 1.5em;
+  margin-top: 1.5em;
+  border-top: 1px solid color(Blue-3);
+}
+
+.contract-box__text {
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+  text-align: center;
+
+  em {
+    // @include font(1.25em, 600);
+    color: color(Blue-1)
+  }
+}

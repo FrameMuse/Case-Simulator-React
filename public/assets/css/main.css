@@ -1,0 +1,201 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@font-face {
+    font-family: "Manrope";
+    font-weight: 100 1000;
+    src: local("Manrope"),
+         local(Manrope),
+         url("../fonts/Manrope.ttf") format("truetype");
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--hsl-Blue-2) var(--hsl-Blue-3);
+}
+
+*, ::before, ::after {
+    position: relative;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    /* Green */
+    --hue-Green: 105;
+    --hsl-Green-1: hsl(var(--hue-Green), 60%, 55%);
+    --hsl-Green-2: hsl(var(--hue-Green), 50%, 45%);
+    --hsl-Green-3: hsl(var(--hue-Green), 30%, 30%);
+    --hsl-Green-4: hsl(var(--hue-Green), 30%, 30%);
+    /* Licorice */
+    --hue-Licorice: 210;
+    --hsl-Licorice: hsl(var(--hue-Licorice), 20%, 20%);
+    /* Broom */
+    --hue-Broom: 54;
+    --hsl-Broom: hsl(var(--hue-Broom), 85%, 55%);
+    /* Red */
+    --hue-Red: 0;
+    --hsl-Red-1: hsl(var(--hue-Red), 65%, 50%);
+    --hsl-Red-2: hsl(var(--hue-Red), 50%, 50%);
+    --hsl-Red-3: hsl(var(--hue-Red), 35%, 35%);
+    /* Orange */
+    --hue-Orange: 25;
+    --hsl-Orange-1: hsl(var(--hue-Orange), 90%, 60%);
+    --hsl-Orange-2: hsl(var(--hue-Orange), 75%, 50%);
+    --hsl-Orange-3: hsl(var(--hue-Orange), 35%, 35%);
+    /* White */
+    --hue-White: 255;
+    --hsl-White: hsl(var(--hue-White), 0%, 100%);
+    /* Dark */
+    --hue-Dark: 210;
+    --hsl-Dark: hsl(var(--hue-Dark), 19%, 6%);
+    /* Black */
+    --hue-Black: 0;
+    --hsl-Black: hsl(var(--hue-Black), 0%, 0%);
+    /* Blue */
+    --hue-Blue: 210;
+    --hsl-Blue-1: hsl(var(--hue-Blue), 70%, 85%);
+    --hsl-Blue-2: hsl(var(--hue-Blue), 20%, 45%);
+    --hsl-Blue-3: hsl(var(--hue-Blue), 20%, 15%);
+    --hsl-Blue-4: hsl(var(--hue-Blue), 20%, 7%);
+    /* * Penis */
+    --hsl-HalfDark: hsl(214deg, 17%, 8%, 0.5);
+    /* Gradients */
+    --gradient-Green: linear-gradient(to right, var(--hsl-Green-1), var(--hsl-Green-2));
+    /* hr */
+    --hsl-hr: hsl(var(--hue-Blue), 20%, 17%);
+    /* rest */
+    --icon-size: 2rem;
+    --scrollbar-size: 0.25rem;
+}
+
+::-webkit-scrollbar {
+    width: var(--scrollbar-size);
+    height: var(--scrollbar-size);
+    /* z-index: inherit; */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--hsl-Blue-3);
+    border-radius: 10em;
+    /* z-index: inherit; */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--hsl-Blue-2);
+    border-radius: 10em;
+    /* z-index: inherit; */
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Default */
+
+textarea {
+    appearance: none;
+    outline: none;
+    font: inherit;
+    line-height: 1;
+}
+
+button, input {
+    all: unset;
+    
+    position: relative;
+    box-sizing: border-box;
+
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    line-height: inherit;
+    text-align: inherit;
+}
+
+input[type="text"], input[type=number] {
+    cursor: text;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input::placeholder {
+    color: inherit;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+button:not(:disabled):active {
+    transform: scale(0.95);
+}
+
+strong {
+    font-size: 1.1em;
+}
+
+a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom-color: transparent;
+}
+
+a:active {
+    color: white;
+}
+
+a.ghost {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* z-index: 5; */
+    /* border-bottom-color: transparent; */
+}
+
+b {
+    font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, p, pre {
+    margin: unset;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    margin: 2em 0;
+    background: rgba(0, 0, 0, 0.1);
+    border: unset;
+}
+
+/* Helpers */
+
+.hidden, [hidden] {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+@media screen and (max-width: 1000px) {
+    html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+}

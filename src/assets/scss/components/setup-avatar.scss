@@ -1,0 +1,51 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.setup-avatar {
+  display: inline-block;
+  padding: 2em;
+  background: #1b2329;
+  border-radius: 1.25em;
+}
+
+.setup-avatar__title {
+  @include font(1.5em, 700);
+}
+
+.setup-avatar__desc {
+  @include font(1.25em, 600, 1.25) {
+    color: color(Blue-1);
+  }
+
+  margin-top: 1.5rem;
+}
+
+.setup-avatar__bottom {
+  display: flex;
+  align-items: center;
+
+  margin-top: 3em;
+}
+
+.setup-avatar__image {
+  $size: 5em;
+
+  width: $size;
+  height: $size;
+
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.setup-avatar__button {
+  padding: 1.5em 3em;
+  margin-left: 1.5em;
+
+  border-radius: 0.75em;
+
+  color: color(Blue-1);
+}

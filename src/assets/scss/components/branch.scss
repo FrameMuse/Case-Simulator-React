@@ -1,0 +1,121 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+$branchIndent: 2.5em;
+
+.branch {
+  display: flex;
+  align-content: stretch;
+  justify-content: stretch;
+
+  @include indent;
+
+  // border-top: 1px solid color(hr);
+  // border-bottom: 1px solid color(hr);
+
+  @include Mobile {
+    @include grid(2.5em);
+  }
+}
+
+.branch__sidebar {
+  padding-top: $branchIndent;
+
+  @include Mobile {
+    width: auto !important;
+  }
+
+  @include NotMobile {
+    &:first-child {
+      padding-right: 3em;
+      margin-right: 3em;
+      border-right: 1px solid color(hr);
+    }
+  }
+}
+
+.branch__section {
+  flex: 1;
+  padding: $branchIndent 0;
+}
+
+.branch__container {
+  @include Mobile {
+    display: grid;
+  }
+
+  &:not(:first-child) {
+    padding-top: $branchIndent;
+    margin-top: $branchIndent;
+    border-top: 1px solid color(hr);
+  }
+}
+
+.branch__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  @include Mobile {
+    @include grid(2.5em);
+  }
+}
+
+.branch-article {
+  @include Article {}
+}
+
+/* Nav */
+
+.branch-nav {
+  $indent: 2em;
+
+  display: grid;
+  row-gap: 1em;
+
+  width: 30em;
+
+  @include Mobile {
+    width: 100%;
+  }
+
+  padding-bottom: $indent;
+  margin-bottom: $indent;
+  border-bottom: 1px solid color(hr);
+
+  &:last-child {
+    // padding-bottom: unset;
+    // margin-bottom: unset;
+    border-bottom: unset;
+  }
+}
+
+.branch-nav__link {
+  @include display(flex, items, center);
+
+  &:hover,
+  &--active {
+    .branch-nav__text {
+      color: color(Blue-1);
+    }
+  }
+}
+
+.branch-nav__text {
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+}
+
+.branch-nav__status {
+  padding: 0.25em 0.5em;
+  margin-left: auto;
+  background: color(Blue-3);
+  border-radius: 4px;
+
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+}

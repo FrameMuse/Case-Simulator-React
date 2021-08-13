@@ -1,0 +1,446 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.battle {}
+
+.battle__container {
+  @include indent;
+  border-top: 1px solid color(hr);
+}
+
+/* Top */
+
+.battle-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid color(hr);
+
+  @include Mobile {
+    @include portrait {
+      @include grid(1em, 1fr 1fr, 1fr 1fr);
+    }
+  }
+}
+
+.battle-top__logo {
+  @include display(grid, items, center, center);
+
+  @include Mobile {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+  }
+}
+
+.battle-top__pieces {
+  position: absolute;
+
+  width: 50em;
+  height: 100%;
+
+  background: url("../../svg/pieces.svg") no-repeat center/contain;
+
+  @include Mobile {
+    width: 100%;
+  }
+}
+
+.battle-top__vs-logo {
+  position: absolute;
+  height: 200px;
+  filter: drop-shadow(0 0 3em rgba($color: #edd929, $alpha: 0.5));
+}
+
+.battle-top-case {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 2em;
+}
+
+.battle-top-case__image {
+  height: 8.5em;
+  object-fit: contain;
+}
+
+.battle-top-case__price {
+  position: absolute;
+
+  padding: 10px 12px;
+  background: color(Green-2);
+  border-radius: 0.75rem;
+
+  @include font(1.25em, 700);
+}
+
+.battle-top__left,
+.battle-top__right {
+  width: 25em;
+
+  @include Mobile {
+    width: auto;
+    grid-row: 2;
+    grid-column: 1 / span 2;
+  }
+}
+
+.battle-top__right {
+  direction: rtl;
+
+  .battle-user__circle {
+    left: unset;
+    right: -2em;
+  }
+
+  @include Mobile {
+    grid-row: 2;
+    grid-column: 2 / span 2;
+  }
+}
+
+/* Content */
+
+.battle-content {
+  display: flex;
+  justify-content: space-between;
+  // border-top: 1px solid color(hr);
+  // overflow: hidden;
+
+  @include Mobile {
+    @include portrait {
+      @include grid {
+        justify-content: stretch;
+      }
+    }
+  }
+}
+
+.battle-content__scrolling {
+  width: 49%;
+
+  @include Mobile {
+    @include portrait {
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+
+  @include NotMobile {
+    @include portrait {
+      &:first-child {
+        padding-right: 1%;
+        margin-right: 1%;
+        border-right: 1px solid color(hr);
+      }
+    }
+  }
+}
+
+.battle-content__splitter {
+  @include Mobile {
+    @include portrait {
+      position: absolute;
+      top: 0;
+      left: calc(50% - 1px);
+      bottom: 0;
+      width: 2px;
+      height: 100%;
+      background: var(--hsl-Broom);
+      box-shadow: 0 0 1em 0.1em var(--hsl-Broom);
+      z-index: 1
+    }
+  }
+}
+
+/* Drop */
+
+.battle-content__drop {
+  @include grid(2em) {
+    flex: 1;
+    align-items: center;
+    justify-items: center;
+  }
+
+  padding: 5em 0;
+  background: url("../../images/shape-bg.png") no-repeat center/200em;
+  border-right: 2px solid var(--hsl-hr);
+
+  &:last-child {
+    border-right: unset;
+  }
+
+  .case-final-drop__drop {
+    margin: unset;
+  }
+}
+
+.battle-content__final {
+  width: 100%;
+
+  .game-final-drop__smoke {
+    display: none;
+  }
+}
+
+/* Bottom */
+
+.battle-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2.5em;
+  border-top: 1px solid color(hr);
+
+  @include Mobile {
+    @include grid(2.5em);
+  }
+}
+
+.battle-bottom-info {
+  @include grid(0.5em);
+}
+
+.battle-bottom-info__title {
+  @include font(1.25em, 600);
+}
+
+.battle-bottom-info__text {
+  @include font(1.25em, 600, 1.25);
+  color: color(Blue-2);
+}
+
+.battle-bottom__buttons {
+  display: flex;
+
+  &>* {
+    margin-left: 2em;
+  }
+
+  &:first-child {
+    margin-left: unset;
+  }
+
+  @include Mobile {
+    @include grid(1em);
+  }
+}
+
+.battle-bottom__button {
+  width: 20em;
+  justify-content: center;
+
+  @include Mobile {
+    width: 100%;
+    margin-left: unset;
+  }
+}
+
+.battle-bottom__info {
+  margin-top: 1em;
+  margin-left: 1em;
+
+  @include font(1.25em) {
+    color: color(Blue-2);
+  }
+}
+
+/* User */
+
+.battle-user {
+  display: flex;
+  align-items: center;
+}
+
+.battle-user__circle {
+  $size: 0.75em;
+
+  position: absolute;
+  top: calc(50% - (#{$size / 2}));
+  left: -2em;
+
+  width: $size;
+  height: $size;
+  background: transparent;
+  border-radius: 100%;
+
+  &--won {
+    background: color(Green-2);
+  }
+
+  &--lose {
+    background: color(Red-2);
+  }
+
+  &--draw {
+    background: color(Broom);
+  }
+}
+
+.battle-user__image {
+  $size: 3.5em;
+
+  width: $size;
+  height: $size;
+  background: color(Blue-3);
+  border-radius: 100%;
+}
+
+.battle-user__info {
+  @include grid(0.5em);
+  margin: 0 1em;
+}
+
+.battle-user__name {
+  @include font(1.25em, 700);
+}
+
+.battle-user__status {
+  @include font(1.25em, 600);
+  color: color(Blue-1);
+
+  &--won {
+    color: color(Green-2);
+  }
+
+  &--lose {
+    color: color(Red-2);
+  }
+}
+
+/* Battles */
+
+.battles {
+  @include indent;
+
+  margin-bottom: 5em;
+  // border-top: 1px solid color(hr);
+}
+
+.battles__filters {
+  display: flex;
+  align-items: center;
+  margin-top: 2em;
+
+  @include Mobile {
+    @include grid(1em);
+  }
+}
+
+.battle__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2.5em;
+
+  @include Mobile {
+    @include grid(2.5em) {
+      justify-content: stretch;
+    }
+  }
+}
+
+.battles__table {
+  // padding-top: 2.5em;
+  margin-top: 3.5em;
+  border-top: 1px solid color(hr);
+}
+
+/* Battle Stats */
+
+.battles__stats {
+  display: flex;
+
+  @include Mobile {
+    @include grid(1em, null, 40% 1fr);
+    font-size: 80%;
+  }
+}
+
+.battles-box {
+  display: flex;
+  align-items: center;
+
+  @include Box;
+
+  @include NotMobile {
+    @include row-gap(2em);
+  }
+}
+
+.battles-box__circle {
+  padding: 1.25em;
+  background: #1c232a;
+  border-radius: 100%;
+
+  --icon-size: 2em;
+}
+
+.battles-box__entry {
+  display: grid;
+  row-gap: 0.5em;
+  margin-left: 1em;
+}
+
+.battles-box__value {
+  @include font(1.5em, 700);
+}
+
+.battles-box__key {
+  @include Paragraph;
+}
+
+/* Battle Case */
+
+.battles-case {
+  display: flex;
+  align-items: center;
+}
+
+.battles-case__image {
+  $size: 5em;
+
+  width: $size;
+  height: $size;
+}
+
+.battles-case__title {
+  // @include font(1.25rem, 600);
+  margin-left: 1rem;
+}
+
+.battles__buttons {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 3.5em;
+
+  &>* {
+    padding: 1rem 2rem;
+    margin-left: 1rem;
+  }
+
+  &:first-child {
+    margin-left: unset;
+  }
+}
+
+// Icons
+
+.add-icon {
+  @include Image(2.5rem);
+
+  @include display(flex, items, center) {
+    justify-content: center;
+  }
+
+  background: #384756;
+  border-radius: 100%;
+}
+
+.add-icon__text {
+  @include font(1.5rem, 600);
+}

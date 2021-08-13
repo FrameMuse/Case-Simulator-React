@@ -1,0 +1,55 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.hint {
+  --hint-x: 0;
+  --hint-y: 0;
+  --hint-right: 1; // 1 is no | -1 is yes
+  --hint-bottom: 1; // 1 is no | -1 is yes
+  $x: var(--hint-x);
+  $y: var(--hint-y);
+  $onRight: var(--hint-right);
+  $atBottom: var(--hint-bottom);
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  transition: 200ms transform, 200ms opacity, 0s 200ms visibility;
+  transform: translateY(calc(-3.5em * #{$atBottom}));
+  opacity: 0;
+  z-index: 1;
+  visibility: hidden;
+
+  @at-root *:hover+& {
+    transition: 200ms transform, 200ms opacity, 0s 0s visibility;
+    transform: translateY(calc((#{$y} * (-1 * #{$atBottom})) - 0.5em));
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &--right {
+    left: unset;
+    right: 0;
+  }
+}
+
+.hint__field {
+  padding: 1em 1.25em;
+  background: color(Blue-4);
+  border: 1px solid color(Blue-3);
+  border-radius: 0.5em;
+}
+
+.hint__content {
+  p {
+    @include font(1.25em, 500) {
+      color: color(Blue-1);
+      white-space: nowrap;
+    }
+  }
+}

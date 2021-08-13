@@ -1,0 +1,60 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+@mixin Tumbler {
+  display: flex;
+  align-items: center;
+
+  &__text {
+    @include font(1.25rem, 600);
+    color: color(Blue-2);
+    cursor: pointer;
+
+    &--active {
+      color: color(Blue-1);
+    }
+  }
+
+  &-shift {
+    padding: 0.3em 0.4em;
+    margin: 0 2em;
+    width: 5em;
+    background: color(Dark);
+    border: 1px solid color(Blue-3);
+    border-radius: 10em;
+    cursor: pointer;
+
+    &__circle {
+      margin-left: 0%;
+      width: 2em;
+      height: 2em;
+      background: color(Green-2);
+      border-radius: 100%;
+      transition: margin-left 200ms;
+
+      &--right {
+        margin-left: 50%;
+      }
+    }
+  }
+
+  &--1 {
+    font-size: 0.6em;
+  }
+
+  &--1 &__text--active {
+    color: color(Orange-1);
+  }
+
+  &--1 &-shift__circle--right {
+    background: color(Orange-1);
+  }
+}
+
+.tumbler {
+  @include Tumbler();
+}

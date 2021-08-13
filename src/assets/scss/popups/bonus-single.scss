@@ -1,0 +1,116 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.bonus-single {
+  width: 100%;
+}
+
+.bonus-single__container {
+  @include grid(2.5em, null, repeat(2, 1fr));
+
+  max-height: calc(100vh - 20vh - 20em);
+  overflow: auto;
+
+  @include Mobile {
+    grid-template-columns: auto;
+    max-height: unset;
+    overflow: unset;
+  }
+}
+
+.bonus-task {
+  max-width: 27.5em;
+  padding: 2em;
+  background: color(Blue-4);
+  border-radius: 0.5em;
+
+  @include Mobile {
+    max-width: 100%;
+  }
+}
+
+.bonus-task__top {
+  display: flex;
+  align-items: center;
+}
+
+.bonus-task__circle {
+  --icon-size: 1.5em;
+  display: grid;
+  place-items: center;
+  padding: 0.75em;
+  margin-right: 1em;
+  background: rgba($color: white, $alpha: 0.05);
+  border: 2px solid currentColor;
+  border-radius: 100%;
+  color: color(Red-1);
+  transition: 200ms color;
+
+  &--error {
+    color: color(Blue-2);
+  }
+
+  &--done {
+    color: color(Green-1);
+  }
+}
+
+.bonus-task__title {
+  @include font(1.25rem, null, 1.2);
+
+  a,
+  em {
+    color: color(Blue-1);
+    text-decoration: underline;
+  }
+}
+
+.bonus-task__bottom {
+  display: flex;
+  // align-items: center;
+  justify-content: center;
+  padding-top: 1.5em;
+  margin-top: 1.5em;
+  border-top: 1px solid color(hr);
+}
+
+.bonus-task__button {
+  justify-content: center;
+  width: 100%;
+  padding: 1.25em;
+  background: color(Broom);
+  color: color(Dark);
+
+  .button__text {
+    font-weight: 800;
+  }
+
+  &--done {
+    background: rgba(92, 186, 60, 0.2);
+    color: color(Green-2);
+  }
+}
+
+.bonus-task__reward {
+  padding: 0.75em 1em;
+  margin-left: 0.5em;
+  background: color(Blue-3);
+  border-radius: 0.35em;
+
+  @include font(1.5rem) {
+    color: color(Broom);
+  }
+}
+
+.bonus-task__text {
+  margin: auto;
+
+  @include font(1.25rem, 600, 1.35) {
+    color: color(Blue-2);
+    text-align: center;
+  }
+}

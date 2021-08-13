@@ -1,0 +1,26 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.popup-notification {
+  position: fixed;
+  top: 2.5em;
+  left: 2.5em;
+
+  @include Box(2em, #{"hsl(0 0% 5% / 0.95)"});
+  @include grid(1.5em);
+  box-shadow: 0.5em 0.5em 1em black;
+}
+
+.popup-notification__buttons {
+  display: flex;
+  justify-content: stretch;
+
+  .button:last-child {
+    width: 20em;
+    margin-left: 0.5em;
+  }
+}

@@ -1,0 +1,144 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.bonus-box {
+  @include grid(2.5em);
+  max-width: 25.5em;
+  padding: 1.5em;
+  background: color(Dark);
+  border-radius: 0.75em;
+}
+
+.bonus-box__container {
+  @include grid(2em);
+  padding: 0 1.5em;
+  margin-top: 1em;
+}
+
+.bonus-box__bonus {
+  @include font(1.25em, 600, 1.25) {
+    color: color(Blue-1);
+    text-align: center;
+  }
+}
+
+.bonus-box__image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.bonus-box__button {
+  background: color(Broom);
+  justify-content: center;
+
+  .button__text {
+    @include font(800) {
+      color: color(Blue-4);
+    }
+  }
+}
+
+/// Detail bonus
+
+.detail-bonus {
+  padding: 1.25em;
+  background: color(Dark);
+  border-radius: 0.75em;
+}
+
+.detail-bonus__container {
+  display: grid;
+  height: 100%;
+}
+
+.detail-bonus__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detail-bonus__button {
+  padding: 1em;
+  background: color(Green-1);
+  border-radius: 0.5em;
+}
+
+.detail-bonus-count {
+  padding: 1em;
+  background: color(Broom);
+  border-radius: 0.5em;
+}
+
+.detail-bonus-count__number {
+  @include font(1.25em, 700) {
+    color: color(Dark);
+  }
+}
+
+.detail-bonus-terms {
+  margin-left: auto;
+}
+
+.detail-bonus-terms__link {
+  color: color(Blue-2);
+  cursor: help;
+}
+
+.detail-bonus-terms__list {
+  @include grid(1em);
+  width: 15em;
+}
+
+.detail-bonus-terms__term {
+  display: flex;
+
+  @include font(1.25em, 500, 1.25) {
+    color: color(Blue-1);
+  }
+
+  &::before {
+    content: "\2022";
+    display: block;
+
+    width: 1em;
+    margin-right: 0.5em;
+
+    @include font($weight: 600) {
+      color: color(Broom);
+    }
+  }
+}
+
+.detail-bonus__image {
+  max-width: var(--bonus-image-width, 75%);
+  max-height: 10em;
+  justify-self: center;
+}
+
+.detail-bonus__bottom {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.detail-bonus__text {
+  @include font(1.25em, 400, 1.25);
+}
+
+/// Question mark
+
+.question-mark {
+  padding: 1px 6px;
+  background: color(Blue-4);
+  border: 1px solid color(Blue-3);
+  border-radius: 0.25em;
+}
+
+.question-mark__mark {
+  @include font();
+}

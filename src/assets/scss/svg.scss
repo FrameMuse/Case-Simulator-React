@@ -1,0 +1,82 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "shared";
+
+#svg-icon {
+  $size: var(--icon-size);
+  width: $size;
+  height: $size;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+.svg-color-yellow {
+  color: color(Broom);
+}
+
+.svg-cross {
+  stroke: #bad5f2;
+  stroke-linecap: round;
+}
+
+.svg-bell {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svg-exit {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svg-triangle {
+  fill: none;
+  // stroke: #3248d3;
+  stroke: currentColor;
+  stroke-width: 1.25;
+}
+
+.svg-search {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svg-checkmark {
+  fill: currentColor;
+}
+
+.svg-arrow {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.svg-chevron {
+  transition: transform 200ms;
+
+  &--up {
+    transform: rotate(-90deg);
+    // will-change: transform;
+  }
+
+  &--down {
+    transform: rotate(90deg);
+    // will-change: transform;
+  }
+
+  z-index: 1;
+}

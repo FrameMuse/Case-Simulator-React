@@ -1,0 +1,114 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "shared";
+
+$transitionStyle: 300ms ease-in-out;
+
+@mixin PopupAnimation {
+  transform: scale(0.75) rotateX(15deg) translateY(20em);
+  transform-style: preserve-3d;
+  transition: transform $transitionStyle;
+
+  @at-root .popup--display & {
+    transform: scale(1) rotateX(0deg) translateY(0em);
+  }
+}
+
+.popup {
+  @include fullscreen(10);
+  display: grid;
+  opacity: 0;
+  pointer-events: none;
+  overflow: auto;
+
+  &--display {
+    opacity: 1;
+    pointer-events: initial;
+  }
+
+  transition: opacity $transitionStyle;
+  // @include Perfomance("opacity");
+}
+
+$popupIndent: 10vh;
+
+.popup__container {
+  display: grid;
+  place-content: center;
+  // height: calc(100% - #{$popupIndent * 2});
+  padding: $popupIndent 0;
+  background: hsla(200, 25%, 10%, 0.75);
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.popup__inner {
+  cursor: default;
+  @include PopupAnimation;
+
+  &> :only-child {
+    background-color: #1c222b;
+    border-radius: 0.5em;
+
+    @include Mobile {
+      border-radius: 1em;
+    }
+  }
+
+  @include Mobile {
+    width: 100vw;
+
+    &>* {
+      width: inherit !important;
+    }
+  }
+}
+
+.popup-content {
+  padding: 2.5em 3em;
+
+  @include Mobile {
+    width: 100vw !important;
+  }
+}
+
+.popup-article {
+  @include Article;
+
+  &__text {
+    color: color(Blue-1);
+
+    em {
+      color: color(Broom);
+    }
+  }
+
+  width: 100%;
+}
+
+.popup-content__text {
+  @include font(1.25em, 400, 1.25) {
+    color: color(Blue-1);
+    text-align: center;
+  }
+}
+
+.popup-content__body {
+  display: grid;
+  justify-items: baseline;
+
+  &:not(:first-child) {
+    padding-top: 2.5em;
+    margin-top: 2.5em;
+    border-top: 1px solid color(hr);
+  }
+}
+
+.popup-content__footer {
+  padding-top: 2.5em;
+  margin-top: 2.5em;
+  border-top: 1px solid color(hr);
+}

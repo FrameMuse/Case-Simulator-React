@@ -1,0 +1,104 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../../shared";
+
+$rewardWidth: 10em;
+$rewardIndent: 5em;
+
+.rewards {
+  @include display(flex, items, center);
+  padding-top: $rewardIndent;
+  margin-top: $rewardIndent;
+  border-top: 1px solid color(hr);
+
+  &:hover {
+    .rewards__arrow {
+      opacity: 1;
+    }
+  }
+}
+
+.rewards__arrow {
+  padding: 1em;
+  background: color(Blue-3);
+  border-radius: 100%;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 200ms;
+
+  @include Mobile {
+    display: none;
+  }
+
+  &--left {
+    transform: rotate(90deg);
+  }
+
+  &--right {
+    transform: rotate(-90deg);
+  }
+
+  &--hidden {
+    opacity: 0 !important;
+  }
+}
+
+.rewards__icon {
+  color: color(Blue-1);
+}
+
+.rewards__inner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 $rewardIndent;
+  overflow: hidden;
+
+  @include Mobile {
+    margin: unset;
+    overflow: auto;
+    // @include grid(2.5em 0em, null, repeat(3, 1fr)) {}
+  }
+}
+
+.rewards__reward {
+  display: grid;
+  row-gap: 1.5em;
+  @include row-gap(1em);
+  flex-shrink: 0;
+  justify-items: center;
+
+  width: $rewardWidth;
+}
+
+.rewards__image {
+  $size: 5em;
+  height: $size;
+
+  &--byWidth {
+    max-width: $size;
+    max-height: $size * 1.4;
+    height: auto;
+  }
+}
+
+.rewards__value {
+  width: 100%;
+
+  @include font(1.75em, 700) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+.rewards__desc {
+  @include font(1.25em, 600, 1.35);
+  color: color(Blue-2);
+  text-align: center;
+}

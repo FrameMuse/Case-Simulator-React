@@ -1,0 +1,263 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "utils";
+@import "vars";
+
+@mixin indent($paddingTopBottom: 0, $marginTop: null, $marginBottom: null) {
+  padding: $paddingTopBottom 3.5vw;
+
+  margin: {
+    top: $marginTop;
+    bottom: $marginBottom;
+  }
+
+  @content;
+}
+
+@mixin label {
+  padding: 1.25em 1.5em;
+  background: color(Blue-3);
+  @include border-radius-coll(0.5em);
+}
+
+@mixin label-text {
+  @include font(1.25em, 600);
+}
+
+@mixin border-radius-coll($radius) {
+  border-radius: $radius;
+
+  &--left-coll {
+    border-radius: 0 $radius $radius 0;
+  }
+
+  &--right-coll {
+    border-radius: $radius 0 0 $radius;
+  }
+}
+
+@mixin Box($padding: 1em, $bg: #11171b) {
+  padding: $padding;
+  background: $bg;
+  border: 1px solid #2a3949;
+  border-radius: 0.75em;
+}
+
+// Overlap
+
+@mixin overlap {
+  &--overlap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #{"hsl(210deg 15% 7% / 75%)"};
+    place-content: center;
+    // z-index: 1;
+  }
+}
+
+// Formation
+
+@mixin Article($row-gap: 1em) {
+  display: grid;
+  row-gap: $row-gap;
+
+  @content;
+
+  &__title {}
+
+  &__text {
+    @include font(1.35rem, 500, 1.35);
+    color: color(Blue-2);
+
+    em {
+      color: color(Blue-1);
+    }
+  }
+
+  &--center {
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+@mixin Paragraph {
+  @include font(1.35em, 600, 1.25);
+  color: color(Blue-2);
+
+  em {
+    @include font(1em, 600);
+    color: White;
+  }
+
+  @content;
+}
+
+// Weapon
+
+@function rarity($name) {
+  @return var(--rarity-#{$name});
+}
+
+@mixin Rarity($tag: "color") {
+  &--common {
+    #{$tag}: rarity(common);
+  }
+
+  &--uncommon {
+    #{$tag}: rarity(uncommon);
+  }
+
+  &--rare {
+    #{$tag}: rarity(rare);
+  }
+
+  &--epic {
+    #{$tag}: rarity(epic);
+  }
+
+  &--legendary {
+    #{$tag}: rarity(legendary);
+  }
+
+  &--arcane {
+    #{$tag}: rarity(arcane);
+  }
+}
+
+@mixin Image($size, $fit: null) {
+  width: $size;
+  height: $size;
+  object-fit: $fit;
+
+  @content;
+}
+
+// Popup
+
+@mixin PopupScrollableContent($height: 100vh, $maxHeightCalc: calc(#{$limitHeight} - 20vh - 10em)) {
+  overflow: hidden;
+  max-height: $maxHeightCalc;
+}
+
+// Perfomance
+@mixin Perfomance($tag: "transform") {
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transform: translate3d(0, 0, 0);
+  transform: translateZ(0);
+  will-change: #{$tag};
+}
+
+// Hint
+
+@mixin Hint {
+  position: absolute;
+  bottom: 0;
+
+  padding: 0.75em 2em;
+  background: color(Blue-3);
+  border: 1px solid color(hr);
+  border-radius: 0.5em;
+
+  opacity: 0;
+  transform: translateY(0%);
+  transition: 200ms opacity, 200ms transform, 0ms 200ms visibility;
+
+  z-index: 1;
+  white-space: nowrap;
+  pointer-events: none;
+
+  &__text {
+    @include font(1.25rem, 400) {
+      color: color(Blue-1);
+    }
+  }
+
+  @at-root *:hover~& {
+    opacity: 1;
+    transform: translateY(50%);
+  }
+}
+
+// -----------------
+
+@mixin CaseBenefitCircle($size) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include Image($size) {
+    background: color(Blue-2);
+    border-radius: 100%;
+
+    &--green {
+      background: color(Green-2);
+    }
+
+    &--orange {
+      background: color(Orange-2);
+    }
+  }
+}
+
+// Devices
+
+@mixin Mobile() {
+  @media screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin NotMobile() {
+  @media screen and (min-width: 601px) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+// Trash
+
+.timer {
+  display: flex;
+  align-items: center;
+}
+
+.timer__entry {
+  display: flex;
+  justify-content: center;
+
+  padding: 0.5em;
+  background: color(Dark);
+  border: 1px solid color(hr);
+  border-radius: 0.25em;
+  width: calc(1em + 2ch);
+
+  @include font(2em, 600);
+}
+
+.timer__spliiter {
+  margin: 0 0.25em;
+  @include font(2em, 600);
+
+  &:last-child {
+    display: none;
+  }
+}

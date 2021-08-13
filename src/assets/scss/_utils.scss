@@ -1,0 +1,141 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@mixin fullscreen($z-index: null) {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: $z-index;
+}
+
+@mixin font($size: null, $weight: null, $line-height: null) {
+  font: {
+    size: $size;
+    weight: $weight;
+  }
+
+  line-height: $line-height;
+
+  @content;
+}
+
+@mixin fontGradient {
+  @content;
+  background-clip: text;
+  // text-fill-color: transparent;
+  // -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin display($display, $content, $align: null, $justify: null) {
+  display: $display;
+
+  @if ($align==$justify) {
+    #{place- + $content}: $align;
+  }
+
+  @else {
+    #{align- + $content}: $align;
+    #{justify- + $content}: $justify;
+  }
+
+  @content;
+}
+
+@mixin grid($gap: null, $rows: null, $columns: null) {
+  display: grid;
+
+  grid: {
+    template: {
+      rows: $rows;
+      columns: $columns;
+    }
+  }
+
+  gap: $gap;
+
+  @content;
+}
+
+@mixin flex-centered {
+  display: flex;
+  place-content: center;
+}
+
+@mixin flex-align-centered {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-justify-centered {
+  display: flex;
+  justify-items: center;
+}
+
+@mixin grid-centered {
+  display: grid;
+  place-content: center;
+}
+
+@mixin grid-align-centered {
+  display: grid;
+  align-items: center;
+}
+
+@mixin grid-justify-centered {
+  display: grid;
+  justify-items: center;
+}
+
+// Text
+
+@mixin text3 {
+  @include font(18px, 600);
+  line-height: 1.35;
+}
+
+@mixin text4 {
+  @include font(1.25em, 600);
+  line-height: 1.35;
+}
+
+@mixin link {
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: unset;
+  }
+}
+
+// image
+
+@mixin hideImageAlt {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// Gap
+
+@mixin row-gap($gap) {
+  &:not(:last-child) {
+    margin-right: $gap;
+  }
+}
+
+// Color
+
+@mixin DarkFilter {
+  filter: opacity(0.75) brightness(20%) contrast(80%) sepia(1) hue-rotate(175deg) saturate(100%);
+}
+
+@function color($color) {
+  @return var(--hsl- + $color);
+}
+
+@function gradient($color) {
+  @return var(--gradient- + $color);
+}

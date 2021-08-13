@@ -1,0 +1,218 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.top {
+  // padding-bottom: 2.5em;
+  // border-bottom: 1px solid color(hr);
+  @include indent;
+}
+
+.top__table {
+  $speed: 2s;
+  @include indent;
+  // border-top: 1px solid color(hr);
+
+  // &-enter {
+  //   position: absolute;
+  //   transform: translateX(-110%);
+  // }
+
+  // &-enter-active {
+  //   transform: translateX(0%);
+  //   transition: all $speed ease;
+  // }
+
+  // &-exit {
+  //   position: absolute;
+  // }
+
+  // &-exit-active {
+  //   transform: translateX(-110%);
+  //   transition: all $speed ease;
+  // }
+}
+
+.content-transition {
+  height: var(--height, 15em);
+  transition: var(--speed, 2s) height;
+  overflow: hidden;
+
+  &--entered {}
+}
+
+.top__places {
+  @include indent(0);
+  @include display(flex, content, null, space-around);
+  border-top: 1px solid color(hr);
+}
+
+/* Place */
+
+.top-place {
+  --place-color: null;
+  $color: var(--place-color);
+
+  padding: 3.5em 0;
+  overflow: hidden;
+
+  @include Mobile {
+    @include grid;
+  }
+
+  &::before {
+    $size: 1em;
+    content: "";
+    position: absolute;
+    top: -1em;
+    left: calc(50% - 0.5em);
+
+    width: $size;
+    height: $size;
+
+    border-radius: 100%;
+
+    box-shadow: 0 0 8em 3.5em $color;
+  }
+
+  &--yellow {
+    --place-color: #dcb84b;
+  }
+
+  &--silver {
+    --place-color: #b4bac1;
+  }
+
+  &--bronze {
+    --place-color: #9f4e26;
+  }
+}
+
+.top-place__title {
+  @include font(1.75em, 700);
+  text-align: center;
+}
+
+.top-place__avatar {
+  @include display(grid, items, center, center);
+  margin-top: 2em;
+}
+
+.top-place__bg {
+  $color: var(--place-color);
+  width: 100%;
+  color: $color;
+}
+
+.top-place__image {
+  $size: 6em;
+
+  position: absolute;
+
+  width: $size;
+  height: $size;
+
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.top-place__user {
+  @include grid(1em);
+  align-items: center;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.top-place__name {
+  @include font(1.5em, 700);
+}
+
+.top-place__price {
+  @include font(1.5em, 700);
+  color: color(Broom);
+  text-shadow: 0 0 15px;
+}
+
+.top-place-entries {
+  @include display(flex, items, null, center);
+  padding: 2em;
+  margin-top: 2em;
+  background: #1b2329;
+  border-radius: 0.5em;
+
+  @include Mobile {
+    @include grid(1em);
+  }
+}
+
+.top-place-entries__entry {
+  @include grid(0.5em);
+  margin-left: 3em;
+  text-align: center;
+
+  @include Mobile {
+    margin-left: unset;
+  }
+
+  &:first-child {
+    margin-left: unset;
+  }
+
+  &:last-child {
+    @media screen and (max-width: 1600px) {
+      display: none;
+    }
+  }
+}
+
+.top-place-entries__value {
+  @include font(1.5em, 800);
+}
+
+.top-place-entries__key {
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+}
+
+/* Article */
+
+.top-article {
+  @include Article(2em);
+}
+
+.top-daily {
+  @include display(flex, items, baseline) {
+    justify-content: space-between;
+  }
+
+  @include indent(5em) {
+    margin: 0 auto;
+  }
+
+  width: 85em;
+}
+
+.top-daily__prize {
+  @include grid(2.5em);
+  justify-items: center;
+}
+
+.top-daily__title {}
+
+.top-daily__prize-number {
+  @include font(7.5em, 800);
+  color: color(Broom);
+  text-shadow: 0 0 15px;
+}
+
+.top-daily__text {
+  @include Paragraph;
+}
+
+.top-daily__info {
+  @include grid(2.5em);
+  justify-items: baseline;
+}

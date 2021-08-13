@@ -1,0 +1,310 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+:root {
+  --rarity-common: #67747a;
+  --rarity-uncommon: #579EFF;
+  --rarity-rare: hsl(230, 65%, 50%);
+  --rarity-epic: #8120ef;
+  --rarity-legendary: #d3318d;
+  --rarity-arcane: #d33131;
+}
+
+.weapon {
+  display: grid;
+  background: color(Dark) url("../../images/shape-bg.png") no-repeat center/300%;
+  border-radius: 0.5em;
+
+
+  @include Rarity("--rariry-color");
+
+  &--darken {
+    opacity: 0.3;
+  }
+
+  &--transparent {
+    background: unset;
+
+    .weapon__layout {
+      padding: unset;
+    }
+  }
+}
+
+.weapon__layout {
+  display: grid;
+  // align-items: baseline;
+  padding: $weaponPadding;
+}
+
+// Overlap
+
+.weapon-overlap {
+  position: absolute;
+  display: grid;
+  align-self: flex-end;
+  width: 100%;
+  padding: inherit;
+}
+
+.weapon-overlap__withdraw {
+  align-self: flex-end;
+  justify-content: center;
+  width: 100%;
+  padding: 1em;
+  background: color(Broom);
+  border-radius: 0.35em;
+
+  .button__text {
+    @include font($weight: 700) {
+      color: color(Dark);
+    }
+  }
+
+  @include Mobile {
+    padding: 1em 0;
+  }
+}
+
+/* Weapon top */
+
+.weapon-top {
+  // @include grid(1em) {
+  //   align-items: center;
+  // }
+
+  // z-index: 1;
+
+  &--align-right {
+    margin-left: auto;
+  }
+}
+
+.weapon-top__info {
+  display: flex;
+  align-items: flex-start;
+}
+
+.weapon-top__row {
+  display: flex;
+}
+
+.weapon-price {
+  padding: 0.75em;
+  background: color(Blue-3);
+  border: 1px solid #47525e;
+  @include border-radius-coll(0.35em);
+  transition: 200ms border-color, 200ms background-color;
+
+  &--green {
+    background: color(Green-1);
+    border-color: color(Green-1);
+  }
+
+  &--red {
+    background: color(Red-2);
+    border-color: color(Red-2);
+  }
+
+  &--icon {
+    --icon-size: 1.5em;
+    padding: 0.5em;
+  }
+}
+
+button.weapon-price:disabled {
+  cursor: default;
+}
+
+.weapon-price__text {
+  @include font(1.1em, 500);
+}
+
+.weapon-top__sell {
+  padding: 0.75em;
+  border-radius: 0 0.35em 0.35em 0;
+
+  .button__text {
+    @include font(1.1em, 500);
+  }
+}
+
+.weapon-top__withdraw {
+  padding: 1em 1.25em;
+  background: color(Broom);
+  border-radius: 0.75em;
+
+  .button__text {
+    @include font(1em, 700) {
+      color: color(Blue-4);
+    }
+  }
+}
+
+.weapon-top__corner {
+  display: flex;
+  margin-left: auto;
+
+  &>* {
+    @include row-gap(0.25em);
+  }
+}
+
+/* Icon buttons */
+
+.weapon-icon {
+  --icon-size: 1.5em;
+
+  display: flex;
+  padding: 0.75em;
+  background: color(Blue-3);
+  border-radius: 0.5em;
+  color: color(Blue-1);
+  opacity: 1;
+  transition: 200ms color, 200ms border-color, 200ms background-color, 200ms opacity;
+
+  &--locked {
+    background: color(Green-2);
+    cursor: help;
+
+    img {
+      filter: contrast(0) brightness(5);
+    }
+  }
+
+  &--status {
+    color: color(Blue-1);
+    cursor: pointer;
+  }
+
+  &--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &--yellow {
+    background: color(Broom);
+    border-color: color(Broom);
+    color: color(Dark);
+  }
+}
+
+// button.weapon-icon {
+//   &:not(&--locked):disabled {
+//     cursor: initial;
+//   }
+// }
+
+// Image
+
+.weapon-image {
+  display: grid;
+  place-items: center;
+  color: #3b4b5c;
+  @include Rarity;
+  @include Perfomance("transform");
+}
+
+.weapon-image__triangle {
+  --icon-size: 100%;
+  width: 35%;
+  color: inherit;
+  // filter: drop-shadow(0 4px 8px);
+  // @include Perfomance;
+  @include Perfomance("transform");
+}
+
+.weapon-image__image {
+  position: absolute;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  // transform: scale(2.5);
+  transition: 200ms filter;
+
+  &--disabled {
+    @include DarkFilter;
+  }
+}
+
+// Bottom
+
+.weapon__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.weapon__label {
+  @include grid(0.5em);
+
+  &--align-right {
+    direction: rtl;
+    margin-left: auto;
+  }
+}
+
+.weapon__name {
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+}
+
+.weapon-subname {
+  @include font(1.25em, 600) {
+    overflow: hidden;
+    // text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__inner {
+    display: inline-block;
+
+    &--out-of-line {
+      animation: 5s linear shift infinite;
+      animation-play-state: paused;
+
+      &:hover {
+        animation-play-state: running;
+      }
+    }
+  }
+}
+
+@keyframes shift {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.weapon__rarity {
+  display: flex;
+  color: var(--rariry-color);
+
+  svg {
+    fill: currentColor;
+    margin-left: 4px;
+
+    :first-child {
+      margin-left: unset;
+    }
+  }
+
+  --icon-size: 1em;
+}
+
+/// Upgrade-weapon balance
+
+.weapon-image__balance {
+  position: absolute;
+  margin-top: -0.75rem;
+  @include font(2em, 800);
+}

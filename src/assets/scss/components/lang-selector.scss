@@ -1,0 +1,76 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../utils";
+@import "../shared";
+
+@mixin LangSelectorElement {
+  padding: 0.75em;
+  background: color(Blue-3);
+  border-radius: 0.5em 0.5em 0 0;
+  transition: 100ms linear background-color;
+  cursor: pointer;
+
+  &:hover {
+    background: #242c35;
+  }
+}
+
+.lang-selector {
+  margin-left: 1em;
+}
+
+.lang-selector__current {
+  @include display(flex, items, center);
+  @include LangSelectorElement;
+}
+
+.lang-selector__lang {
+  @include font(1rem, 650) {
+    color: color(Blue-2);
+    text-transform: uppercase;
+  }
+
+  margin-left: 0.5em;
+}
+
+.lang-selector__flag {
+  height: 1.25em;
+}
+
+.lang-selector__menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-top: 1px solid color(Blue-2);
+  transition: 200ms top, z-index 0ms 200ms;
+  transition: 125ms opacity;
+
+  opacity: 0;
+  z-index: -1;
+
+  &--active {
+    top: 2.75em;
+    z-index: 1;
+    opacity: 1;
+    // transition: 200ms top, z-index 0ms 0ms;
+  }
+
+}
+
+.lang-selector__menu--active {
+  display: grid;
+}
+
+.lang-selector__option {
+  @include display(flex, items, center);
+  @include LangSelectorElement;
+  border-radius: 0 0 0.5em 0.5em;
+
+  &:not(:last-child) {
+    border-radius: 0.5em 0.5em 0 0;
+  }
+}

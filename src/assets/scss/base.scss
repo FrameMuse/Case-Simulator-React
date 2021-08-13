@@ -1,0 +1,265 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "shared";
+
+/* Default */
+
+html,
+body {
+  @include Mobile {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+html {
+  font: 0.75em/1 Manrope, Arial, serif;
+
+  @include Mobile {
+    font-size: 2.75vw;
+  }
+}
+
+body {
+  margin: unset;
+  color: white;
+  // background: #12161a;
+  background: #12161a url("../images/bg/bg666.png") no-repeat top/100%;
+  background-blend-mode: luminosity;
+  // background-attachment: fixed;
+}
+
+header {
+  padding: 2em 0 4em;
+  background: linear-gradient(to top, color(Dark) 60%, #212930);
+  border-bottom: 1px solid color(Blue-3);
+}
+
+main {
+  // padding-top: 2.5em;
+  // background: url("../images/bg/bg.png") no-repeat top/contain;
+  // background: hsla(0, 0, 0, 0.2); 
+
+  // &>.page-article:first-child {
+  //   margin-bottom: 2.5em;
+  //   border-bottom: 1px solid color(hr);
+  // }
+}
+
+section.section {
+  padding-bottom: 2.5em;
+  // margin-bottom: 2.5em;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid color(hr);
+  }
+
+  &--1 {
+    padding-bottom: 5em;
+  }
+
+  &--2 {
+    padding-bottom: 2.5em;
+    margin-bottom: 2.5em;
+  }
+
+  &--emphasize {
+    background: hsla(0, 0, 0, 0.2);
+  }
+}
+
+[hidden] {
+  display: none !important;
+}
+
+// Text
+
+p {
+  @include NotMobile() {
+    white-space: pre-line;
+  }
+}
+
+em {
+  font-style: unset;
+}
+
+h1 {
+  @include font(2rem, 700);
+}
+
+h2 {
+  @include font(1.9rem, 700);
+}
+
+h3 {
+  @include font(1.5rem, 600);
+}
+
+h4 {
+  @include font(1.25em, 600);
+}
+
+.flex {
+  display: flex;
+
+  &>* {
+    @include row-gap(var(--flex-rowGap));
+  }
+}
+
+.red-color {
+  color: color(Red-1);
+}
+
+.green-color {
+  color: color(Green-1);
+}
+
+.white-color {
+  color: White;
+}
+
+.yellow-color {
+  color: color(Broom);
+}
+
+.blue-color {
+  color: color(Blue-2);
+}
+
+:root {
+  --row-margin-left: 1em;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  row-gap: 1em;
+
+  &>* {
+    margin-left: var(--row-margin-left);
+  }
+
+  &>*:first-child {
+    margin-left: unset;
+  }
+
+  @include Mobile {
+    --row-margin-left: 0;
+    @include grid(1em);
+  }
+}
+
+// Container
+
+@mixin DropContainer($min-width) {
+  @include grid(2em, null, repeat(auto-fill, minmax(var(--container-min-width, $min-width), 1fr))) {
+    @content;
+  }
+
+  @include Mobile {
+    // --container-min-width: $min-width * 0.9;
+  }
+}
+
+.weapons-container {
+  @include DropContainer(15em) {
+    align-content: start;
+  }
+
+  min-width: 34em;
+
+  .skeleton {
+    background: color(Dark) url("../images/shape-bg.png") no-repeat center/300%;
+    border-radius: 0.5em;
+  }
+
+  @include Mobile {
+    min-width: auto;
+    height: auto !important;
+  }
+}
+
+
+.player-lest {
+  @include grid(1.5em, null, repeat(6, 1fr));
+  // max-width: 5em;
+  max-height: 20em;
+  overflow: auto;
+
+  @include Mobile {
+    grid-template-columns: repeat(5, 1fr)
+  }
+}
+
+.player-lest__player {
+  @include Image(5em) {
+    border-radius: 100%;
+  }
+}
+
+
+.contract-container {
+  @include DropContainer(35em);
+
+  @include Mobile {
+    --container-min-width: 33em;
+  }
+}
+
+.upgrades-container {
+  @include DropContainer(38em);
+
+  @include Mobile {
+    --container-min-width: 33em;
+  }
+}
+
+.battles-container {
+  @include DropContainer(30em);
+}
+
+.bonuses-container {
+  @include DropContainer(15em);
+}
+
+// TextOverflow
+
+.text-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: e-resize;
+
+  &__inner {
+    display: inline-block;
+
+    &--out-of-line {
+      animation: 5s linear shift infinite;
+      animation-play-state: paused;
+
+      &:hover {
+        animation-play-state: running;
+      }
+    }
+  }
+}
+
+// Errors reveal
+
+.errors-reveal {
+  @include fullscreen(100);
+  height: 100vh;
+  overflow: auto;
+
+  background: white;
+  color: #333;
+}
+
+.errors-reveal__body {
+  user-select: all;
+}

@@ -1,0 +1,70 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+$WheelIndent: 2em;
+
+.mini-wheel {
+  position: fixed;
+  left: $WheelIndent;
+  bottom: $WheelIndent;
+
+  z-index: 1;
+
+  @include Mobile {
+    font-size: 50%;
+  }
+}
+
+.mini-wheel__content {
+  @include grid(1em) {
+    align-content: baseline;
+    justify-items: center;
+  }
+
+  width: 12em;
+  height: 16em;
+
+  padding: 2.5em;
+  background: color(Blue-4);
+  background: rgba(17, 21, 25, 0.9) url("../../images/bg/mini-wheel.png") no-repeat 40% 80%/150%;
+  border: 1px solid color(Blue-3);
+  border-radius: 0.75em;
+
+  filter: drop-shadow(0 2em 2em rgba(20, 24, 29, 0.3));
+}
+
+.mini-wheel__count {
+  @include font(3em, 700);
+}
+
+.mini-wheel__desc {
+
+  // @include font(1.5em, 700, 1.25) {
+  //   color: color(Blue-2);
+  //   text-align: center;
+  // }
+  @include Paragraph {
+    text-align: center;
+  }
+}
+
+.mini-wheel__shadow {
+  position: absolute;
+}
+
+.mini-wheel__image {
+  position: absolute;
+  bottom: -$WheelIndent / 2;
+
+  height: 6em;
+}
+
+.mini-wheel__heading {
+  position: absolute;
+  top: 2.5em;
+  width: 110%;
+}

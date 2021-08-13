@@ -1,0 +1,85 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../utils";
+
+.top-up {
+  display: grid;
+  row-gap: 2.5em;
+}
+
+.top-up__header {
+  display: grid;
+  row-gap: 1em;
+}
+
+.top-up__title {}
+
+.top-up__text {
+  @include text4;
+  color: var(--color-Pale-Blue);
+}
+
+.top-up-fields {
+  display: flex;
+  align-items: baseline;
+}
+
+.top-up-field {
+  display: grid;
+}
+
+.top-up-field:first-child {
+  flex: 1;
+}
+
+.top-up-field:last-child {
+  width: 24em;
+  margin-left: 2.5em;
+}
+
+.top-up-field__label {
+  margin-bottom: 25px;
+  @include font(1.5em, bold);
+}
+
+.top-up-field__input {
+  padding: 12px 20px;
+  background: rgba(17, 21, 25, 0.5);
+  border: 1px solid #1d252c;
+  border-radius: 6px;
+
+  @include font(1.25em, bold);
+
+  &::placeholder {
+    color: #445868;
+  }
+}
+
+.top-up-field__input--activated {
+  border-color: color(Jade);
+}
+
+.top-up-field__input--error {
+  border-color: color(Red);
+}
+
+.top-up__bottom {
+  display: grid;
+
+  padding-top: 30px;
+  border-top: 1px solid #29333d;
+}
+
+.top-up-field__notice {
+  justify-self: center;
+  margin-top: 15px;
+  @include font(1.25em, 500);
+  color: color(Jade);
+}
+
+.top-up-field__notice--error {
+  color: color(Red);
+}

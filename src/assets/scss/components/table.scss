@@ -1,0 +1,70 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.usual-table-wrapper {
+  @include Mobile {
+    width: 100%;
+    overflow: auto;
+  }
+}
+
+.usual-table {
+  border-spacing: 0 0.5em;
+
+  td,
+  th {
+    padding: 1.5rem;
+    background: color(Dark);
+    border-radius: 0.25em;
+    @include font(1.25em, 600);
+    white-space: nowrap;
+  }
+
+  td:last-child,
+  th:last-child {
+    text-align: right;
+    width: 100%;
+  }
+
+  thead th {
+    @include font(1.25em, 600) {
+      color: color(Blue-2);
+      text-align: left;
+    }
+
+    padding: 1.5rem;
+    background: unset;
+  }
+}
+
+.usual-table__user {
+  @include display(flex, items, center);
+}
+
+.usual-table__avatar {
+  $size: 3.5em;
+
+  width: $size;
+  height: $size;
+
+  margin-right: 1em;
+
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.usual-table__empty {
+  &:last-child {
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    padding: 1.75em;
+    color: color(Blue-2);
+    text-align: center !important;
+  }
+}

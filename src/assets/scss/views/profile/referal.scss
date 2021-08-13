@@ -1,0 +1,206 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../../shared";
+
+.referal {}
+
+.referal__referals {
+  margin: 2.5em 0;
+}
+
+.referal-main {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 5em;
+
+  @include grid(2.5em);
+}
+
+.referal-main__container {
+  @include NotMobile {
+    margin-left: 3.5em;
+  }
+}
+
+/* Flag */
+
+.referal-flag {
+  @include grid(2.5em) {
+    justify-items: center;
+  }
+
+  padding: 2.5em 0;
+  background: color(Dark);
+  border-radius: 0.5em;
+
+  @include Mobile {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+.referal-flag__title {
+  @include font(1.5em, 700) {
+    text-align: center;
+  }
+}
+
+.referal-flag__image {
+  width: 17.5em;
+
+  @include Mobile {
+    width: 75%;
+  }
+}
+
+.referal-flag__completion {
+  @include grid(0.5em) {
+    align-content: baseline;
+  }
+}
+
+.referal-flag__text {
+  @include Paragraph;
+}
+
+/* Stats */
+
+.referal-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 2.5em;
+  margin-bottom: 2.5em;
+  border-bottom: 1px solid color(hr);
+
+  @include Mobile {
+    padding-left: unset;
+    padding-right: unset;
+    @include grid(2.5em);
+  }
+}
+
+.referal-stats__entry {
+  @include grid(1em) {
+    align-content: baseline;
+    justify-items: center;
+  }
+
+  width: 11.5em;
+
+  @include Mobile {
+    width: auto;
+  }
+}
+
+.referal-stats__key {
+  @include Paragraph {
+    text-align: center
+  }
+}
+
+.referal-stats__value {
+  @include font(2em, 700);
+}
+
+/* Invite */
+
+.referal-invite {
+  @include grid(2.5em);
+}
+
+.referal-invite__section {
+  @include grid(1em);
+}
+
+.referal-invite__title {
+  @include font(1.25em, 600) {
+    color: color(Blue-1);
+  }
+}
+
+.referal-invite__desc {
+  @include Paragraph;
+}
+
+.referal-invite__row {
+  display: flex;
+}
+
+.referal-invite__input {
+  flex: 1;
+
+  user-select: all;
+  cursor: pointer;
+
+  .input__icon {
+    user-select: none;
+  }
+}
+
+.referal-invite__invite {
+  display: flex;
+  // user-select: all;
+  // cursor: pointer;
+
+  // & > * {
+  //   pointer-events: none;
+  // }
+}
+
+.referal-invite__copy {
+  cursor: pointer;
+  user-select: none;
+  pointer-events: none;
+}
+
+.referal-invite__button {
+  .button__text {
+    color: color(1);
+  }
+}
+
+/* Levels */
+
+.referal-levels {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: baseline;
+  margin: 5em 0;
+
+  @include Mobile {
+    @include grid(2.5em, null, repeat(2, 1fr));
+  }
+}
+
+.referal-levels__level {
+  display: grid;
+  justify-items: center;
+
+  @include NotMobile {
+    width: 12em;
+
+    &:not(:first-child) {
+      margin-left: 3.5vw;
+    }
+  }
+}
+
+.referal-levels__image {
+  width: 10em;
+  margin-bottom: 3.5em;
+}
+
+.referal-levels__point {
+  @include font(1.5em, 700);
+}
+
+.referal-levels__bonus {
+  @include Paragraph {
+    text-align: center;
+  }
+
+  margin-top: 1rem;
+}

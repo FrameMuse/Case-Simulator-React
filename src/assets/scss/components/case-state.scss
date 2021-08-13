@@ -1,0 +1,88 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.anal {
+  width: 150px !important;
+}
+
+.case-state {
+  display: grid;
+  justify-items: center;
+}
+
+.case-state__icon {
+  --icon-size: 3.5em;
+
+  &--timer {
+    background-image: url("../../images/icons/timer-flash.png");
+  }
+
+  &--check {
+    background-image: url("../../images/icons/checkbox-circle.png");
+  }
+
+  &--warning {
+    background-image: url("../../images/icons/error-warning.png");
+  }
+}
+
+.case-state__title {
+  @include font(1.5em, 600);
+  margin-top: 1.5rem;
+}
+
+.case-state__text {
+  @include Paragraph {
+    text-align: center;
+  }
+
+  margin-top: 0.5em;
+}
+
+.case-state__button {
+  padding: 0.75em 1em;
+  margin-top: 1em;
+
+  .button__text {
+    @include font(1.1rem) {
+      color: color(Blue-2);
+    }
+  }
+}
+
+/* Progress */
+
+.case-progress-bar {
+  @include grid(1em) {
+    justify-items: center;
+  }
+
+  margin-top: 2em;
+}
+
+.case-progress-bar__line {
+  $progress: var(--progress);
+  width: 17.5em;
+  height: 0.5em;
+  background: color(Blue-3);
+  border-radius: 10em;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc(100% * #{$progress});
+    height: inherit;
+    background: color(Red-2);
+    border-radius: inherit;
+    transition: width 300ms;
+  }
+}
+
+.case-progress-bar__counter {
+  @include font(1.25em, 600)
+}

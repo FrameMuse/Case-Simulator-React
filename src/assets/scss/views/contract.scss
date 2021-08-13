@@ -1,0 +1,448 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+$slotWidth: Min(15em, 17em);
+$slotHeight: Min(12em, 13em);
+
+.contract {
+  background: hsla(0, 0, 0, 0.2);
+
+  .branch__section {
+    grid-row: 1;
+  }
+}
+
+.contract-slots {
+  $indent: 2em;
+
+  @include grid($indent, null, repeat(auto-fill, $slotWidth)) {
+    justify-content: center;
+  }
+
+  @include Mobile {
+    $slotWidth: 0;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contract-slots__slot {
+  @include display(grid, items, center, center);
+
+  width: $slotWidth;
+  height: $slotHeight;
+
+  background: color(Dark);
+  border-radius: 0.5em;
+}
+
+.contract-slots__number {
+  @include font(5rem, 800);
+  color: #52677c;
+}
+
+.contract-column {
+  @include grid(0.5em);
+}
+
+.contract-column__title {
+  @include font(1.25rem, 500) {
+    color: color(Blue-2);
+  }
+}
+
+.contract-column__desc {
+  @include font(1.25rem, 600) {
+    color: color(Blue-1);
+  }
+
+  em {
+    color: White;
+  }
+}
+
+.contract-create {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.contract-create__info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5em;
+}
+
+.contract-create__button {
+  width: 20em;
+  margin-left: auto;
+
+  @include Mobile {
+    width: 100%;
+  }
+}
+
+.contract-create-circle {
+  --icon-size: 2em;
+
+  padding: 0.75em;
+  margin: 0 3em;
+  color: color(Blue-2);
+  border: 2px solid currentColor;
+  border-radius: 100%;
+
+  @include Mobile {
+    margin: 0 2em;
+    font-size: 75%;
+  }
+
+  &>svg {
+    color: currentColor;
+    transform: rotate(-90deg);
+    transition: 200ms color;
+  }
+
+  &--active {
+    color: color(Broom);
+  }
+}
+
+/* User */
+
+.contract-user {
+  display: flex;
+  align-items: center;
+}
+
+.contract-user__name {
+  @include font(1.25rem, 600);
+}
+
+.contract-user__image {
+  margin-right: 1em;
+
+  @include Image(3.5em) {
+    border-radius: 100%;
+  }
+}
+
+/* Level */
+
+.contract-level {
+  display: flex;
+  align-items: center;
+}
+
+.contract-level__level {
+  --level-image-size: 150%;
+  margin-right: 1em;
+}
+
+/* Contract Sign */
+
+.contract-sign {
+  background: color(Blue-4);
+  border-radius: 0.5em;
+  overflow: hidden;
+  letter-spacing: 0.25ch;
+}
+
+.contract-sign-header {
+  display: flex;
+  align-items: center;
+  padding: 1.5em;
+  background: color(Blue-3);
+}
+
+.contract-sign-header__heading {
+  @include font(1.75rem, 700);
+}
+
+.contract-sign-header__date {
+  @include font(1.1rem, 500, 1.35);
+  margin-left: auto;
+}
+
+.contract-sign__container {
+  display: flex;
+  padding: 1.5em;
+  padding-bottom: unset;
+
+  @include Mobile {
+    @include grid;
+    border: 2px solid color(Blue-3);
+    border-radius: 0 0 1em 1em;
+  }
+}
+
+.contract-sign__left {
+  width: Max(20em, 70ch);
+
+  @include Mobile {
+    width: 100%;
+  }
+}
+
+.contract-sign__right {
+  flex: 1;
+  border-left: 1px solid color(hr);
+
+  @include Mobile {
+    border-left: unset;
+  }
+}
+
+.contract-sign__content {}
+
+.contract-sign__title {
+  @include font(1.35rem, 600) {
+    color: #6a839d;
+  }
+}
+
+.contract-sign__text {
+  @include font(1.35rem, 600);
+}
+
+.contract-sign__info {
+  display: flex;
+}
+
+.contract-sign__row {
+  @include grid(0.5em) {
+    align-items: baseline;
+  }
+
+  width: 50%;
+  min-height: 7em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid color(hr);
+
+  &:not(:first-child) {
+    padding-left: 1.5em;
+    border-left: 1px solid color(hr);
+  }
+
+  &--0 {
+    width: auto;
+    padding-left: 1.5em;
+    // border-bottom: unset;
+  }
+}
+
+.contract-sign__content {
+  &:not(:first-child) {
+    margin-top: 1.5em;
+  }
+}
+
+.contract-sign-items {
+  @include grid(null, repeat(4, 1fr), repeat(2, 50%)) {
+    grid-auto-flow: column;
+  }
+
+  margin-top: 1.5em;
+  border-top: 1px solid color(hr);
+
+  @include Mobile {
+    grid-template-columns: repeat(2, 15em);
+  }
+}
+
+.contract-sign-items__item {
+  display: flex;
+  padding: 1em;
+  border-left: 1px solid color(hr);
+  border-bottom: 1px solid color(hr);
+
+  &:nth-child(-1n + 4) {
+    border-left: unset;
+  }
+
+  @include font(1.25rem, 600);
+
+  &>span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.contract-sign-items__index {
+  width: 2ch;
+  color: #6a839d;
+  margin-right: 1ch;
+}
+
+.contract-sign__field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  @include Mobile {
+    display: none;
+  }
+}
+
+.contract-sign-weapon {
+  @include grid(5em);
+  padding: 0 1.5em;
+}
+
+.contract-sign-weapon__image {
+  max-width: 35em;
+  margin: auto;
+
+  .weapon-image__triangle {
+    width: 50%;
+  }
+}
+
+.contract-sign-weapon__status {
+  @include font(1.25rem, 650);
+  margin-bottom: 1.5rem;
+}
+
+.contract-sign__bottom {
+  padding: 1.5em 0;
+  margin: 0 1.5em;
+  border-top: 1px solid color(hr);
+
+  p {
+    @include font(1.1em, 650, 1.35) {
+      color: color(Blue-2);
+      text-align: center;
+    }
+  }
+}
+
+/* Max Contract Drop */
+
+.contract-max-drop {
+  --rarity-color: White;
+  @include Rarity("--rarity-color");
+
+  @include grid(null, null, 1fr 1fr 1fr) {
+    align-items: flex-start;
+  }
+
+  @include Mobile {
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  background: radial-gradient(circle at center -300%, var(--rarity-color) -75%, transparent 75%),
+  url("../../images/bg/max-contract-drop.png") no-repeat center/contain;
+  padding-top: 1.5em;
+  margin-top: 2.5em;
+  border-top: 1px solid color(hr);
+}
+
+.contract-max-drop__title {
+  @include font(1.75em, 700);
+}
+
+.contract-max-drop__weapon {
+  display: grid;
+  height: 10em;
+}
+
+.contract-max-drop__rarity {
+  position: absolute;
+  top: -1.75em;
+
+  width: 100%;
+  height: 0.25em;
+  background: var(--rarity-color);
+  box-shadow: 0 0 10px var(--rarity-color);
+}
+
+.contract-max-drop__image {
+  justify-self: center;
+  max-width: 15em;
+  max-height: 7.5em;
+}
+
+.contract-max-drop__info {
+  display: flex;
+  align-items: center;
+}
+
+.contract-max-drop__name {
+  margin-left: auto;
+  margin-right: 1em;
+  @include font(1.35rem, 600);
+
+  @include Mobile {
+    margin: unset;
+    margin-right: auto;
+
+    br {
+      display: none;
+    }
+  }
+}
+
+.contract-max-drop__price {
+  font-size: 1.25em;
+}
+
+/* Contract Drop */
+
+.contract-drop {
+  @include grid(2em) {
+    align-items: center;
+    justify-items: center;
+  }
+
+  padding: 5em 0;
+  margin-bottom: 2.5em;
+  background: url("../../images/shape-bg.png") no-repeat center/200em;
+  border-bottom: 2px solid color(hr);
+
+  .case-final-drop__drop {
+    margin-right: unset;
+  }
+}
+
+.contract-drop__button {
+  justify-content: center;
+  width: 17.5em;
+  padding: 1.5em 0;
+  background: rgba(157, 193, 230, 0.15)
+}
+
+/* Contract Bottom */
+
+.contract-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contract-bottom__buttons {
+  display: flex;
+
+  &>* {
+    margin-left: 1em;
+  }
+
+  &> :first-child {
+    margin-left: unset;
+  }
+}
+
+/* Contract Final */
+
+.contract-final {
+  padding: 2.5em 0;
+
+  .game-final__bottom {
+    padding: 2.5em 0;
+  }
+}

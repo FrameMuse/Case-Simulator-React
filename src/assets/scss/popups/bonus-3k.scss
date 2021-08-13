@@ -1,0 +1,112 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.bonus-3k {}
+
+.bonus-3k__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 2.5em;
+  margin-bottom: 2.5em;
+  border-bottom: 1px solid color(hr);
+
+  @include Mobile {
+    @include grid(1em);
+  }
+}
+
+.bonus-3k__contest {
+  @include grid(1em);
+
+  &--nothing,
+  &--moderation,
+  &--confirmed {
+    &>:not(.bonus-3k-overlap) {
+      opacity: 0.1;
+    }
+
+    .bonus-3k-overlap {
+      visibility: visible;
+    }
+  }
+}
+
+.bonus-3k__participants {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5em;
+
+  @include Mobile {
+    @include grid(2.5em);
+  }
+}
+
+/* Overlap */
+
+.bonus-3k-overlap {
+  position: absolute;
+  visibility: hidden;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.bonus-3k-overlap__circle {
+  --icon-size: 3em;
+  padding: 1.25em;
+  margin-bottom: 1em;
+  border: 3px solid currentColor;
+  border-radius: 100%;
+  color: color(Broom);
+}
+
+/// Player List
+
+$playerSize: 4em;
+
+.player-list {
+  --indent-coef: 1;
+  @include grid(1.5em);
+  @include row-gap(5em);
+}
+
+.player-list__container {
+  display: flex;
+  cursor: pointer;
+}
+
+.player-list__player {
+  @include Image($playerSize) {
+    background: #00aeef;
+    border-radius: 100%;
+
+    &:nth-child(2n) {
+      background: #eed929;
+    }
+  }
+
+  margin-right: calc((-#{$playerSize / 2}) * var(--indent-coef));
+  transition: margin-right 1s;
+}
+
+.player-list-counter {
+  display: grid;
+  place-items: center;
+
+  @include Image($playerSize) {
+    background: #2b3641;
+    border-radius: 100%;
+  }
+}
+
+.player-list-counter__number {
+  @include font(1.25em, 600);
+}

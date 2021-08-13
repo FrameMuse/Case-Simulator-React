@@ -1,0 +1,42 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.error {
+  @include grid(1em) {
+    place-items: center;
+    place-content: center;
+    // align-content: baseline;
+    // justify-items: center
+  }
+
+  padding: 10em;
+  width: 100%;
+
+  @include overlap;
+
+  @include Mobile {
+    padding: 6em;
+  }
+}
+
+.error__title {
+  @include font(1.5em, 700);
+}
+
+.error__desc {
+  width: 26ch;
+
+  @include font(1.25em, 600, 1.25) {
+    color: color(Blue-2);
+    text-align: center;
+  }
+}
+
+// .error__button {
+
+//   padding: 1em;
+// }

@@ -1,0 +1,68 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+$gap: 3.5em;
+
+footer {
+  @include grid($gap);
+  @include indent($gap);
+  background: #1b2229;
+
+  section {
+    @include display(flex, items, center) {
+      justify-content: space-between;
+    }
+
+    @include Mobile {
+      @include grid($gap);
+    }
+  }
+}
+
+.footer__logos {
+  display: flex;
+  align-items: center;
+
+  &>* {
+    @include row-gap(2em);
+  }
+}
+
+.footer__desc {
+  max-width: 25em;
+  @include Paragraph;
+}
+
+.footer-links {
+  &__link {
+    @include row-gap(2rem);
+
+    @include font(1.25em, 600) {
+      color: color(Blue-1);
+    }
+  }
+}
+
+.footer-logos {
+  display: flex;
+  align-items: center;
+  overflow: auto;
+
+  &__logo {
+    @include row-gap(3em);
+    max-width: 10em;
+    max-height: 2.5em;
+    object-fit: contain;
+    transition: 200ms filter;
+    cursor: pointer;
+    filter: brightness(30%) contrast(80%) sepia(1) hue-rotate(175deg) saturate(100%);
+
+    &:hover {
+      filter: unset;
+    }
+  }
+}

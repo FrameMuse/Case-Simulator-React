@@ -1,0 +1,176 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.support {
+  margin-bottom: 10em;
+
+  &__other {
+    @include indent(3.5em);
+    border-top: 1px solid color(hr);
+  }
+}
+
+.support-article {
+  @include Article {
+    margin-bottom: 2.5em;
+  }
+}
+
+/* Sections */
+
+.support-sections {
+  display: flex;
+  @include indent;
+  border-top: 1px solid color(hr);
+
+  @include Mobile {
+    @include grid;
+  }
+}
+
+.support-sections__sidebar {
+  padding: 2.5em 0;
+
+  @include NotMobile {
+    padding-right: 3.5em;
+
+    width: 100%;
+    max-width: 60em;
+    border-right: 1px solid color(hr);
+  }
+}
+
+.support-sections__main {
+  padding: 2.5em 0;
+  padding-left: 3.5em;
+  width: 100%;
+
+  @include Mobile {
+    padding-left: unset;
+  }
+}
+
+/* Form */
+
+.support-form {
+  // flex: 1;
+}
+
+.support-form__container {
+  @include grid(1.5em);
+}
+
+.support-form__submit {
+  justify-self: end;
+
+  @include Mobile {
+    justify-self: stretch;
+  }
+}
+
+/* Tickets */
+
+.support-tickets {
+  margin-top: 3.5em;
+}
+
+.support-tickets__container {
+  @include grid(0.5em);
+  max-height: 6.25em * 5;
+  overflow: auto;
+}
+
+.support-tickets__ticket {}
+
+.support-tickets__header {
+  @include display(flex, items, center);
+  padding: 2.5em;
+  background: color(Blue-3);
+  border: 1px solid transparent;
+  border-radius: 0.5em;
+  cursor: pointer;
+
+  &:hover,
+  &--deployed {
+    border-color: color(Blue-2);
+    transition: border-color 100ms;
+  }
+
+  &:active,
+  &--deployed {
+    background: #364352;
+    transition: background-color 100ms;
+  }
+
+  &--deployed {
+    border-bottom-left-radius: unset;
+    border-bottom-right-radius: unset;
+  }
+}
+
+.support-tickets__status {
+  $size: 0.5em;
+
+  display: inline-block;
+  margin-right: 0.75em;
+  width: $size;
+  height: $size;
+  background: #ccc;
+  border-radius: 100%;
+
+  &--open {
+    background: color(Green-2);
+  }
+
+  &--closed {
+    background: color(Red-2);
+  }
+}
+
+.support-tickets__subject {
+  @include font(1.25em, 700);
+}
+
+.support-tickets__datetime {
+  margin-left: auto;
+  @include font(1.25em, 700);
+  color: color(Blue-1);
+}
+
+.support-tickets__content {
+  height: 0;
+  overflow: hidden;
+  transition: 200ms height;
+
+  &--deployed {
+    height: var(--height);
+  }
+}
+
+.support-tickets__inner {
+  padding: 2.5em;
+  background: color(Dark);
+  border-radius: 0 0 0.5em 0.5em;
+}
+
+.support-tickets__empty {
+  width: 100%;
+    padding: 1.75em;
+    background: color(Dark);
+    color: color(Blue-2);
+    text-align: center !important;
+}
+
+/// FQ
+
+.frequent-questions {
+  // padding-top: 2.5em;
+}
+
+.frequent-questions__container {
+  @include indent;
+}

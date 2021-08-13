@@ -1,0 +1,218 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+@keyframes inflation {
+  0% {
+    // width: 100%;
+    // height: 100%;
+    transform: scale(1);
+  }
+
+  50% {
+    // width: 200%;
+    // height: 200%;
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.live-feed {
+  margin-top: 2.5em;
+}
+
+
+.live-feed__header {
+  @include display(flex, items, center);
+  @include indent;
+  margin-bottom: 2em;
+}
+
+.live-feed__left {
+  @include display(flex, items, center);
+}
+
+.live-feed__status {
+  $size: 0.75em;
+  width: $size;
+  height: $size;
+
+  margin-right: 1em;
+
+  background: color(Green-2);
+  border-radius: 100%;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background: color(Green-3);
+    border-radius: inherit;
+    animation: inflation 4s infinite;
+    z-index: -1;
+  }
+}
+
+
+.live-feed__title {}
+
+.live-feed-filter {
+  margin-left: auto;
+  @include font(1.25rem, 600);
+}
+
+.live-feed-filter__key {
+  color: color(Blue-2);
+}
+
+.live-feed-filter__value {
+  color: color(Blue-3);
+  margin-left: 0.25em;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &--active {
+    color: color(Blue-2);
+    text-decoration: unset;
+    cursor: default;
+  }
+}
+
+.live-feed__container {
+  --scrollbar-size: 0px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: scroll;
+  @include indent;
+  padding-right: unset;
+}
+
+// Live feed element
+
+$transition: 600ms ease opacity;
+
+.live-feed-element {
+  --live-feed-element-rarity: null;
+  flex-shrink: 0;
+  width: 25em;
+  padding: 1.5em;
+  @include row-gap(0.5em);
+  @include Rarity("--live-feed-element-rarity");
+  background: var(--live-feed-element-rarity) url("../../images/pieces-2.png") no-repeat center 30%/130%;
+  border-radius: 0.75em;
+
+
+  &__pieces {
+    background: url("../../images/pieces-2.png");
+  }
+
+  &__glow {
+    position: absolute;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0);
+
+    @include Image(6em) {
+      filter: blur(2em) brightness(2.5);
+      will-change: transform;
+    }
+
+    background-color: var(--live-feed-element-rarity);
+    border-radius: 100%;
+  }
+
+  /* On Hover */
+  // Switch Blocks
+
+  .live-feed-hover__show {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: unset;
+  }
+
+  .live-feed-hover__hide {
+    opacity: 1;
+    transition: $transition;
+  }
+
+  &:hover {
+    .live-feed-hover__show {
+      opacity: 1;
+      transition: $transition;
+    }
+
+    .live-feed-hover__hide {
+      opacity: 0;
+      transition: unset;
+    }
+  }
+
+  // &:active {
+  //   cursor: pointer;
+  // }
+}
+
+.live-feed-element__inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.live-feed-element__info {
+  display: grid;
+  align-content: space-between;
+}
+
+.live-feed-element__title {
+  @include font(1.5em, 600, 1.25);
+  transition: $transition;
+  width: 14ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.live-feed-element__timeago {
+  @include font(1.25em, 600) {
+    color: rgba($color: white, $alpha: 0.6);
+  }
+}
+
+.live-feed-element__image {
+  display: grid;
+  place-items: center;
+
+  width: inherit;
+  height: inherit;
+}
+
+.live-feed-element__triangle {
+  position: absolute;
+  --icon-size: 6em;
+  color: rgba($color: white, $alpha: 0.2)
+}
+
+.live-feed-element__imager {
+  width: 8em;
+  height: 6em;
+}
+
+.live-feed-element__weapon-image,
+.live-feed-element__case-image {
+  width: inherit;
+  height: inherit;
+  object-fit: contain;
+}
+
+.live-feed-element__user {
+  font-size: 60%;
+  display: flex;
+}

@@ -1,0 +1,30 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.filters {
+  margin-top: 2.5em;
+}
+
+.filters__inner {
+  @include display(flex, items, center);
+
+  @include Mobile {
+    @include grid(1em);
+  }
+}
+
+.filters__filter {
+  @include Mobile {
+    input.input__input {
+      width: 100% !important;
+    }
+  }
+
+  @include NotMobile {
+    @include row-gap(2em);
+  }
+}

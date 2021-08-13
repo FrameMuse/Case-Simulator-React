@@ -1,0 +1,204 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+
+.bonus-daily__split {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @include NotMobile {
+    &>* {
+      max-width: 26em;
+    }
+  }
+
+  @include Mobile {
+    @include grid(2.5em);
+  }
+}
+
+/* Bonus of Yours */
+
+.bonus-of-yours {
+  @include grid(1em);
+}
+
+.bonus-of-yours-canvas {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 10em;
+  background: #111519 center/5em;
+  border: 1px solid #2b3641;
+  border-radius: 0.5em;
+}
+
+.bonus-of-yours-canvas__price {
+  @include font(4em, 650);
+}
+
+.bonus-daily__container {
+  @include grid(2.5em) {
+    align-content: baseline;
+  }
+}
+
+/* Bonus Level */
+
+.bonus-daily-level {
+  @include grid(2.5em);
+}
+
+.bonus-daily-level-shape {
+  $size: 10em;
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  width: $size;
+  height: $size;
+  background: url("../../images/yShape.png") no-repeat center/contain;
+  filter: drop-shadow(0 0 10px #827a24);
+}
+
+.bonus-daily-level-shape__number {
+  @include font(4em, 650);
+}
+
+/* Bonus Progress */
+
+$entryWidth: 5rem;
+$entryHeight: 3.75rem;
+$entryColor: #2b3641;
+$entryIndent: 0.35rem;
+
+.bonus-progress {
+  margin-top: 1.5em;
+  width: 100%;
+}
+
+.bonus-progress__text {
+  margin-top: 1em;
+
+  @include font(1.25rem, 600) {
+    color: color(Blue-2);
+  }
+}
+
+.bonus-progress-lane {
+  display: flex;
+
+  @include Mobile {
+    display: grid;
+  }
+}
+
+.bonus-progress-lane__entries {
+  display: flex;
+
+  @include Mobile {
+    overflow: auto;
+  }
+}
+
+.bonus-progress-lane__progress {
+  --progress: 0;
+  $width: calc((var(--progress) * #{$entryWidth}) - #{$entryIndent * 2});
+
+  position: absolute;
+  display: flex;
+  width: $width;
+  height: $entryHeight - ($entryIndent * 2);
+  margin: $entryIndent;
+  background: color(Green-1);
+  border-radius: 0.4em;
+  transition: 200ms width;
+}
+
+.bonus-progress-lane-entry {
+  display: grid;
+  place-items: center;
+  width: $entryWidth;
+  height: $entryHeight;
+  border: 1.5px solid $entryColor;
+  flex-shrink: 0;
+
+  &__text {
+    @include font(1.25rem, 700) {
+      color: $entryColor;
+    }
+
+    transition: 100ms color;
+    z-index: 1;
+
+    &--active {
+      color: White;
+    }
+
+    &--extra {
+      color: color(Dark);
+    }
+  }
+
+  &:first-child {
+    border-radius: 0.3em 0 0 0.3em;
+  }
+
+  &:last-child {
+    border-radius: 0 0.3em 0.3em 0;
+  }
+
+  &:not(:first-child) {
+    border-left: unset;
+  }
+
+  &__cover {
+    position: absolute;
+    width: $entryWidth - ($entryIndent * 2);
+    height: $entryHeight - ($entryIndent * 2);
+    padding: $entryIndent;
+    background: color(Broom);
+    border-radius: 0.4em;
+    box-shadow: 0 0 8px -2px color(Broom);
+  }
+}
+
+/// Progress Bar
+
+.progress-bar {
+  @include grid(1em);
+  flex: 1;
+}
+
+.progress-bar__line {
+  --progress: 35;
+  display: flex;
+  flex: 1;
+  height: 0.5em;
+  background: color(Blue-3);
+  border-radius: 10em;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: color(Broom);
+    width: calc(var(--progress) * 1%);
+    height: inherit;
+    transition: width 200ms;
+  }
+}
+
+.progress-bar__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-bar__text {
+  @include font(1.25em, 600);
+}

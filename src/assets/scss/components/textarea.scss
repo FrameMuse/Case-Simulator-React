@@ -1,0 +1,30 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.textarea {
+  @include font(1.25em, 600);
+  color: #445868;
+
+  height: 11em;
+
+  resize: none;
+
+  padding: 1.5rem;
+  background: color(Dark);
+  border: 1px solid color(Blue-3);
+  border-radius: 0.75rem;
+  transition: 200ms border-color;
+
+  &::placeholder {
+    color: inherit;
+    font: inherit;
+  }
+
+  &:focus-within {
+    border-color: #445868;
+  }
+}

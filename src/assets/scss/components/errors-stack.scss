@@ -1,0 +1,97 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.errors-stack {
+  position: fixed;
+  top: 5em;
+  left: 3.5vw;
+  // left: calc(50% - 20em);
+  z-index: 20;
+
+  @include Mobile {
+    top: unset;
+    bottom: 2.5em;
+  }
+}
+
+.errors-stack__inner {
+  @include grid(1em);
+
+  padding-right: 1em;
+
+  max-height: 75vh;
+  overflow: auto;
+
+  @include Mobile {
+    max-height: 12.5em;
+  }
+}
+
+.errors-stack__error {
+  width: 40em;
+  // padding: 1em 1.5em;
+  background: color(Blue-2);
+  border-radius: 0.5em 0.5em 0.25em 0.25em;
+  overflow: hidden;
+  cursor: pointer;
+
+  @include Mobile {
+    width: 100%;
+  }
+
+  &--success {
+    background: color(Green-2);
+
+    .errors-stack__text {
+      color: white;
+    }
+  }
+
+  &--error {
+    background: color(Red-2);
+
+    .errors-stack__text {
+      color: White;
+    }
+  }
+}
+
+.errors-stack__text {
+  display: block;
+  padding: 1.25rem 1.5rem;
+
+  @include font(1.25em, 700) {
+    color: color(Blue-1);
+  }
+}
+
+.errors-stack__bar {
+  // margin-top: 1em;
+  width: 100%;
+  height: 0.5em;
+  background: rgba($color: #000, $alpha: 0.2);
+
+  &::before {
+    content: "";
+    display: block;
+    width: 0%;
+    height: inherit;
+    background: rgba($color: #000, $alpha: 0.3);
+    animation: widthFilling 5s linear forwards;
+    z-index: 1;
+  }
+}
+
+@keyframes widthFilling {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}

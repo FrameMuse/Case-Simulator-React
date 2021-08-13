@@ -1,0 +1,36 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.weapon-preview {
+  @include display(grid, items, null, center);
+  row-gap: 1em;
+  padding: 1.75em;
+  margin-left: 0.5em;
+  flex-shrink: 0;
+  background: hsl(215, 20%, 15%);
+  border-radius: 0.5em;
+}
+
+.weapon-preview__image {
+  position: absolute;
+  top: 2em;
+
+  max-width: 90%;
+  height: 4.25em;
+}
+
+.weapon-preview__rarity {
+  fill: none;
+  stroke: #3248d3;
+  stroke-width: 1;
+  --icon-size: 5em;
+}
+
+.weapon-preview__title {
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+}

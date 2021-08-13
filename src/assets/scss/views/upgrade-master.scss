@@ -1,0 +1,418 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.upgrade {}
+
+.upgrade-final {
+  .game-final {
+    margin-bottom: 2.5em;
+  }
+}
+
+.upgrade__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include indent;
+
+  @include Mobile {
+    @include grid(2.5em) {
+      justify-items: center;
+    }
+  }
+}
+
+/* Upgrade Balance Range */
+
+.balance-range {
+  position: absolute;
+  top: 7.5em;
+
+  @include grid(1.5em);
+  // align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+
+.balance-range__title {
+  @include font(2.5em, 700);
+}
+
+.balance-range__input {
+  display: flex;
+  width: 80%;
+
+  @mixin track {
+    width: 100%;
+    height: 0.75em;
+    // box-shadow: 0px 0px 0px #000000;
+    background: linear-gradient(to right, color(Red-1), color(Green-1));
+    border-radius: 10em;
+
+    &:focus {
+      background: red;
+    }
+  }
+
+  @mixin thumb {
+    $size: 1.5em;
+
+    appearance: none;
+
+    width: $size;
+    height: $size;
+
+    margin-top: -($size / 4);
+
+    background: white;
+    // border: 1px solid color(hr);
+    border-radius: 100%;
+    box-shadow: 0 0 10px -2px color(Blue-4);
+
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include track;
+  }
+
+  &::-moz-range-track {
+    @include track;
+  }
+
+  &::-ms-track {
+    @include track;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  &::-ms-thumb {
+    @include thumb;
+  }
+}
+
+/* Upgrade Drop */
+
+.upgrade-drop {
+  @include grid(2em) {
+    align-items: center;
+    justify-items: center;
+  }
+
+  padding: 5em 0;
+  margin-bottom: 2.5em;
+  background: url("../../images/shape-bg.png") no-repeat center/200em;
+  border-bottom: 2px solid color(hr);
+
+  .case-final-drop__drop {
+    margin-right: unset;
+  }
+}
+
+.upgrade-drop__button {
+  justify-content: center;
+  width: 17.5em;
+  padding: 1.5em 0;
+  background: rgba(157, 193, 230, 0.15)
+}
+
+/* Upgrade Bottom */
+
+.upgrade-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upgrade-bottom__buttons {
+  display: flex;
+
+  &>* {
+    margin-left: 1em;
+  }
+
+  &> :first-child {
+    margin-left: unset;
+  }
+}
+
+/* Weapon */
+
+.upgrade-weapon {
+  display: grid;
+  justify-items: center;
+}
+
+.upgrade-weapon__title {
+  @include font(1.25em, 600);
+  color: color(Blue-1);
+
+  em {
+    color: white;
+  }
+}
+
+.upgrade-weapon__container {
+  display: grid;
+  justify-items: center;
+
+  margin-top: 2.5em;
+}
+
+.upgrade-weapon__podium {
+  $width: 35em;
+  $height: 18em;
+
+  width: $width;
+  height: $height;
+  object-fit: contain;
+  object-position: bottom;
+
+  @include Mobile {
+    width: 100%;
+    // height: 15em;
+  }
+}
+
+.upgrade-weapon__rarity {
+  position: absolute;
+  --icon-size: 10em;
+  color: #3b4b5c;
+  filter: drop-shadow(0 0 1.5em #3b4b5c);
+
+  @include Rarity;
+}
+
+.upgrade-weapon__image {
+  position: absolute;
+  top: 0.5em;
+}
+
+.upgrade-weapon__name {
+  position: absolute;
+  bottom: 4rem;
+
+  @include font(1.5em, 700);
+  color: color(Blue-1);
+
+  &--filled {
+    color: white;
+  }
+}
+
+.upgrade-weapon__text {
+  @include font(1.25em, 600, 1.25);
+  color: color(Blue-1);
+  // margin-top: 1rem;
+  text-align: center;
+}
+
+.upgrade__bottom {
+  display: grid;
+  row-gap: 2.5em;
+  justify-items: center;
+  margin-top: 2.5em;
+}
+
+.upgrade__bonus-chance,
+.upgrade__info {
+  @include font(1.25em, 600) {
+    color: color(Blue-2);
+  }
+
+  em {
+    color: color(Green-2);
+  }
+}
+
+.upgrade-circle {
+  $size: 25em;
+  $padding: 2.5em;
+  $border-width: 2.5em;
+
+  --circle-pos: 0;
+  --circle-filled: 0;
+  --circle-border-color-1: #1e252c;
+  --circle-border-color-2: #1e252c;
+
+  $border-background: var(--circle-border-color-1);
+  $border-default-background: var(--circle-border-color-2);
+  $filled: var(--circle-filled);
+
+  width: $size + $padding * 2;
+  height: $size + $padding * 2;
+
+  padding: $padding;
+  background: color(Dark) url("../../images/shape-bg.png") no-repeat center/300%;
+  border-radius: 100%;
+  box-shadow: inset 0 0 1.5em 1.5em hsla(210, 35%, 10%, 0.4);
+  @include Perfomance;
+
+  &--running {
+    --circle-border-color-1: #{color(Green-2)};
+    --circle-border-color-2: #{color(Red-2)};
+  }
+
+  @mixin pseudo {
+    content: "";
+    position: absolute;
+    @content;
+    width: $size;
+    height: $size;
+
+    border: $border-width solid $border-background;
+    border-radius: 100%;
+    clip: rect(0, $size / 2, $size, 0);
+    will-change: transform;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: $size;
+    height: $size;
+    border: $border-width solid $border-default-background;
+    border-radius: 100%;
+  }
+
+  &__left {
+    position: absolute;
+    width: $size;
+    height: $size;
+    clip: rect(0, $size, $size, $size / 2);
+  }
+
+  &__left::before {
+    @include pseudo {
+      transform: rotate(calc(3.6deg * #{$filled}));
+      transition: transform 200ms;
+    }
+  }
+
+  &--half &__left::before {
+    transform: rotate(180deg);
+  }
+
+  &__right {
+    position: absolute;
+    width: $size;
+    height: $size;
+    clip: rect(0, $size / 2, $size, 0);
+    // display: none;
+    opacity: 0;
+  }
+
+  &--half &__right::before {
+    @include pseudo {
+      transform: rotate(calc(3.6deg * #{$filled}));
+      transition: transform 200ms 200ms;
+    }
+  }
+
+  &--half &__right {
+    // display: unset;
+    opacity: 1;
+    transition: opacity 0s 200ms;
+  }
+
+  &--lose {
+    &::before {
+      content: unset;
+    }
+
+    .upgrade-circle__inner {
+      background: rgba($color: #d33131, $alpha: 0.3);
+      border-radius: 100%;
+    }
+  }
+}
+
+.upgrade-circle__inner {
+  display: grid;
+  row-gap: 2em;
+  align-content: center;
+  place-items: center;
+  padding: 5em;
+  width: 100%;
+  height: 100%;
+}
+
+.upgrade-circle__arrow {
+  position: absolute;
+
+  display: grid;
+  align-content: baseline;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  @include Perfomance;
+  transform: rotate(0deg);
+
+  &--running {
+    transform: rotate(calc((var(--circle-pos) * 3.6deg) + (360deg * 20)));
+    transition: transform 14s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  &::before {
+    content: "";
+    top: 1.5em;
+
+    $size: 2em;
+    $color: color(Broom);
+
+    border-left: $size * 0.6 solid transparent;
+    border-right: $size * 0.6 solid transparent;
+    border-bottom: $size solid $color;
+
+    filter: drop-shadow(0 0 1em $color);
+  }
+}
+
+.upgrade-circle__chance {
+  @include font(4em, 800);
+}
+
+.upgrade-circle__text {
+  @include font(1.25em, 700, 1.25) {
+    color: color(Blue-1);
+    text-align: center;
+  }
+
+  em {
+    color: White;
+  }
+}
+
+.upgrade-circle__cross {
+  padding: 2.5em;
+  background: #d33131;
+  border-radius: 100%;
+}
+
+// @keyframes rotate {
+//   from {
+//     transform: rotate(0deg);
+//   }
+
+//   to {
+//     transform: rotate(2290deg);
+//   }
+// }
+
+.upgrade-sidebar {
+  @include NotMobile {
+    width: 40em;
+  }
+}

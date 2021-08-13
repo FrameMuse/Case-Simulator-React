@@ -1,0 +1,49 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.checkbox {
+  @include display(inline-flex, items, center);
+  cursor: pointer;
+}
+
+.checkbox__input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: unset;
+
+  &:checked+ {
+    .checkbox__inner {
+      background: color(Blue-3);
+
+      .checkbox__icon {
+        color: White;
+      }
+    }
+  }
+}
+
+.checkbox__inner {
+  padding: 6px;
+  background: color(Dark);
+  border: 1px solid color(Blue-3);
+  border-radius: 0.25em;
+  transition: 50ms background-color;
+}
+
+.checkbox__icon {
+  --icon-size: 1em;
+  display: flex;
+  color: transparent;
+  transition: 50ms color;
+}
+
+.checkbox__label {
+  margin-left: 1rem;
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+}

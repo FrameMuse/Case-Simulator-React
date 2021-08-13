@@ -1,0 +1,132 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.button {
+  --button-shadow-color: color(Broom);
+  $shadow-color: var(--button-shadow-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em 2em;
+  background: color(Blue-3);
+  @include border-radius-coll(0.5em);
+  transition: 150ms linear box-shadow, 150ms linear color, 150ms linear background-color;
+
+  &--red {
+    background: color(Red-1);
+  }
+
+  &--blue,
+  &:disabled {
+    background: color(Blue-3);
+
+    .button__text {
+      color: color(Blue-1);
+    }
+  }
+
+  &--green {
+    background: color(Green-1);
+    --button-shadow-color: #{color(Green-1)};
+
+    &:not(:disabled):hover {
+      background: #498e32;
+      --button-shadow-color: #498e32;
+      background: color(Green-2);
+      --button-shadow-color: #{color(Green-2)};
+    }
+  }
+
+  &--orange {
+    background: color(Orange-1);
+    --button-shadow-color: #{color(Orange-1)};
+
+    &:not(:disabled):hover {
+      background: #bd7038;
+      --button-shadow-color: #bd7038;
+      background: color(Orange-2);
+      --button-shadow-color: #{color(Orange-2)};
+    }
+  }
+
+  &--yellow {
+    background: color(Broom);
+    --button-shadow-color: color(Broom);
+
+    .button__text {
+      @include font($weight: 800) {
+        color: color(Blue-4);
+      }
+    }
+
+    &:not(:disabled):hover {
+      background: #baab29;
+      --button-shadow-color: #baab29;
+    }
+  }
+
+  &--magic {
+    padding: 1.5em 5em;
+    box-shadow: 0 0 12px -2px $shadow-color;
+
+    .button__text {
+      @include font(1.25em, 800);
+    }
+  }
+
+  &--pending::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 0.35em;
+    background: hsla(0, 0%, 0%, 0.4);
+    animation: 500s ButtonProgress;
+    pointer-events: none;
+  }
+}
+
+@keyframes ButtonProgress {
+  0% {
+    width: 0%;
+  }
+
+  1% {
+    width: 90%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
+
+.button__text {
+  @include font(1.25rem, 600) {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  em {
+    color: color(Blue-1);
+    @include font(null, 600);
+  }
+}
+
+.button__icon {
+  --icon-size: 1.5em;
+  color: color(Blue-1);
+
+  &:first-child {
+    margin-right: 1em;
+  }
+
+  &:last-child {
+    margin-left: 1em;
+  }
+}

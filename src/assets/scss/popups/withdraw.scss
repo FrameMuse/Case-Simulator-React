@@ -1,0 +1,141 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+:root {
+  --popup-overflow: unset;
+}
+
+.withdraw {
+  display: flex;
+}
+
+.withdraw-article {
+  @include Article;
+}
+
+.withdraw__inner {
+  // max-height: 100vh;
+  // overflow: auto;
+}
+
+.withdraw__content {
+  @include grid(2.5em);
+
+  width: 45em;
+  padding: 2.5em 3em;
+
+  @include Mobile {
+    width: auto;
+  }
+}
+
+.withdraw__section {
+  padding-top: 2.5em;
+  border-top: 1px solid color(hr);
+
+  em {
+    font-weight: 700;
+    color: color(Broom);
+  }
+
+  @include Mobile {
+    @include grid;
+  }
+}
+
+.withdraw-selector {
+  @include grid(1.5em);
+}
+
+.withdraw-selector__title {
+  @include font(1.5em, 700);
+}
+
+.withdraw__button {
+  // width: 100%;
+  justify-self: stretch;
+  justify-content: center;
+  background: gradient(Green);
+}
+
+.withdraw-avatar {
+  display: flex;
+  align-items: center;
+}
+
+.withdraw-avatar__image {
+  width: 3em;
+  height: 3em;
+  border-radius: 100%;
+  margin-left: 1em;
+}
+
+// Sidebar
+
+.withdraw-sidebar {
+  width: 25em;
+  background: url("../../images/withdraw-sidebar.jpg") top/102%;
+
+  @include Mobile {
+    display: none;
+  }
+}
+
+.withdraw-sidebar__snayper {
+  position: absolute;
+  bottom: 0;
+  // width: 100%;
+  height: 40em;
+}
+
+
+/// Bullet Points
+
+.bullet-points {
+  @include grid(2.5em);
+}
+
+.bullet-points__point {
+  display: flex;
+}
+
+.bullet-points__circle {
+  @include Image(4em) {
+    background: color(Broom);
+    border-radius: 100%;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bullet-points__index {
+  @include font(1.25em, 700) {
+    color: color(Dark);
+  }
+}
+
+.bullet-points__container {
+  @include grid(1em) {
+    align-content: baseline;
+  }
+
+  margin-top: 0.75em;
+  margin-left: 1em;
+}
+
+.bullet-points__title {
+  @include font(1.5em, 700);
+}
+
+.bullet-points__desc {
+  @include font(1.25em, null, 1.35) {
+    color: color(Blue-1);
+  }
+}

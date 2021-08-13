@@ -1,0 +1,91 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.bonuses {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+
+  @include indent;
+  // border-bottom: 1px solid color(hr);
+
+  @include Mobile {
+    @include grid(2.5em);
+  }
+}
+
+.bonuses__bonus {
+  display: grid;
+  align-content: baseline;
+  justify-items: center;
+
+  width: 25em;
+  min-height: 40em;
+  padding: 3.5em 2em;
+  @include row-gap(2em);
+  background: color(Dark) no-repeat center bottom/contain;
+  border-radius: 0.75em;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:nth-child(1) {
+    background-image: url("../../images/bg/bonus-1.png");
+  }
+
+  &:nth-child(2) {
+    background-image: url("../../images/bg/bonus-2.png");
+    background-size: 75%;
+  }
+
+  &:nth-child(3) {
+    background-image: url("../../images/bg/bonus-3.png");
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -11em;
+
+    width: 5em;
+    height: 7.5em;
+
+    color: transparent;
+
+    background: currentColor;
+    border-radius: 100%;
+    box-shadow: 0 0 3.5em 3.5em;
+    opacity: 0.5;
+    transition: 200ms color;
+  }
+
+  transition: 450ms background-position-y;
+
+  &:hover {
+    background-position-y: 90%;
+  }
+
+  &:hover::before {
+    color: color(Blue-1);
+  }
+
+}
+
+.bonus-article {
+  @include Article(1.5em) {
+    text-align: center;
+  }
+}
+
+/// Faq
+
+.faq-container {
+  margin-bottom: 10em;
+}
+
+.faq-container__container {
+  @include indent;
+}

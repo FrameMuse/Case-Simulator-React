@@ -1,0 +1,83 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+$levelIndent: 6em;
+
+.level-desc {
+  display: flex;
+  flex-direction: column;
+  margin-top: $levelIndent;
+  background: url("../../images/bg/level-desc.png") no-repeat center top/100%;
+}
+
+.level-desc__level {
+  --level-image-size: 4em;
+  margin-top: -$levelIndent;
+}
+
+.level-desc__content {
+  padding: 2.5em;
+
+  @include Mobile {
+    padding: unset;
+  }
+}
+
+.level-desc__ways {
+  @include grid(0.5em);
+  width: 100%;
+  margin-top: 2em;
+}
+
+.level-desc-way {
+  display: flex;
+  align-items: center;
+
+  flex: 1;
+
+  padding: 1em;
+  background: color(Blue-4);
+  background: hsl(216deg, 21%, 25%);
+  border-radius: 0.5em;
+}
+
+.level-desc-way__circle {
+  --icon-size: 1.5em;
+  display: grid;
+  place-items: center;
+  color: color(Blue-1);
+
+  @include Image(3.5em) {
+    background: color(Blue-3);
+    border-radius: 100%;
+  }
+}
+
+.level-desc-way__title {
+  margin-left: 0.75em;
+  @include font(1.25rem, 500);
+}
+
+.level-desc-way__xp {
+  padding: 0.5em;
+  margin-left: auto;
+  background: color(Broom);
+  border-radius: 0.35em;
+  box-shadow: 0 0 8px -1px color(Broom);
+
+  @include font(1.1rem, 700) {
+    color: color(Dark);
+  }
+}
+
+.level-bonuses {
+  --container-min-width: 12em;
+  --bonus-image-width: 100%;
+  gap: 1em;
+  width: 100%;
+  padding: unset;
+}

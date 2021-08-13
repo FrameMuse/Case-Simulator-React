@@ -1,0 +1,135 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.bonus-contest {
+  // padding: 2.5em 5em;
+}
+
+.bonus-contest-header {
+  display: flex;
+  justify-content: space-between;
+
+  padding-bottom: 2.5em;
+  border-bottom: 1px solid color(hr);
+}
+
+.bonus-contest-header__title {
+  @include font(2.5em, 700, 1.2);
+}
+
+.bonus-contest-header__right {
+  display: flex;
+  align-items: center;
+}
+
+.bonus-contest-header__text {
+  @include font(1.25em, 600) {
+    color: color(Blue-2);
+  }
+}
+
+.bonus-contest-header__end-time {
+  @include font(2.5em, 700);
+  margin-left: 1rem;
+}
+
+.bonus-contest-content {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 2em;
+
+  section {
+    @include grid(2.5em) {
+      align-content: baseline;
+    }
+
+    @include row-gap(5em);
+    width: 36em;
+  }
+}
+
+.bonus-contest-content__application {
+  width: 40em;
+
+  &--hidden>*:not(.bonus-contest-notify) {
+    opacity: 0.1;
+  }
+}
+
+.bonus-contest-content__title {
+  @include font(1.5em, 700);
+}
+
+.bonus-contest-content__desc {
+  margin-top: 2.5rem;
+
+  @include font(1.25em, 600, 1.5) {
+    color: color(Blue-1);
+  }
+
+  em {
+    color: color(Broom);
+  }
+}
+
+.bonus-contest-content__form {
+  @include grid(0.5em);
+  margin-top: 2.5em;
+}
+
+.bonus-contest-content__button {
+  background: color(Broom);
+  justify-content: center;
+  box-shadow: 0 0 15px -2px color(Broom);
+
+  .button__text {
+    @include font($weight: 800) {
+      color: color(Dark);
+    }
+  }
+}
+
+.bonus-contest-content__attention {
+  padding-top: 2.5rem;
+  border-top: 1px solid color(hr);
+
+  @include font(1.25em, 600, 1.25) {
+    color: color(Blue-2);
+  }
+}
+
+/* Notify */
+
+.bonus-contest-notify {
+  position: absolute;
+  top: 5em;
+  width: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+
+.bonus-contest-notify__inner {}
+
+.bonus-contest-notify__title {}
+
+.bonus-contest-notify__text {
+  @include Paragraph;
+  margin-top: 0.5em;
+}
+
+.bonus-contest-notify__status {
+  display: inline-block;
+  padding: 0.5em 0.75em;
+  background: color(Blue-3);
+  border-radius: 0.25em;
+
+  @include font(1rem, 700) {
+    color: color(Green-2);
+  }
+}

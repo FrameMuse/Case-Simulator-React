@@ -1,0 +1,649 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+$case-open-gap: 1.5em;
+
+.case {
+  // min-height: 56em;
+}
+
+.case-page {
+  display: flex;
+  justify-content: center;
+  padding-top: 2.5em;
+  border-top: 1px solid color(hr);
+  // min-height: 56em;
+
+  @include Mobile {
+    @include grid(2.5em);
+  }
+}
+
+.case-page-article {
+  @include Article {
+    padding: 2.5em 5em 1em;
+  }
+}
+
+.case-page__content {
+  @include grid(2.5em) {
+    align-content: baseline;
+    justify-items: center;
+  }
+
+  &:only-child {
+    flex: 1;
+  }
+}
+
+.case-page__sidebar {
+  @include grid(2.5em) {
+    align-content: baseline;
+  }
+
+  width: 20em;
+
+  @include Mobile {
+    width: auto;
+    margin: auto;
+  }
+
+  &--left {
+    margin-left: auto;
+  }
+
+  &--right {
+    margin-right: auto;
+  }
+}
+
+.case-page-preview {
+  @include display(grid, items, null, center);
+  row-gap: $case-open-gap;
+  width: 60em;
+  background: url("../../svg/pieces.svg") no-repeat top/contain;
+  background-position-y: 3em;
+
+  @include Mobile {
+    width: auto;
+  }
+}
+
+.case-page-preview__preview {
+  display: grid;
+  place-items: center;
+  // align-items: center;
+  // justify-items: center;
+}
+
+.case-page-preview__image {
+  width: 25em;
+
+  @include Mobile {
+    width: 20em;
+  }
+
+  &--locked {
+    @include DarkFilter;
+  }
+}
+
+.case-page-preview__buttons {
+  display: flex;
+
+  &>* {
+    margin-left: 0.5em;
+
+    &:first-child {
+      margin-left: unset;
+    }
+  }
+}
+
+.case-page-preview__price {
+  padding: unset;
+  pointer-events: none;
+  // cursor: text;
+  // display: grid;
+  // place-items: center;
+  // background: color(Green-2);
+  // border-radius: 0.5em;
+  // @include font(1.25em, 500);
+}
+
+/* Lock */
+
+.case-page-lock {
+  position: absolute;
+
+  padding: 1em;
+  background: #3e4f5d;
+  border-radius: 100%;
+  box-shadow: 0 4px 16px rgba($color: black, $alpha: 0.5);
+}
+
+.case-page-lock__icon {
+  --icon-size: 5em;
+  background-image: url("../../images/icons/lock.png");
+}
+
+/* Exception */
+
+.case-page-exception {
+  @include grid {
+    justify-content: center;
+  }
+}
+
+.case-page-exception-article {
+  // width: 20em;
+
+  @include Article {
+    text-align: center;
+  }
+
+  margin-bottom: 2.5em;
+}
+
+// Other
+
+.case-page__multiple {
+  @include display(grid, items, null, center);
+  row-gap: $case-open-gap;
+
+  em {
+    @include font(1.25em, 600);
+    font-style: italic;
+    color: color(Blue-2);
+  }
+}
+
+// Scroll
+
+.case-page-scroll {
+  --weapon-scroll-x: 0px;
+
+  @include grid(2.5em 0);
+  padding: 2em 0;
+  width: 100%;
+  overflow: hidden;
+
+  &--flat {
+    display: flex;
+  }
+
+  @include Perfomance("transform");
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: calc(50% - 1px);
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    background: color(Broom);
+    box-shadow: 0 0 1em 0.1em color(Broom);
+    z-index: 1;
+  }
+}
+
+.case-page-scroll__section {
+  @include Perfomance(null);
+}
+
+.case-page-scroll__inner {
+  display: flex;
+  // animation: CaseScroll 15s 250ms cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  transition: transform 15s 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  @include Perfomance("transform");
+  transform: translateX(calc(var(--weapon-scroll-x) * -1));
+  user-select: none;
+  pointer-events: none;
+
+  &>* {
+    width: #{"max(15em, 15vw)"};
+    flex-shrink: 0;
+    margin-left: 2.5em;
+
+    :first-child {
+      margin-left: unset;
+    }
+  }
+
+  &--animation {
+    transition: unset;
+    animation: 2s linear CaseScroll infinite;
+  }
+}
+
+@keyframes CaseScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(var(--weapon-scroll-x));
+  }
+}
+
+@keyframes CaseScrollAnimation {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(calc(var(--weapon-scroll-x) / 2));
+  }
+
+  100% {
+    transform: translateX(calc(var(--weapon-scroll-x)));
+  }
+}
+
+.case-page-scroll__canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Inventory */
+
+.case-inventory {
+  margin-bottom: 10em;
+}
+
+.case-inventory__container {
+  display: grid;
+  @include indent;
+}
+
+/* Final */
+
+.game-final {
+  // @include grid(2.5em);
+  width: 100%;
+}
+
+// Bottom
+
+.game-final__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include indent {
+    padding-top: 2.5em;
+  }
+
+  @include Mobile {
+    @include grid(1em);
+  }
+
+  border-top: 1px solid color(hr);
+}
+
+.game-final-info {
+  display: flex;
+  align-items: center;
+}
+
+.game-final-info__circle {
+  $size: 5em;
+
+  @include display(grid, items, center, center);
+
+  width: $size;
+  height: $size;
+  border: 1px solid color(Blue-3);
+  border-radius: 100%;
+  flex-shrink: 0;
+}
+
+.game-final-info__icon {
+  @include font(1.5em, 700);
+  color: color(Blue-2);
+  // user-select: none;
+}
+
+.game-final-info__text {
+  @include font(1.25em, 600, 1.25);
+  color: color(Blue-2);
+  margin-left: 1em;
+
+  a {
+    color: color(Blue-1);
+    text-decoration: underline;
+  }
+}
+
+.game-final-info__buttons {
+  display: flex;
+
+  >* {
+    margin-left: 1em;
+  }
+
+  > :first-child {
+    margin-left: unset;
+  }
+
+  @include Mobile {
+    @include grid(1em);
+
+    &>* {
+      margin-left: unset;
+    }
+  }
+}
+
+// Drop
+
+.game-final-drop {
+  --drop-rarity-color: skyblue;
+  @include Rarity("--drop-rarity-color");
+
+  display: grid;
+  place-items: center;
+  @include indent(5em);
+  background: url("../../images/bg/particles.png") no-repeat center/cover;
+
+  @include Mobile {
+    padding-left: unset;
+    padding-right: unset;
+  }
+}
+
+@mixin FlickeringBody {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  @content;
+
+  opacity: 0.75;
+  animation: 5s RadialAnim ease-in-out infinite;
+}
+
+.game-final-drop__radial {
+  @include FlickeringBody {
+    background-image: radial-gradient(80% 100% at center, var(--drop-rarity-color) -25%, transparent 50%);
+  }
+}
+
+.game-final-drop__smoke {
+  @include FlickeringBody {
+    background: url("../../images/bg/smoke.png") no-repeat center/cover;
+  }
+}
+
+@keyframes RadialAnim {
+  0% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 0.25;
+  }
+}
+
+.game-final-drop__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.game-final-arrow {
+  position: absolute;
+
+  padding: 1em;
+  background: color(Blue-3);
+  border-radius: 100%;
+  cursor: pointer;
+  user-select: none;
+
+  &--left {
+    left: 0;
+    transform: rotate(90deg);
+  }
+
+  &--right {
+    right: 0;
+    transform: rotate(-90deg);
+  }
+}
+
+.game-final-arrow__icon {
+  color: color(Blue-1);
+}
+
+.game-final-drop__scroll {
+  display: flex;
+  overflow: hidden;
+  transition: 200ms transform;
+}
+
+.game-final-drop__drop {
+  display: grid;
+  row-gap: 2em;
+  justify-items: center;
+
+  width: 100%;
+  overflow: hidden;
+  transition: 200ms transform;
+
+  @include Rarity("--drop-rarity-color");
+}
+
+.game-final-drop__triangles {
+  --icon-size: 1.25em;
+  color: var(--drop-rarity-color);
+  animation: 800ms ease SlideDownAnim forwards;
+
+  >* {
+    fill: currentColor;
+    margin-left: 0.5em;
+  }
+
+  > :first-child {
+    margin-left: unset;
+  }
+}
+
+.game-final-drop__name {
+  @include font(2em, 700);
+  transform: translateY(-50%);
+  animation: 800ms ease SlideDownAnim forwards;
+}
+
+@keyframes SlideDownAnim {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes SlideUpAnim {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+$skinWidth: 15em;
+$dropWidth: 20em;
+$animationSpeed: var(--animation-speed, 800ms);
+
+.game-final-drop__skin {
+  --icon-size: #{$skinWidth};
+
+  display: grid;
+  align-items: center;
+
+  color: var(--drop-rarity-color);
+
+  &>svg {
+    stroke-width: 0.75px;
+    stroke-dasharray: 63;
+    filter: drop-shadow(0 0 0.25em var(--drop-rarity-color));
+    animation: $animationSpeed ease skinAnim forwards;
+  }
+}
+
+@keyframes triangleAnim {
+  from {
+    stroke-dashoffset: 63;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.game-final-drop__images {
+  --active-index: 0;
+
+  $defaultIndent: #{($skinWidth - $dropWidth) / 2};
+  $indent: #{$dropWidth} * var(--active-index);
+
+  position: absolute;
+
+  display: flex;
+  justify-content: flex-start;
+
+  transform: translateX(calc(#{$defaultIndent} - (#{$indent})));
+  transition: $animationSpeed transform;
+}
+
+@keyframes DropAnim {
+  from {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}
+
+.game-final-drop__image {
+  width: $dropWidth;
+  max-height: 12em;
+  object-fit: contain;
+
+  @include Perfomance;
+  animation: 800ms DropAnim;
+  transform: scale(0.4);
+  transition: $animationSpeed transform;
+  cursor: pointer;
+
+  &--active {
+    transform: scale(1);
+  }
+}
+
+.game-final-drop__buttons {
+  display: flex;
+  margin-top: 2em;
+
+  >* {
+    margin-left: 1em;
+  }
+
+  > :first-child {
+    margin-left: unset;
+  }
+
+  transform: translateY(50%);
+  animation: $animationSpeed ease ButtonAnim forwards;
+}
+
+.game-final-drop__button {
+  justify-content: center;
+
+  width: 17.5em;
+  padding: 1.5em 0;
+  background: rgba($color: #9dc1e6, $alpha: 0.15);
+
+  &--yellow {
+    color: color(Dark);
+    background: color(Broom);
+  }
+
+  @include Mobile {
+    width: 15em;
+  }
+}
+
+.game-final-drop__hint {
+  @include font(1.25rem, 500) {
+    color: color(Blue-2);
+  }
+
+  padding: 0.5em 0.75em;
+  background: hsla(210deg, 21%, 19%, 0.75);
+  border-radius: 0.5em;
+}
+
+/* Benefits */
+
+.case-benefits {
+  @include indent(0, 0, 2.5em);
+}
+
+.case-benefits__container {
+  display: flex;
+  justify-content: center;
+
+  @include Mobile {
+    @include grid(1em);
+  }
+}
+
+.case-benefits__benefit {
+  display: flex;
+  align-items: center;
+
+  padding: 0.5em 0.75em;
+  background: color(Blue-3);
+  border-radius: 0.5em;
+
+  @include NotMobile {
+    @include row-gap(0.5em);
+  }
+}
+
+.case-benefits__circle {
+  @include CaseBenefitCircle(2.5em);
+  margin-right: 0.5em;
+}
+
+.case-benefits__symbol {
+  @include font($weight: 500);
+}
+
+.case-benefits__desc {
+  @include font(1.25em, 500) {
+    color: color(Blue-2);
+  }
+}

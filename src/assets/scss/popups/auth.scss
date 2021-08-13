@@ -1,0 +1,73 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+.auth-dude {
+  $height: 25em;
+
+  position: absolute;
+  top: -$height / 2;
+
+  // margin-top: -5em;
+
+  height: $height;
+}
+
+.auth-text {
+  @include font(1.25em, 400) {
+    color: color(Blue-2);
+    justify-self: center;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.auth-buttons {
+  display: flex;
+  width: 100%;
+
+  @include Mobile {
+    @include grid(1em);
+  }
+}
+
+.auth-buttons__button {
+  justify-content: center;
+  min-width: 20ch;
+
+  @include Mobile {
+    min-width: auto;
+  }
+
+  @include NotMobile {
+    @include row-gap(1em);
+  }
+
+  &--vk {
+    background: #5187ff !important;
+  }
+
+  &--fb {
+    background: #4167b1 !important;
+  }
+
+  &--tw {
+    background: #7d00ff !important;
+  }
+
+  &--yt {
+    background: #ef2e2e !important;
+  }
+
+  transition: 350ms transform;
+  will-change: transform;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+}

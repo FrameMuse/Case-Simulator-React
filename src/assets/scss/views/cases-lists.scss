@@ -1,0 +1,206 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../shared";
+
+$indent: 2.5em;
+$case-width: var(--case-width, 25em);
+$case-image-height: var(--case-image-height, 25em);
+
+.cases-lists {
+  @include grid($indent 0);
+
+  padding-top: $indent;
+  border-top: 1px solid color(hr);
+}
+
+.cases-list {
+  &--bonus {
+    background: url("../../images/bg/smoke.png") no-repeat center/cover;
+  }
+
+  @include Mobile {
+    --case-width: auto;
+    --case-image-height: 17.5em;
+  }
+}
+
+.cases-list__header {
+  @include grid(1em 0);
+  @include indent(4.25em);
+
+  background: url("../../svg/cases_list_header_bg.svg") no-repeat left/contain;
+  background-position-x: -3.76em;
+}
+
+.cases-list__title {}
+
+.cases-list__desc {
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+}
+
+.cases-list__container {
+  --case-grid-template: repeat(auto-fill, minmax(#{$case-width}, 1fr));
+  $gridTemplate: var(--case-grid-template);
+  @include grid(1em, null, $gridTemplate);
+  @include indent;
+
+  @include Mobile {
+    --case-grid-template: repeat(2, 1fr);
+  }
+}
+
+.case-preview {
+  display: grid;
+  align-content: baseline;
+  justify-items: center;
+
+  width: $case-width;
+
+  padding: 2em;
+  border-radius: 0.75em;
+  transition: 300ms background-color;
+  cursor: pointer;
+
+  &:hover {
+    background: color(HalfDark);
+
+    .case-preview__image {
+      top: -1em;
+    }
+
+    .case-preview__price {
+      color: color(Dark);
+      background: color(Broom);
+      box-shadow: 0 0 12px -2px color(Broom);
+
+      &--orange {
+        color: White;
+        background: color(Orange-1);
+        box-shadow: 0 0 12px -2px color(Orange-1);
+      }
+    }
+  }
+
+  // &--bonus:hover {
+  //   background: unset;
+  // }
+}
+
+.case-preview__image-section {
+  display: grid;
+  justify-items: center;
+  height: $case-image-height;
+  margin-bottom: 1.75em;
+}
+
+.case-preview__image {
+  top: 0em;
+
+  width: 100%;
+  /* height: 22em; */
+  /* object-fit: contain; */
+  margin-top: auto;
+  transition: 200ms top;
+}
+
+.case-preview__title {
+  @include font(1.25em, 600) {
+    color: color(Blue-1);
+    text-align: center;
+  }
+}
+
+.case-preview__bottom {
+  @include display(flex, items, center);
+  margin-top: 1.75rem;
+}
+
+.case-preview__price {
+  padding: 1.25em 1.75em;
+  background: color(Blue-3);
+  border-radius: 0.75em;
+  transition: 500ms background-color, 500ms box-shadow;
+}
+
+.case-preview__old-price {
+  margin-left: 1.5em;
+}
+
+.case-preview__text {
+  @include font(1.25em, 700);
+  transition: 300ms color;
+
+  &--dark {
+    color: #445868;
+    text-decoration: line-through;
+  }
+}
+
+.case-preview__bonus-price {
+  @include font(1.75rem, 700);
+
+  .icon {
+    --icon-size: 0.75em;
+  }
+}
+
+/* Limit */
+
+.case-preview-limit {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0.5em 1em;
+  background: color(Blue-3);
+  border-radius: 0.5em;
+}
+
+.case-preview-limit__icon {
+  padding: 0.5em;
+  margin-right: 0.5em;
+  background-image: url("../../images/icons/timer-flash.png");
+}
+
+.case-preview-limit__text {
+  @include font(1.25em, 600);
+}
+
+/* Benefits */
+
+.case-preview-benefits {
+  position: absolute;
+  left: 0;
+
+  display: flex;
+  z-index: 1;
+}
+
+.case-preview-benefits__benefit {
+  @include row-gap(0.5em);
+}
+
+.case-preview-benefits__circle {
+  @include CaseBenefitCircle(2.5em);
+}
+
+.case-preview-benefits__symbol {
+  @include font($weight: 500);
+}
+
+.case-preview__timer {
+  margin-top: 1rem;
+  font-size: 75%;
+  // @include font(1.5em, 600) {
+  //   // color: color(Blue-2);
+  // }
+  @include Mobile {
+    font-size: 50%;
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "case-simulator-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "framemuse",
+  "license": "MIT",
+  "dependencies": {
+    "react": "npm:null@*",
+    "react-scripts": "^4.0.3"
+  }
+}

@@ -1,0 +1,138 @@
+/*
+** StandoffCase  Copyright (C) 2020  sunaiclub
+** Full License is in the root directory
+*/
+
+@import "../utils";
+
+.mini-user {
+  --mini-level-size: 1em;
+
+  display: flex;
+  align-items: center;
+}
+
+.mini-user__info {
+  display: grid;
+  row-gap: 0.5em;
+  margin-left: 1.5em;
+}
+
+.mini-user__name {
+  @include font(1.75em, 700, 1.25) {
+    white-space: break-spaces;
+
+  }
+
+  sup,
+  sub {
+    @include font(0.75em) {
+      color: color(Blue-2);
+    }
+  }
+}
+
+.mini-user__link {
+  @include font(1.25em, 600);
+  color: color(Blue-2);
+  @include link;
+}
+
+.mini-user__image {
+  width: 6em;
+  height: 6em;
+}
+
+.mini-user__photo {
+  display: block;
+  width: 6em;
+  height: 6em;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.mini-user__level {
+  --level-image-size: 135%;
+
+  position: absolute;
+  top: -1em;
+  right: -1em;
+}
+
+/// Level image
+
+.level-image {
+  --icon-size: 3em;
+  // --level-image-size: 100%;
+
+  display: flex;
+  justify-content: center;
+  // place-items: center;
+
+  font-size: var(--level-image-size); // For scalling
+}
+
+.level-image__shape {
+  --shape-opacity: 0.4;
+
+  @mixin addSetting($setting-name) {
+    #{"&--" + $setting-name} {
+      @content;
+    }
+  }
+
+  @mixin addColor($color-name, $hex) {
+    @include addSetting($color-name) {
+      color: $hex;
+
+      .fill-color-1 {
+        fill: currentColor;
+      }
+
+      .fill-color-2 {
+        fill: rgba($color: $hex, $alpha: var(--shape-opacity));
+      }
+
+      .stroke-color-1 {
+        stroke: currentColor;
+      }
+
+      .stroke-color-2 {
+        stroke: rgba($color: $hex, $alpha: var(--shape-opacity));
+      }
+    }
+  }
+
+  // Colors
+  @include addColor("gray", #506275);
+  @include addColor("paleblue", #A0C0E2);
+  @include addColor("skyblue", #4B92DF);
+  @include addColor("blue", #234EE6);
+  @include addColor("purple", #6037B1);
+  @include addColor("pink", #D63C86);
+  @include addColor("red", #DD2E33);
+  @include addColor("orange", #FC9042);
+  @include addColor("yellow", #EED929);
+  @include addColor("green", #63C940);
+
+  // Modifiers
+  @include addSetting("filled") {
+    --shape-opacity: 0.6;
+    // .fill-color-2 {
+    //   fill: currentColor;
+    // }
+
+    // .stroke-color-2 {
+    //   stroke: currentColor;
+    // }
+  }
+}
+
+.level-image__level {
+  position: absolute;
+  align-self: center;
+  transform: translate3d(0, 0, 0);
+  // top: 0;
+  // left: 0;
+  @include font(1em, 700);
+}
