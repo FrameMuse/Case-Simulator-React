@@ -1,15 +1,21 @@
 {
-  "name": "case-simulator-web",
+  "name": "case-simulator-react",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eslint": "eslint src --fix"
   },
   "author": "framemuse",
   "license": "MIT",
   "dependencies": {
-    "react": "npm:null@*",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0"
   }
 }
