@@ -6,7 +6,6 @@
 import { combineReducers } from "redux"
 import upgrade from "./upgrade"
 import translation from "./translation"
-import user from "./user"
 import viewport from "./viewport"
 import liveFeed from "./live-feed"
 import localInventory from "./localInventory"
@@ -15,10 +14,8 @@ import popup from "./popup"
 import contracts from "./contracts"
 import filters from "./filters"
 import modes from "./modes"
-import caseLimit from "./case-limit"
 
 export const reducers = {
-  user,
   popup,
   viewport,
   translation,
@@ -29,7 +26,8 @@ export const reducers = {
   contracts,
   filters,
   modes,
-  caseLimit,
 }
+
+i
 
 export default combineReducers(reducers)
