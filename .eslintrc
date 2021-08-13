@@ -37,7 +37,8 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "unused-imports"
     ],
     "rules": {
         "indent": [
@@ -79,6 +80,18 @@
         "@typescript-eslint/ban-types": "warn",
         "@typescript-eslint/no-namespace": "warn",
         "no-empty": "warn",
-        "react/prop-types": "warn"
+        "react/prop-types": "warn",
+        /* unused imports config */
+        "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
+            }
+        ]
     }
 }
