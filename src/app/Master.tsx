@@ -35,7 +35,6 @@ import BrowserHistory from "../resources/stores/BrowserHistory"
 import BonusCaseNotify from "./components/UI/BonusCaseNotify"
 import PopupNotification from "./components/popup/PopupNotification"
 import useTranslation from "resources/hooks/useTranslation"
-import { errorReports } from "index"
 import { updateUserInfo } from "resources/reducers/user"
 // import * as serviceWorker from "serviceWorker"
 
@@ -62,16 +61,6 @@ document.body.addEventListener("mousedown", unlockAudio)
 document.body.addEventListener("touchstart", unlockAudio)
 // ------ Safari audio fix
 export default class App extends Component {
-  componentDidCatch(error: any, errorInfo: any) {
-    errorReports.push({
-      error: {
-        message: `React Component Info [${error.message}]`,
-        stack: errorInfo.componentStack
-      }
-    } as any)
-    // Reveal errors updating 'user'
-    WebStore.store.dispatch(updateUserInfo({ balance: Date.now() }))
-  }
   render() {
     return (
       <StrictMode>

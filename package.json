@@ -2,7 +2,7 @@
   "name": "case-simulator-react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
@@ -11,11 +11,36 @@
   "author": "framemuse",
   "license": "MIT",
   "dependencies": {
+    "html-react-parser": "^1.2.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-fetching-library": "^1.7.6",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.3",
+    "redux-thunk": "^2.3.0",
+    "sass": "^1.37.5",
+    "smoothscroll-polyfill": "^0.4.4",
+    "socket.io-client": "^4.1.3",
+    "timeago-react": "^3.0.3"
   },
   "devDependencies": {
+    "@types/react": "^17.0.17",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/smoothscroll-polyfill": "^0.3.1",
     "eslint": "^7.32.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

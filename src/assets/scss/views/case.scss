@@ -528,7 +528,7 @@ $animationSpeed: var(--animation-speed, 800ms);
   --active-index: 0;
 
   $defaultIndent: #{($skinWidth - $dropWidth) / 2};
-  $indent: #{$dropWidth} * var(--active-index);
+  $indent: "#{$dropWidth} * var(--active-index)";
 
   position: absolute;
 

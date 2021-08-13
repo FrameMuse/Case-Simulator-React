@@ -7,7 +7,6 @@ import { BonusPlayerType, PlayerListProps } from "app/components/popup/common/Bo
 import { BonusTaskProps } from "app/components/popup/common/BonusSinglePopup"
 import { ContractBoxProps } from "app/components/Standoff/ContractBox"
 import { NewsboardElementProps } from "views/header/Newsboard"
-import { PaySystemProps } from "views/payment/Payment"
 import { BonusProps } from "views/profile/bonuses"
 import { WheelRequest } from "views/wheel"
 import { Filters } from "../../resources/interfaces/game"
@@ -88,8 +87,8 @@ export const fetchOnetimeBonusActivation = (id: number) => ({
 
 
 export const fetchPaymentCreate = (body: {
-  type: PaySystemProps["send"]["type"]
-  method: PaySystemProps["send"]["method"]
+  // type: PaySystemProps["send"]["type"]
+  // method: PaySystemProps["send"]["method"]
   amount: number
   bonus?: number
   promocode?: string | number

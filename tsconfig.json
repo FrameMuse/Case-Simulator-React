@@ -30,14 +30,14 @@
     "allowJs": true,
     "skipLibCheck": true,
     "checkJs": false,
-    "types": ["node"],
-    "typeRoots": ["types"]
+    "types": ["node", "react"],
+    "typeRoots": ["@types"]
   },
   "typeAcquisition": {
     "include": [
       "node"
     ]
   },
-  "include": ["src/**/*", "src/**/*.json"],
+  "include": ["src/**/*", "src/**/*.json", "@types/*"],
   "exclude": ["node_modules"]
 }

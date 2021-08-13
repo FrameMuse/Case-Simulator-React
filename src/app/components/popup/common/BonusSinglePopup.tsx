@@ -17,7 +17,7 @@ import AuthPopup from "./AuthPopup"
 import { useSelector } from "react-redux"
 import MutuableQuery, { useContextQuery } from "app/components/other/MutuableQuery"
 import { fetchOnetimeBonus, fetchOnetimeBonusActivation } from "app/api/actions"
-import { NotificationSubscribe } from "serviceWorker-firebase"
+// import { NotificationSubscribe } from "serviceWorker-firebase"
 import { ClientAPI } from "app/api/client"
 import useAddNotify from "resources/hooks/useAddNotify"
 import OuterLink from "app/components/other/OuterLink"
@@ -184,7 +184,7 @@ function BonusTask(props: BonusTaskProps) {
           Notification
             .requestPermission()
             .then(() => {
-              NotificationSubscribe()
+              // NotificationSubscribe()
               getBonus()
             })
         }
