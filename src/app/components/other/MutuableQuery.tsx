@@ -5,10 +5,10 @@
 
 import { getActionT } from "app/api/actions"
 import { Action } from "app/api/client"
-import { createContext, useContext, useEffect, useMemo, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import { QueryResponse, useMutation, UseQueryResponse } from "react-fetching-library"
 import { DefaultReducers } from "react-redux"
-import useMutableQuery, { QueryPayload } from "../../../resources/hooks/useCacheQuery"
+import { QueryPayload } from "../../../resources/hooks/useCacheQuery"
 import AuthRequired from "./AuthRequired"
 import ContentTransition from "./ContentTransition"
 import Error from "./Error"
@@ -20,38 +20,6 @@ interface MutuableQueryProps<T, C, R extends keyof DefaultReducers = never, G ex
   animated?: boolean
   reducer?: R
   children<Y extends UseQueryResponse<QueryPayload<T, R>>>(response: Y & { payload: {} }): any
-}
-
-export function Query__UnSafe<T = any, C = any, R extends keyof DefaultReducers = never, G extends UseQueryResponse<QueryPayload<T, R>> = any>({ children, action, reducer, deps, animated }: MutuableQueryProps<T, C, R, G>) {
-  const response = useMutableQuery<T, C, R>(action, reducer)
-
-  useEffect(() => {
-    if (deps && !response.loading && response.payload) {
-      response.query()
-    }
-  }, deps)
-
-  const Component = children
-
-  const content = useMemo(() => (
-    <Component {...response as any} />
-  ), [response.payload, response.loading])
-
-
-
-  const PAYLOAD_VALID = Boolean(response.payload)
-  return (
-    <>
-      <ContentTransition disabled={!animated} in={[response.payload]}>
-        {response.payload && !response.loading && content}
-      </ContentTransition>
-      {/* <Loader overlap={PAYLOAD_VALID} /> */}
-      {response.loading && <Loader overlap={PAYLOAD_VALID} />}
-      {response.error && (
-        <Error overlap={PAYLOAD_VALID} {...response.payload?.error} onClick={response.query} />
-      )}
-    </>
-  )
 }
 
 function MutuableQuery<T = any, C = any, R extends keyof DefaultReducers = never, G = any>(props: MutuableQueryProps<T, C, R> & { requireAuth?: boolean }) {

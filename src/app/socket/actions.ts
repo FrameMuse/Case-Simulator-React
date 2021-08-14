@@ -3,12 +3,12 @@
 ** Full License is in the root directory
 */
 
-import WebStore from "resources/stores/store"
+import store from "app/redux/store"
 import { delay } from "resources/utils"
 import { LiveFeedElementProps } from "views/header/live_feed"
 import { SocketActions } from "./ClientSocket"
 
-const { dispatch } = WebStore.store
+const { dispatch } = store
 
 async function dispatchLazyLiveEvent(payload: SocketActions["LIVE"]["TopliveList"], timeDelay: number) {
   if (timeDelay > 0) {

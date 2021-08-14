@@ -7,7 +7,6 @@ import { BonusPlayerType, PlayerListProps } from "app/components/popup/common/Bo
 import { BonusTaskProps } from "app/components/popup/common/BonusSinglePopup"
 import { ContractBoxProps } from "app/components/Standoff/ContractBox"
 import { NewsboardElementProps } from "views/header/Newsboard"
-import { BonusProps } from "views/profile/bonuses"
 import { WheelRequest } from "views/wheel"
 import { Filters } from "../../resources/interfaces/game"
 import { PaginationType } from "../../resources/interfaces/Object"
@@ -16,7 +15,6 @@ import { WeaponDropProps, WeaponItemProps } from "../../resources/interfaces/wea
 import { CreateQuery } from "../../resources/utils"
 import { BattleResponse } from "../../views/battle/battle"
 import { BattleCase } from "../../views/battles"
-import { TicketProps } from "../../views/support/Tickets"
 import { UserStatsStats } from "../components/other/UserStats"
 import { BattleBoxProps } from "../components/Standoff/BattleBox"
 import { UpgradeProps } from "../components/Standoff/UpgradeBox"
@@ -47,12 +45,6 @@ export const getUserInfo: Action<User> = {
   cache: "no-cache"
 }
 
-
-
-export const getTicketsList: Action<PaginationType<TicketProps[]>> = {
-  endpoint: "/ticket/list",
-  method: "GET",
-}
 
 // Upgrades
 
@@ -319,11 +311,6 @@ export const fetchUserProfile = (userId: number) => ({
   lvl: number
   exp: number
 }>
-
-export const fetchUserBonuses = (userId: number) => ({
-  method: "GET",
-  endpoint: "/user/" + userId + "/bonuses",
-}) as Action<BonusProps[]>
 
 export const fetchPaymentBonuses: Action<{
   id: number

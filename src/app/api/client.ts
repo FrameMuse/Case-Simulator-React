@@ -5,8 +5,8 @@
 
 import { ErrorObject } from "app/components/other/Error"
 import { Action as BaseAction, Client, createClient, QueryResponse } from "react-fetching-library"
-import { addNotify } from "resources/reducers/errors-stack"
-import WebStore from "../../resources/stores/store"
+import { addNotify } from "app/redux/reducers/errors-stack"
+import store from "../redux/store"
 import { СacheProvider } from "./cache"
 
 export type Action<T = {}> = BaseAction<T & { error?: ErrorObject }>
@@ -31,7 +31,7 @@ const responseInterceptor = () => async (_action: Action, response: QueryRespons
 
   if (process.env.NODE_ENV === "development") {
     if (response.error) {
-      WebStore.store.dispatch(addNotify("API Error: Bad status: " + response.status, "error"))
+      store.dispatch(addNotify("API Error: Bad status: " + response.status, "error"))
     }
 
     const error = response.payload as any
@@ -39,18 +39,22 @@ const responseInterceptor = () => async (_action: Action, response: QueryRespons
     if (error.trace) {
       // console.log(error);
 
-      WebStore.store.dispatch(addNotify(`
+      store.dispatch({
+        type: ""
+      })
+
+      store.dispatch(addNotify(`
         In file "${error.file}" at ${error.line} line was thrown exception "${error.exception}": "${error.message}"
       `, "error"))
     }
   }
 
   if (response.error) {
-    WebStore.store.dispatch(addNotify(response.errorObject?.name || "unknown", "error"))
+    store.dispatch(addNotify(response.errorObject?.name || "unknown", "error"))
   }
 
   if (response.payload?.error) {
-    WebStore.store.dispatch(addNotify(response.payload.error.code, "error", response.payload.error.data))
+    store.dispatch(addNotify(response.payload.error.code, "error", response.payload.error.data))
 
     return {
       ...response,

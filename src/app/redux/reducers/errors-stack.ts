@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { ErrorsStackErrorProps } from "../../app/components/other/ErrorsStack"
+import { ErrorsStackErrorProps } from "app/components/other/ErrorsStack"
 
 type Action = { type: string, payload: ErrorsStackErrorProps }
 

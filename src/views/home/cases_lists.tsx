@@ -7,13 +7,13 @@
 import "../../assets/scss/views/cases-lists.scss"
 // STAFF
 import CasesList from "./CasesList"
-import { CasePreviewProps, CasesListProps } from "../../resources/interfaces/case"
+import { CasesListProps } from "../../resources/interfaces/case"
 import { useSelector } from "react-redux"
 import { getRandomNumber } from "../../resources/utils"
 
 interface CasesListsProps {
   lists: CasesListProps[]
-  bonusCase: CasePreviewProps
+  // bonusCase: CasePreviewProps
 }
 
 function CasesLists(props: CasesListsProps) {
@@ -34,31 +34,10 @@ function CasesLists(props: CasesListsProps) {
 
   const randomNumber1 = getRandomNumber(0, props.lists.length) // Should generate a number for all lists to fit at least one
 
-  /**
-   * Add bonus case at a random place in a random list
-   */
-  function AddBonusToArray(listArray: CasesListProps["cases"], listIndex: number): CasesListProps["cases"] {
-    if ((!user.bonusCase?.enabled || user.bonusCase.open) || filters.search) {
-      return listArray
-    }
-    // Check if this list fit
-    if (listIndex !== randomNumber1) {
-      return listArray
-    }
-
-    // Then place item in the array 
-    const randomNumber2 = getRandomNumber(0, listArray.length)
-
-    const arrayChunk1 = listArray.slice(0, randomNumber2)
-    const arrayChunk2 = listArray.slice(randomNumber2)
-
-    return [...arrayChunk1, props.bonusCase, ...arrayChunk2]
-  }
-
   return (
     <div className="cases-lists">
       {props.lists.map((list, index) => (
-        <CasesList hidden={!listsFilter(list)} key={"cases_list_id_" + list.id} {...list} cases={AddBonusToArray(list.cases, index)} />
+        <CasesList hidden={!listsFilter(list)} key={"cases_list_id_" + list.id} {...list} cases={list.cases} />
       ))}
     </div>
   )

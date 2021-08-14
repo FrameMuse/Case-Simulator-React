@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux"
 import Translation from "../../controllers/Translation"
 import useTranslation from "../../../resources/hooks/useTranslation"
 import { RegularObject } from "../../../resources/interfaces/Object"
-import { updateLang } from "../../../resources/reducers/translation"
+import { updateLang } from "app/redux/reducers/translation"
 import { useState } from "react"
 import { classWithModifiers } from "../../../resources/utils"
 

@@ -15,7 +15,7 @@ import { WeaponItemProps } from "../../resources/interfaces/weapon"
 import { classWithModifiers, getCaseImage, getWeaponImage } from "../../resources/utils"
 import TimeAgo from "timeago-react"
 import useTranslation from "../../resources/hooks/useTranslation"
-import { MiniUserTemplate } from "../../app/components/other/MiniUser"
+import { MiniUserTemplate } from "app/components/other/MiniUser"
 import { Person } from "../../resources/interfaces/user"
 import { Link } from "react-router-dom"
 // TimeAgo

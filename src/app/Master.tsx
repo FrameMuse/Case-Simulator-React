@@ -23,7 +23,7 @@ import "assets/scss/views/payment.scss"
 import React, { Component, StrictMode, Suspense, useEffect } from "react"
 import { Provider } from "react-redux"
 import { Router as BrowserRouter } from "react-router-dom"
-import WebStore from "../resources/stores/store"
+import store from "./redux/store"
 import Enhancments from "./Enhancments"
 import { ClientContextProvider } from "react-fetching-library"
 import { ClientAPI } from "./api/client"
@@ -65,7 +65,7 @@ export default class App extends Component {
       <StrictMode>
         <ClientContextProvider client={ClientAPI}>
           <Preload>
-            <Provider store={WebStore.store}>
+            <Provider store={store}>
               <BrowserRouter history={BrowserHistory}>
                 <Enhancments />
                 <StandoffCase />

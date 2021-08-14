@@ -3,8 +3,8 @@
 ** Full License is in the root directory
 */
 
-import { PriceRange } from "../../app/helpers/PriceRange"
-import { ValueOf } from "../interfaces/Object"
+import { PriceRange } from "app/helpers/PriceRange"
+import { ValueOf } from "resources/interfaces/Object"
 
 interface Filters {
   search: string

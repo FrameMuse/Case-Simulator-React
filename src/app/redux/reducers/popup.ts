@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { PopupQueue } from "../../app/controllers/Popup"
+import { PopupQueue } from "app/controllers/Popup"
 
 type Action = { type: string, payload: typeof initState }
 

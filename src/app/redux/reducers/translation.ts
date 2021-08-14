@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import Translation from "../../app/controllers/Translation"
+import Translation from "app/controllers/Translation"
 
 export const UPDATE_LANG = "LANG/UPDATE"
 

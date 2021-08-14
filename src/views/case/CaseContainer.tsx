@@ -5,30 +5,26 @@
 
 // Images
 // Staff
-import Button from "../../app/components/UI/Button"
-import ButtonTool from "../../app/components/UI/ButtonTool"
-import { ClientAPI } from "../../app/api/client"
-import { getActionT, getCasePage, openCase } from "../../app/api/actions"
+import Button from "app/components/UI/Button"
+import ButtonTool from "app/components/UI/ButtonTool"
+import { ClientAPI } from "app/api/client"
+import { getActionT, getCasePage, openCase } from "app/api/actions"
 import { WeaponDropProps, WeaponItemProps } from "../../resources/interfaces/weapon"
 import shuffleArray from "../../resources/utils/shufle"
 import { classWithModifiers, getCaseImage } from "../../resources/utils"
-import { GetCasePageRequest } from "../../app/api/requests"
-import Error, { ErrorObject } from "../../app/components/other/Error"
+import { GetCasePageRequest } from "app/api/requests"
+import Error, { ErrorObject } from "app/components/other/Error"
 import CaseScrolling from "./CaseScrolling"
-import { connect } from "react-redux"
 import { User } from "../../resources/interfaces/user"
 import { CaseStateFulfilled, CaseStateLimitation, CaseStateCondition } from "./CaseState"
-import SelectorPoints from "../../app/components/UI/SelectorPoints"
-import Loader from "../../app/components/other/Loader"
+import SelectorPoints from "app/components/UI/SelectorPoints"
+import Loader from "app/components/other/Loader"
 import Game from "app/components/Standoff/Game"
 import { Translate } from "app/controllers/Translation"
-import WebStore from "resources/stores/store"
 import SoundController from "app/controllers/SoundController"
 import BrowserHistory from "resources/stores/BrowserHistory"
 import { QueryContext } from "app/components/other/MutuableQuery"
 import { UseQueryResponse } from "react-fetching-library"
-import { addNotify } from "resources/reducers/errors-stack"
-import { updateUserInfo } from "resources/reducers/user"
 import { UnAuthException, LimitException, InSufficientBalanceException } from "./CaseExceptions"
 
 type CaseContainerStatus = "waiting" | "running" | "finished"
@@ -125,26 +121,8 @@ class CaseContainer extends Game.Component<CaseContainerProps, CaseContainerStat
   }
 
   componentWillUnmount() {
-    this.increaseBalanceIfDemo()
-
     SoundController.pause("cases")
     SoundController.pause("getItem")
-  }
-
-  differDemoBalance(price: number) {
-    const demo_balance = this.props.user.demo_balance + price
-    WebStore.store.dispatch(updateUserInfo({
-      demo_balance
-    }))
-
-    WebStore.store.dispatch(addNotify("demoRecieved", "success", price + " D"))
-  }
-
-  increaseBalanceIfDemo() {
-    if (this.props.demo) {
-      const price = this.totalDropsPrice
-      price && this.differDemoBalance(+price)
-    }
   }
 
   wait(callback?: () => void) {
@@ -152,7 +130,6 @@ class CaseContainer extends Game.Component<CaseContainerProps, CaseContainerStat
       this.context.query()
     }
 
-    this.increaseBalanceIfDemo()
     this.setState({
       status: "waiting",
       multiplier: 1,
@@ -404,13 +381,6 @@ class CaseContainer extends Game.Component<CaseContainerProps, CaseContainerStat
     if (this.state.drops.length <= 1) {
       this.wait()
     } else {
-      if (this.props.demo) {
-        const drop = this.state.drops.find(drop => drop.id === id)
-
-        if (drop) {
-          this.differDemoBalance(+drop.item.price)
-        }
-      }
       this.setState(state => ({
         drops: state.drops.filter(drop => drop.id !== id),
       }))
@@ -440,4 +410,4 @@ class CaseContainer extends Game.Component<CaseContainerProps, CaseContainerStat
   }
 }
 
-export default connect(state => ({ user: state.user, ...state.modes }))(CaseContainer)
+export default CaseContainer

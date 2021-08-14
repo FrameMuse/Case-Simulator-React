@@ -5,7 +5,6 @@
 
 import Contract from "./contract"
 // SVG
-import FrequentQuestions from "views/support/FrequentQuestions"
 // import Particles from "react-particles-js"
 
 import asdJSON from "./asd.json"
@@ -24,9 +23,6 @@ export default () => {
         <Features.Feature title="Получите рандомный предмет" icon={<SVGIcon />} />
         <Features.Feature title="Получите предмет от нашего бота или продайте сайту по цене Steam" icon={<SVGIcon />} />
       </Features> */}
-      <section className="section section--1">
-        <FrequentQuestions defaultQuestion="contracts" />
-      </section>
     </>
   )
 }

@@ -12,19 +12,13 @@ import { TimerCountDown } from "app/components/UI/Timer"
 import Skeleton from "app/skeletons/skeleton"
 import "assets/scss/popups/bonus-daily.scss"
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
 import useAddNotify from "resources/hooks/useAddNotify"
 import useTranslation from "resources/hooks/useTranslation"
 import { classWithModifiers } from "resources/utils"
 import { PopupArticle, PopupDefaultLayout } from "../PopupProvider"
-import AuthPopup from "./AuthPopup"
 
 export default function BonusDailyPopup() {
   const trans = useTranslation(trans => trans.popup.BonusDaily)
-  const user = useSelector(state => state.user)
-  if (!user.authed) {
-    return <AuthPopup />
-  }
   return (
     <PopupDefaultLayout title={trans.title} rowGap="3.5em" width="62em">
       <QueryProvider action={fetchDailyBonus}>
@@ -55,9 +49,8 @@ export default function BonusDailyPopup() {
 }
 
 function BonusLevel() {
-  const user = useSelector(state => state.user)
   const trans = useTranslation(trans => trans.popup.BonusDaily)
-  const level = new LevelProgress(user.lvl, user.exp)
+  const level = new LevelProgress(1, 2)
   return (
     <div className="bonus-daily-level">
       <div className="bonus-daily-level-shape">

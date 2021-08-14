@@ -7,11 +7,11 @@
 import "../../assets/scss/views/filters.scss"
 // SVG
 // STAFF
-import { PriceRange } from "../../app/helpers/PriceRange"
+import { PriceRange } from "app/helpers/PriceRange"
 import useTranslation from "../../resources/hooks/useTranslation"
 import { useDispatch, useSelector } from "react-redux"
-import { setFilter } from "../../resources/reducers/filters"
-import SelectorPoints from "../../app/components/UI/SelectorPoints"
+import { setFilter } from "app/redux/reducers/filters"
+import SelectorPoints from "app/components/UI/SelectorPoints"
 import Search from "app/components/UI/Search"
 
 function Filters() {

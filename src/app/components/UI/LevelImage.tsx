@@ -3,7 +3,6 @@
 ** Full License is in the root directory
 */
 
-import { useSelector } from "react-redux"
 import { classWithModifiers } from "../../../resources/utils"
 
 interface LevelType {
@@ -104,10 +103,6 @@ class Level {
 }
 
 function LevelImage(props: { level: number; type?: "filled" }) {
-  const { demo } = useSelector(state => state.modes)
-  if (demo) {
-    return null
-  }
   try {
     const { colorName, shapeName } = new Level(props.level)
     const { default: Shape } = require("../../../assets/images/levels/" + shapeName)

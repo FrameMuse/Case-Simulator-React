@@ -8,19 +8,18 @@ import Fist from "../../assets/images/icons/fist.png"
 import HistoryLane from "../../assets/images/icons/history-line.png"
 // STAFF
 import { useHistory } from "react-router-dom"
-import { fetchBattleCreate, fetchBattleJoin, fetchBattlesList, getActionT } from "../../app/api/actions"
-import { ClientAPI } from "../../app/api/client"
-import { Article } from "../../app/components/formatting/article"
-import Table from "../../app/components/formatting/table"
-import MutuableQuery, { useContextQuery } from "../../app/components/other/MutuableQuery"
-import UserStats from "../../app/components/other/UserStats"
-import Button from "../../app/components/UI/Button"
+import { fetchBattleCreate, fetchBattleJoin, fetchBattlesList, getActionT } from "app/api/actions"
+import { ClientAPI } from "app/api/client"
+import { Article } from "app/components/formatting/article"
+import Table from "app/components/formatting/table"
+import MutuableQuery, { useContextQuery } from "app/components/other/MutuableQuery"
+import UserStats from "app/components/other/UserStats"
+import Button from "app/components/UI/Button"
 import useTranslation from "../../resources/hooks/useTranslation"
 import { getCaseImage } from "../../resources/utils"
 import SelectorPoints from "app/components/UI/SelectorPoints"
 import { PriceRange } from "app/helpers/PriceRange"
 import { useEffect, useState } from "react"
-import FrequentQuestions from "views/support/FrequentQuestions"
 import Search from "app/components/UI/Search"
 import ClientSocket from "app/socket/ClientSocket"
 import { useSelector } from "react-redux"
@@ -31,7 +30,6 @@ export default () => {
 
   const cases = useTranslation(trans => trans.cases)
   const battles = useTranslation(trans => trans.views.battles)
-  const statistics = useSelector(state => state.statistics)
 
   /**
    * 
@@ -143,10 +141,6 @@ export default () => {
                     <div className="battles-box__circle">
                       <img src={HistoryLane} alt="fist" className="icon" />
                     </div>
-                    <div className="battles-box__entry">
-                      <div className="battles-box__value">{statistics.battles}</div>
-                      <div className="battles-box__key">{battles.stats?.total}</div>
-                    </div>
                   </div>
 
                 </div>
@@ -159,9 +153,6 @@ export default () => {
           )
         }}
       </MutuableQuery>
-      <section className="section section--1">
-        <FrequentQuestions defaultQuestion="battles" />
-      </section>
     </>
   )
 }

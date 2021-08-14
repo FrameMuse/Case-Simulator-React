@@ -7,7 +7,7 @@ import { WeaponDropProps } from "../../../resources/interfaces/weapon"
 import { WeaponProps } from "./Weapon"
 import Weapon from "./Weapon"
 import { useEffect } from "react"
-import WebStore from "resources/stores/store"
+import store from "app/redux/store"
 import Empty from "../other/Empty"
 import { useContextQuery } from "../other/MutuableQuery"
 import { QueryPagination } from "app/features/Query/QueryPagination"
@@ -28,7 +28,7 @@ interface InventoryContainerProps {
 export function InventoryContainer({ exept, filter, maxHeight, action }: InventoryContainerProps) {
   const { payload, query } = useContextQuery<ReturnType<typeof getUserInventory>>()
   useEffect(() => {
-    return WebStore.subscribe(action => {
+    return store.actionSubscribe(action => {
       if (action.type === "LOCAL_INVENTORY_UPDATE") {
         query()
       }

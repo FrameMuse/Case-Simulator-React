@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { SocketActions as SA } from "../../app/socket/ClientSocket"
+import { SocketActions as SA } from "app/socket/ClientSocket"
 
 export interface SocketAction<T extends string, P extends object> {
   type: T

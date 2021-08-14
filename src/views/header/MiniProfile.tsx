@@ -9,7 +9,7 @@ import "../../assets/scss/components/mini-profile.scss"
 import { ReactComponent as BellSVG } from "../../assets/svg/bell.svg"
 import { ReactComponent as ExitSVG } from "../../assets/svg/exit.svg"
 // STAFF
-import Status from "../../app/components/UI/Status"
+import Status from "app/components/UI/Status"
 import { User } from "../../resources/interfaces/user"
 import { Link } from "react-router-dom"
 import Newsboard from "./Newsboard"

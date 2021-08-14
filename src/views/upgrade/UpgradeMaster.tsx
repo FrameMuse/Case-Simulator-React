@@ -6,25 +6,25 @@
 import { PureComponent } from "react"
 import { WeaponDropProps, WeaponItemProps } from "../../resources/interfaces/weapon"
 import { classWithModifiers, inter } from "../../resources/utils"
-import ButtonTool from "../../app/components/UI/ButtonTool"
-import Tumbler from "../../app/components/UI/Tumbler"
+import ButtonTool from "app/components/UI/ButtonTool"
+import Tumbler from "app/components/UI/Tumbler"
 // SCSS
 import "../../assets/scss/views/upgrade-master.scss"
 // Images
 import PNGPodium from "../../assets/images/podium.png"
-import { ClientAPI } from "../../app/api/client"
-import { postUpgradeWeapon } from "../../app/api/actions"
+import { ClientAPI } from "app/api/client"
+import { postUpgradeWeapon } from "app/api/actions"
 import { connect } from "react-redux"
 import { User } from "../../resources/interfaces/user"
-import { ErrorObject } from "../../app/components/other/Error"
+import { ErrorObject } from "app/components/other/Error"
 import AuthRequired from "app/components/other/AuthRequired"
 import WeaponImage from "app/components/Standoff/WeaponImage"
 import Hint from "app/components/UI/Hint"
 import { Translate } from "app/controllers/Translation"
 import Game from "app/components/Standoff/Game"
 import Icon from "app/components/UI/Icon"
-import WebStore from "resources/stores/store"
-import { addNotify } from "resources/reducers/errors-stack"
+import store from "app/redux/store"
+import { addNotify } from "app/redux/reducers/errors-stack"
 import SoundController from "app/controllers/SoundController"
 
 type CasePageStatus = "waiting" | "running" | "finished"
@@ -129,10 +129,10 @@ export class UpgradeMaster extends PureComponent<UpgradeMasterProps, UpgradeMast
     this.setStatus("finished")
 
     if (this.state.garant) {
-      WebStore.store.dispatch(
+      store.dispatch(
         addNotify("youGotPrize", undefined, this.state.garant.toPrice())
       )
-      WebStore.store.dispatch({
+      store.dispatch({
         type: "USER_INFO_UPDATE",
         payload: {
           balance: this.props.user.balance + this.state.garant
@@ -147,7 +147,7 @@ export class UpgradeMaster extends PureComponent<UpgradeMasterProps, UpgradeMast
 
   reset() {
     this.setState(this.initialState)
-    WebStore.store.dispatch({
+    store.dispatch({
       type: "UPDATE/CLEAR"
     })
   }

@@ -8,7 +8,7 @@ import "../../assets/scss/components/case-state.scss"
 // STAFF
 import { Fragment, memo, useEffect, useState } from "react"
 import { classAssign, classWithModifiers, scrollIntoView } from "../../resources/utils"
-import Button from "../../app/components/UI/Button"
+import Button from "app/components/UI/Button"
 import { CaseStateConditionProps, CaseOpenState } from "../../resources/interfaces/case"
 import useTranslation from "../../resources/hooks/useTranslation"
 import { useSelector } from "react-redux"
@@ -57,19 +57,7 @@ export function CaseStateFulfilled() {
 }
 
 export function CaseStateLimitation(props: Exclude<CaseOpenState["limit"], null>) {
-  const caseLimit = useSelector(state => {
-    const limit = state.caseLimit[props.case_id]
-    if (limit && limit > props.value) {
-      return limit
-    }
-    return props.value
-  })
-  return (
-    <CaseStateTemplate title="Ограниченная серия!" icon="timer">
-      <CaseProgressBar values={[caseLimit, props.limit]} />
-      <p className="case-state__text">Кейсов осталось</p>
-    </CaseStateTemplate>
-  )
+  return null
 }
 function Follow(props: { to?: string; children: any; scrollToId?: string; onClick?: () => void }) {
   const history = useHistory()

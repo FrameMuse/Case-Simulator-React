@@ -5,8 +5,8 @@
 
 import { getCasePage } from "app/api/actions"
 import { useContextQuery } from "app/components/other/MutuableQuery"
-import { Article } from "../../app/components/formatting/article"
-import WeaponList from "../../app/components/Standoff/WeaponList"
+import { Article } from "app/components/formatting/article"
+import WeaponList from "app/components/Standoff/WeaponList"
 
 export default function Inventory() {
   const { payload } = useContextQuery<ReturnType<typeof getCasePage>>()

@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import Icon from "../../app/components/UI/Icon"
+import Icon from "app/components/UI/Icon"
 import "../../assets/scss/components/social-nets.scss"
 
 export default function SocialNets() {

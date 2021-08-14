@@ -12,21 +12,21 @@ import { PureComponent } from "react"
 import { User } from "../../resources/interfaces/user"
 import { getCaseImage, inter } from "../../resources/utils"
 import BattleUser from "./BattleUser"
-import { Translate } from "../../app/controllers/Translation"
-import Button from "../../app/components/UI/Button"
-import ClientSocket from "../../app/socket/ClientSocket"
+import { Translate } from "app/controllers/Translation"
+import Button from "app/components/UI/Button"
+import ClientSocket from "app/socket/ClientSocket"
 import { WeaponDropProps, WeaponItemProps } from "../../resources/interfaces/weapon"
-import { ClientAPI } from "../../app/api/client"
-import { fetchBattleCancel, postSellItem } from "../../app/api/actions"
+import { ClientAPI } from "app/api/client"
+import { fetchBattleCancel, postSellItem } from "app/api/actions"
 import shuffleArray from "../../resources/utils/shufle"
-import Error, { ErrorObject } from "../../app/components/other/Error"
+import Error, { ErrorObject } from "app/components/other/Error"
 import CaseScrolling from "../case/CaseScrolling"
 import { connect } from "react-redux"
-import Weapon from "../../app/components/Standoff/Weapon"
+import Weapon from "app/components/Standoff/Weapon"
 import BrowserHistory from "resources/stores/BrowserHistory"
 import Game from "app/components/Standoff/Game"
-import WebStore from "resources/stores/store"
-import { addNotify } from "resources/reducers/errors-stack"
+import store from "app/redux/store"
+import { addNotify } from "app/redux/reducers/errors-stack"
 import SoundController from "app/controllers/SoundController"
 
 type BattleStatus = "searching" | "running" | "finish"
@@ -378,14 +378,14 @@ class Battle extends PureComponent<BattleProps, BattleState> {
 
 
     if (!this.didIWin && this.state.referred && this.state.garant) {
-      WebStore.store.dispatch({
+      store.dispatch({
         type: "USER_INFO_UPDATE",
         payload: {
           balance: this.props.user.balance + this.state.garant
         }
       })
 
-      WebStore.store.dispatch(addNotify("youGotPrize", undefined, this.state.garant.toPrice()))
+      store.dispatch(addNotify("youGotPrize", undefined, this.state.garant.toPrice()))
     }
 
 

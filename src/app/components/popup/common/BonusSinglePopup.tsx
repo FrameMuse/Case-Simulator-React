@@ -13,19 +13,14 @@ import { PopupDefaultLayout } from "../PopupProvider"
 import { classWithModifiers, inter } from "resources/utils"
 import Button from "app/components/UI/Button"
 import useTranslation from "resources/hooks/useTranslation"
-import AuthPopup from "./AuthPopup"
-import { useSelector } from "react-redux"
 import MutuableQuery, { useContextQuery } from "app/components/other/MutuableQuery"
 import { fetchOnetimeBonus, fetchOnetimeBonusActivation } from "app/api/actions"
 // import { NotificationSubscribe } from "serviceWorker-firebase"
 import { ClientAPI } from "app/api/client"
 import useAddNotify from "resources/hooks/useAddNotify"
-import OuterLink from "app/components/other/OuterLink"
 
 export default function BonusSinglePopup() {
   const { article } = useTranslation(trans => trans.popup.bonusSingle)
-  const user = useSelector(state => state.user)
-  if (!user.authed) return <AuthPopup />
   return (
     <PopupDefaultLayout {...article} rowGap="3.5em" width="65em">
       <div className="bonus-single">
@@ -144,7 +139,6 @@ export interface BonusTaskProps {
 
 function BonusTask(props: BonusTaskProps) {
   const { modifyPayload } = useContextQuery<typeof fetchOnetimeBonus>()
-  const user = useSelector(state => state.user)
   const addNotify = useAddNotify()
   const { tasks } = useTranslation(trans => trans.popup.bonusSingle)
   const task = tasks?.[props.name]
@@ -205,55 +199,6 @@ function BonusTask(props: BonusTaskProps) {
           </Button>
         </div>
       )
-    }
-
-    switch (props.name) {
-      case "vkSms":
-      case "vkSub":
-        if (user.account_type > 0) {
-          return (
-            <div className="bonus-task__bottom">
-              <p className="bonus-task__text">{task?.fallback}</p>
-            </div>
-          )
-        }
-        break
-
-      case "telegram":
-        return (
-          <div className="bonus-task__bottom">
-            <OuterLink onClick={submit} href={process.env.REACT_APP_SITE_SOCIAL_TELEGRAM} className="button bonus-task__button">
-              <span className="button__text">{task?.buttonName}</span>
-            </OuterLink>
-            <label className="bonus-task__reward">{props.value.toPrice()}</label>
-
-          </div>
-        )
-
-      case "youtube":
-        return (
-          <div className="bonus-task__bottom">
-            <OuterLink onClick={submit} href={process.env.REACT_APP_SITE_SOCIAL_YOTUBE} className="button bonus-task__button">
-              <span className="button__text">{task?.buttonName}</span>
-            </OuterLink>
-            <label className="bonus-task__reward">{props.value.toPrice()}</label>
-
-          </div>
-        )
-
-      case "instagram":
-        return (
-          <div className="bonus-task__bottom">
-            <OuterLink onClick={submit} href={process.env.REACT_APP_SITE_SOCIAL_INSTAGRAM} className="button bonus-task__button">
-              <span className="button__text">{task?.buttonName}</span>
-            </OuterLink>
-            <label className="bonus-task__reward">{props.value.toPrice()}</label>
-
-          </div>
-        )
-
-      default:
-        break
     }
 
     return (

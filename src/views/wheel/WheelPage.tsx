@@ -11,14 +11,13 @@ import { ReactComponent as SVGTriangleBottom } from "../../assets/svg/wheel-tria
 // STAFF
 import { PureComponent, useEffect, useState } from "react"
 import { classWithModifiers, delay, getBonusImage, inter } from "../../resources/utils"
-import { ClientAPI } from "../../app/api/client"
-import { fetchWheelItems, fetchWheelSpin } from "../../app/api/actions"
-import Button from "../../app/components/UI/Button"
+import { ClientAPI } from "app/api/client"
+import { fetchWheelItems, fetchWheelSpin } from "app/api/actions"
+import Button from "app/components/UI/Button"
 import { Ttrace } from "../../resources/utils/trace"
 import SoundController from "app/controllers/SoundController"
 import { TimerCountDown } from "app/components/UI/Timer"
 import useTranslation from "resources/hooks/useTranslation"
-import Standoff from "app/controllers/Standoff"
 import { Translate } from "app/controllers/Translation"
 import BrowserHistory from "resources/stores/BrowserHistory"
 import { QueryContext, QueryContextResponse } from "app/components/other/MutuableQuery"
@@ -61,11 +60,6 @@ abstract class WheelTemplate extends PureComponent<Partial<WheelPageProps>, Whee
 
   useBonus() {
     if (!this.state.winBonusId) return
-
-    if (this.state.winBonusId === 14) {
-      Standoff.activateBonus({ item_id: this.state.winBonusId, item: { condition: 0 }, status: 0 })
-      return
-    }
 
     BrowserHistory.push("/profile/bonuses")
 

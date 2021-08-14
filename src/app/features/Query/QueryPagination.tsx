@@ -4,8 +4,8 @@ import Button from "../../components/UI/Button"
 import Empty from "../../components/other/Empty"
 import { useContextQuery } from "../../components/other/MutuableQuery"
 import { QueryResponse } from "react-fetching-library"
-import WebStore from "resources/stores/store"
-import { addNotify } from "resources/reducers/errors-stack"
+import store from "app/redux/store"
+import { addNotify } from "app/redux/reducers/errors-stack"
 import { ErrorsStackErrorProps } from "app/components/other/ErrorsStack"
 import { getPaginationData, removeHostPath } from "./QueryHelpers"
 
@@ -16,7 +16,7 @@ interface QueryPaginationProps {
   emptyLink?: string
 }
 
-export const DisplayError = (message: ErrorsStackErrorProps["message"]) => WebStore.store.dispatch(addNotify(message, "error"))
+export const DisplayError = (message: ErrorsStackErrorProps["message"]) => store.dispatch(addNotify(message, "error"))
 
 export function QueryPagination(props: QueryPaginationProps) {
   const { payload: currentPayload, modifyPayload } = useContextQuery<Action<Record<string, any>>>()

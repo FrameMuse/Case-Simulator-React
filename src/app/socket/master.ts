@@ -6,7 +6,7 @@
 import { io, Socket } from "socket.io-client"
 import { ValueOf } from "../../resources/interfaces/Object"
 import { SocketCallback as SC } from "../../resources/interfaces/socket"
-import WebStore from "../../resources/stores/store"
+import store from "../redux/store"
 import { SocketActions as SA } from "./ClientSocket"
 
 export default class SocketIO<
@@ -49,7 +49,7 @@ export default class SocketIO<
         return
       }
 
-      WebStore.store.dispatch(action)
+      store.dispatch(action)
     })
   }
 

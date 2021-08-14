@@ -6,20 +6,13 @@
 // SCSS
 import "../../../../assets/scss/popups/bonus-contest.scss"
 // STAFF
-import { useSelector } from "react-redux"
-import { MiniUserTemplate } from "../../other/MiniUser"
 import Button from "../../UI/Button"
 import Input from "../../UI/Input"
 import { PopupDefaultLayout } from "../PopupProvider"
-import AuthPopup from "./AuthPopup"
 import useTranslation from "resources/hooks/useTranslation"
 
 export default function BonusContestPopup() {
   const trans = useTranslation(trans => trans.popup.BonusContest)
-  const user = useSelector(state => state.user)
-  if (!user.authed) {
-    return <AuthPopup />
-  }
   return (
     <PopupDefaultLayout nofooter>
       <div className="bonus-contest">
@@ -52,8 +45,6 @@ export default function BonusContestPopup() {
           </div>
           <section>
             <div className="bonus-contest-content__title">{trans.infoTitle}</div>
-            <MiniUserTemplate user={user} status={trans.lastWinner} />
-            <MiniUserTemplate user={user} status={trans.totalPlayers} />
             <p className="bonus-contest-content__attention">
               {trans.infoDesc}
             </p>

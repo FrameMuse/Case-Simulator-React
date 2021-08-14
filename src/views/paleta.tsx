@@ -6,6 +6,8 @@
 // SCSS
 import "assets/scss/views/paleta.scss"
 
+const a = 1
+
 namespace Paleta {
   export interface Color {
     name: string

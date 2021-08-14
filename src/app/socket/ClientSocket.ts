@@ -7,7 +7,6 @@ import SocketIO from "./master"
 import { User } from "../../resources/interfaces/user"
 import { BattleJoin } from "../../views/battle/battle"
 import { LiveFeedElementProps } from "views/header/live_feed"
-import { TicketChatMessage } from "views/support/Tickets"
 import { getActionT, getUserInventory } from "app/api/actions"
 
 type WidthdrawNotifyList = getActionT<ReturnType<typeof getUserInventory>>["withdrawNotify"]
@@ -37,9 +36,6 @@ export interface SocketActions {
   }
   BATTLES_CANCEL: SocketActions["BATTLES_CREATE"]
   TICKET_CLOSE: { id: number }
-  TICKET_MSG: {
-    msg: TicketChatMessage
-  }
   CASE_LIMIT: {
     case_id: number
     value: number

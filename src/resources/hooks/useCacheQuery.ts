@@ -7,7 +7,6 @@ import { ErrorObject } from "app/components/other/Error"
 import { useEffect, useMemo } from "react"
 import { Action, useQuery, UseQueryResponse } from "react-fetching-library"
 import { DefaultReducers, useSelector } from "react-redux"
-import WebStore from "resources/stores/store"
 
 let lastPromise: Promise<any> | null = null
 let lastEndpoint: Action["endpoint"] | null = null
@@ -31,14 +30,14 @@ function useMutableQuery<T = any, C = any, R extends keyof DefaultReducers = nev
   }, [action.endpoint])
   useEffect(() => {
     if (!reducer) return
-    return WebStore.subscribe(action => {
-      if (store) return
+    // return store.subscribe(action => {
+    //   if (store) return
 
-      WebStore.store.dispatch({
-        ...action,
-        payload: response.payload
-      })
-    })
+    //   store.dispatch({
+    //     ...action,
+    //     payload: response.payload
+    //   })
+    // })
   }, [reducer, response.payload])
 
   if (store) {

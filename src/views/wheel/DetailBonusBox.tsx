@@ -6,10 +6,10 @@
 // SCSS
 import "../../assets/scss/components/bonus-box.scss"
 // STAFF
-import Button from "../../app/components/UI/Button"
+import Button from "app/components/UI/Button"
 import { getBonusImage } from "../../resources/utils"
 import { QuestionMark } from "./index"
-import Hint from "../../app/components/UI/Hint"
+import Hint from "app/components/UI/Hint"
 import useTranslation from "resources/hooks/useTranslation"
 
 interface DetailBonusBoxProps {

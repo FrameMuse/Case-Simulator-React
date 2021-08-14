@@ -7,7 +7,6 @@ import { CaseOpenState, CasePreviewProps, CasesListProps } from "../../resources
 import { PaginationType } from "../../resources/interfaces/Object"
 import { GameStats, User } from "../../resources/interfaces/user"
 import { WeaponDropProps, WeaponItemProps } from "../../resources/interfaces/weapon"
-import { TicketChatMessage } from "../../views/support/Tickets"
 
 export interface DefaultPostRequest {
   status: number
@@ -58,13 +57,6 @@ export interface getInventoryRequest {
   sum: number
 }
 
-export type GetTicketsListRequest = Array<{
-  id: number
-  created_at: string
-  messages: Array<TicketChatMessage>
-  status: number
-  title: string
-}>
 
 export interface UserRewardsRequest {
   items: number

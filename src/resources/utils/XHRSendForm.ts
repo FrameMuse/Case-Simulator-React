@@ -3,8 +3,8 @@
 ** Full License is in the root directory
 */
 
-import { RegularObject } from "../interfaces/Object"
-import WebStore from "../stores/store"
+import { RegularObject } from "resources/interfaces/Object"
+import store from "app/redux/store"
 
 export function XHRSendForm<T = any>(xhr = new XMLHttpRequest(), path: string, data: FormData | RegularObject) {
   const formData = data instanceof FormData ? data : CustomFormData(data)
@@ -20,7 +20,7 @@ export function XHRSendForm<T = any>(xhr = new XMLHttpRequest(), path: string, d
 
   return new Promise<T>((resolve, reject) => {
     xhr.onerror = function () {
-      WebStore.store.dispatch({
+      store.dispatch({
         type: "NOTIFY_STACK/ADD",
         payload: {
           type: "error",

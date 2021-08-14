@@ -3,8 +3,8 @@
 ** Full License is in the root directory
 */
 
-import { updateMediaQueries } from "../../resources/reducers/viewport"
-import WebStore from "../../resources/stores/store"
+import { updateMediaQueries } from "app/redux/reducers/viewport"
+import store from "../redux/store"
 
 class Viewport {
   public static onUpdateCallback = (querykey: string, queryValue: number) => { }
@@ -17,7 +17,7 @@ class Viewport {
         const matchMediaQuery = window.matchMedia(query)
 
         if (matchMediaQuery.matches) {
-          WebStore.store.dispatch(updateMediaQueries({
+          store.dispatch(updateMediaQueries({
             [querykey]: matchMediaQuery.matches
           }))
 
@@ -26,7 +26,7 @@ class Viewport {
 
         const matchMediaQueryCallback = (event: MediaQueryListEvent) => {
           if (event.matches) {
-            WebStore.store.dispatch(updateMediaQueries({
+            store.dispatch(updateMediaQueries({
               [querykey]: event.matches
             }))
 

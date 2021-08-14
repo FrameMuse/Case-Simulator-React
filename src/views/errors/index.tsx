@@ -10,14 +10,14 @@
 
 import BonusCasePopup from "app/components/popup/common/BonusCasePopup"
 import LevelDescPopup from "app/components/popup/common/LevelDescPopup"
-import Table from "../../app/components/formatting/table"
-import BonusContestPopup from "../../app/components/popup/common/BonusContestPopup"
-import WeaponRejectedPopup from "../../app/components/popup/common/WeaponRejectedPopup"
-import WhatIsBonusPopup from "../../app/components/popup/common/WhatIsBonusPopup"
-import WheelBonusPopup from "../../app/components/popup/common/WheelBonusPopup"
-import WithdrawPopup from "../../app/components/popup/common/WithdrawPopup"
-import Button from "../../app/components/UI/Button"
-import Popup from "../../app/controllers/Popup"
+import Table from "app/components/formatting/table"
+import BonusContestPopup from "app/components/popup/common/BonusContestPopup"
+import WeaponRejectedPopup from "app/components/popup/common/WeaponRejectedPopup"
+import WhatIsBonusPopup from "app/components/popup/common/WhatIsBonusPopup"
+import WheelBonusPopup from "app/components/popup/common/WheelBonusPopup"
+import WithdrawPopup from "app/components/popup/common/WithdrawPopup"
+import Button from "app/components/UI/Button"
+import Popup from "app/controllers/Popup"
 import { WeaponDropProps } from "../../resources/interfaces/weapon"
 
 const weaponDrop: WeaponDropProps = {

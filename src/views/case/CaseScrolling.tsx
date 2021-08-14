@@ -4,7 +4,7 @@
 */
 
 import { useLayoutEffect, useState } from "react"
-import Weapon from "../../app/components/Standoff/Weapon"
+import Weapon from "app/components/Standoff/Weapon"
 import { randomInt } from "../../resources/utils/random"
 import { CaseContainerState } from "./CaseContainer"
 

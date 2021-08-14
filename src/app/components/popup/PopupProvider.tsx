@@ -4,8 +4,8 @@
 */
 
 import { createContext, CSSProperties, PureComponent } from "react"
-import { addNotify } from "resources/reducers/errors-stack"
-import WebStore from "resources/stores/store"
+import { addNotify } from "app/redux/reducers/errors-stack"
+import store from "app/redux/store"
 import usePopupContext from "../../../resources/hooks/usePopupContext"
 import { classAssign, classWithModifiers, getlast } from "../../../resources/utils"
 import Popup, { PopupQueue } from "../../controllers/Popup"
@@ -36,7 +36,7 @@ export class PopupProvider extends PureComponent<{}, PopupProviderState> {
     const { Component, Params = {}, Resolve } = lastPopup || {}
     function outsideResolve() {
       if (!(Params?.closable ?? true)) {
-        WebStore.store.dispatch(addNotify("unclosablePopup"))
+        store.dispatch(addNotify("unclosablePopup"))
         return
       }
 

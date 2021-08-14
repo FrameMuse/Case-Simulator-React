@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import WeaponSkeleton from "../../app/skeletons/weapon"
+import WeaponSkeleton from "app/skeletons/weapon"
 import { classWithModifiers } from "../../resources/utils"
 
 export default function CaseSkeletonScrolling({ multiply, type }: { multiply?: number, type?: "flat" }) {

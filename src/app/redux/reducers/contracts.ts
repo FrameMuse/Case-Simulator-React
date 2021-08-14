@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { WeaponDropProps } from "../interfaces/weapon"
+import { WeaponDropProps } from "resources/interfaces/weapon"
 
 type Action = { type: "CONTRACT/ADD" | "CONTRACT/CLEAR", payload: typeof initState } | { type: "CONTRACT/REMOVE", payload: number[] }
 

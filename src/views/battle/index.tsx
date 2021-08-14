@@ -3,12 +3,11 @@
 ** Full License is in the root directory
 */
 
-import FrequentQuestions from "views/support/FrequentQuestions"
-import { fetchBattleInfo } from "../../app/api/actions"
-import { Article } from "../../app/components/formatting/article"
-import BonusLevel from "../../app/components/other/BonusLevel"
-import MutuableQuery from "../../app/components/other/MutuableQuery"
-import WeaponList from "../../app/components/Standoff/WeaponList"
+import { fetchBattleInfo } from "app/api/actions"
+import { Article } from "app/components/formatting/article"
+import BonusLevel from "app/components/other/BonusLevel"
+import MutuableQuery from "app/components/other/MutuableQuery"
+import WeaponList from "app/components/Standoff/WeaponList"
 import useTranslation from "../../resources/hooks/useTranslation"
 import { ViewProps } from "../../resources/interfaces/router"
 import Battle from "./battle"
@@ -47,9 +46,6 @@ export default ({ location, history }: ViewProps<{ battleId?: number }>) => {
           )
         }}
       </MutuableQuery>
-      <section className="section section--1">
-        <FrequentQuestions defaultQuestion="battles" />
-      </section>
     </>
   )
 }

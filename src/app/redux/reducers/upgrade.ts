@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { WeaponDropProps, WeaponItemProps } from "../interfaces/weapon"
+import { WeaponDropProps, WeaponItemProps } from "resources/interfaces/weapon"
 
 // export const UPGRADE_SET = 'UPDATE/SET'
 

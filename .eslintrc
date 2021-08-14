@@ -74,7 +74,7 @@
         "@typescript-eslint/no-empty-interface": "off",
         /* Project Special */
         "react/no-children-prop": "warn",
-        "react/display-name": "warn",
+        "react/display-name": "off",
         "@typescript-eslint/no-var-requires": "warn",
         "@typescript-eslint/no-empty-function": "warn",
         "@typescript-eslint/ban-types": "warn",
@@ -82,7 +82,8 @@
         "no-empty": "warn",
         "react/prop-types": "warn",
         /* unused imports config */
-        "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
             "warn",

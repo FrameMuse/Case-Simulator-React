@@ -6,35 +6,8 @@
 // SCSS
 import "../../../assets/scss/components/mini-user.scss"
 // STAFF
-import { useSelector } from "react-redux"
-import { Link as a } from "react-router-dom"
-import { LevelInfo, Person } from "../../../resources/interfaces/user"
+import { Person } from "../../../resources/interfaces/user"
 import LevelImage from "../UI/LevelImage"
-import useTranslation from "resources/hooks/useTranslation"
-
-export default function MiniUser({ user: EUser }: { user?: Person & LevelInfo }) {
-  const trans = useTranslation(trans => trans.general)
-  const user = useSelector(state => ({ ...state.user, ...EUser }))
-  return (
-    <div className="mini-user">
-      <div className="mini-user__image">
-        <img src={user.photo} alt="user photo" className="mini-user__photo" />
-        <div className="mini-user__level">
-          <LevelImage type="filled" level={user.lvl} />
-        </div>
-      </div>
-      <div className="mini-user__info">
-        <div className="mini-user__name">
-          {user.getFullName()}
-          <sup> ID{user.id}</sup>
-        </div>
-        {Boolean(user.link) && (
-          <a rel="noopener noreferrer" target="_blank" className="mini-user__link" href={user.link!}>{trans.socProfile}</a>
-        )}
-      </div>
-    </div>
-  )
-}
 
 interface MiniUserTemplateProps {
   user: Person & { lvl?: number }

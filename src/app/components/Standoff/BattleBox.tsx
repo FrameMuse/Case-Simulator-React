@@ -11,7 +11,6 @@ import "../../../assets/scss/components/battle-box.scss"
 import { Person } from "../../../resources/interfaces/user"
 import BrowserHistory from "../../../resources/stores/BrowserHistory"
 import { classWithModifiers, getCaseImage, getWeaponImage } from "../../../resources/utils"
-import { BattleItem } from "../../../views/profile/battles"
 import { WeaponItemProps } from "resources/interfaces/weapon"
 import Icon from "../UI/Icon"
 
@@ -46,7 +45,7 @@ export interface BattleBoxProps {
   status: number
   creator: Person
   opponent: Person
-  items: [BattleItem, BattleItem]
+  items: [any, any]
 }
 
 const statuses: any = {

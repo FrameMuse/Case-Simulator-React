@@ -6,7 +6,7 @@
 import { fetchWheelItems } from "app/api/actions"
 import { useContextQuery } from "app/components/other/MutuableQuery"
 import useTranslation from "resources/hooks/useTranslation"
-import { Article } from "../../app/components/formatting/article"
+import { Article } from "app/components/formatting/article"
 import DetailBonusBox from "./DetailBonusBox"
 
 export default function WheelInventory() {

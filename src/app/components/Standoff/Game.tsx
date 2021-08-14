@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 /*
 ** StandoffCase  Copyright (C) 2020  sunaiclub
 ** Full License is in the root directory
@@ -9,17 +10,15 @@ import TriangleSVG from "../../../assets/svg/triangle"
 // STAFF
 import { PureComponent as ReactComponent, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
 import { WeaponDropProps } from "resources/interfaces/weapon"
 import { classAssign, classWithModifiers, getWeaponImage } from "resources/utils"
 import Button from "../UI/Button"
 import ButtonTool from "../UI/ButtonTool"
 import BrowserHistory from "resources/stores/BrowserHistory"
 import useTranslation from "resources/hooks/useTranslation"
-import Standoff from "app/controllers/Standoff"
 import { trianglesCount } from "./Weapon"
 import { SoundName } from "app/controllers/SoundController"
-import WebStore from "resources/stores/store"
+import store from "app/redux/store"
 import ClientSocket from "app/socket/ClientSocket"
 
 namespace Game {
@@ -48,13 +47,12 @@ namespace Game {
   }
 
   export function Final(props: FinalProps) {
-    const modes = useSelector(state => state.modes)
     const trans = useTranslation(trans => trans.game.final)
     const totalPrice = props.drops.reduce((result, drop) => result + drop.item.price, 0)
     async function sellAllDrops() {
-      if (!modes.demo) {
-        await Standoff.sell(...props.drops)
-      }
+      // if (!modes.demo) {
+      //   await Standoff.sell(...props.drops)
+      // }
       props.onExit()
     }
     return (
@@ -74,25 +72,17 @@ namespace Game {
   }
 
   export function FinalInfo() {
-    const modes = useSelector(state => state.modes)
     const trans = useTranslation(trans => trans.game.final)
     return (
       <div className="game-final-info">
         <div className="game-final-info__circle">
           <div className="game-final-info__icon">!</div>
         </div>
-        {modes.demo && (
-          <div className="game-final-info__text">{trans.textDemo}</div>
-        )}
-        {!modes.demo && (
-          <div className="game-final-info__text">{trans.text} <Link to="/profile">{trans.link}</Link></div>
-        )}
       </div>
     )
   }
 
   export function FinalDropsContainer({ drops, onSellDrop, disableButtons, playSound, hint }: FinalProps) {
-    const modes = useSelector(state => state.modes)
     const final = useTranslation(trans => trans.game.final)
 
     const dispatch = useDispatch()
@@ -143,9 +133,9 @@ namespace Game {
     }
 
     async function sellDrop() {
-      if (!modes.demo) {
-        await Standoff.sell(activeDrop)
-      }
+      // if (!modes.demo) {
+      //   await Standoff.sell(activeDrop)
+      // }
       onSellDrop(activeDrop.id)
     }
 
@@ -163,7 +153,7 @@ namespace Game {
     }, [drops])
 
     useEffect(() => {
-      WebStore.store.dispatch({
+      store.dispatch({
         type: "LOCAL_INVENTORY_UPDATE"
       })
 
@@ -214,11 +204,9 @@ namespace Game {
         {!disableButtons && (
           <div className="game-final-drop__buttons">
             <Button className="game-final-drop__button" lazyClick={sellDrop}>{final.buttons?.sellFor} {activeDrop.item.price.toPrice()}</Button>
-            {!modes.demo && (
-              <Button className={classWithModifiers("game-final-drop__button", [contracts.includes(activeDrop) && "yellow"])} onClick={goToContract}>
-                {contracts.includes(activeDrop) ? final.buttons?.inContracts : final.buttons?.addToContract}
-              </Button>
-            )}
+            <Button className={classWithModifiers("game-final-drop__button", [contracts.includes(activeDrop) && "yellow"])} onClick={goToContract}>
+              {contracts.includes(activeDrop) ? final.buttons?.inContracts : final.buttons?.addToContract}
+            </Button>
           </div>
         )}
       </div>

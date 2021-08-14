@@ -7,7 +7,7 @@
 import "../../assets/scss/components/newsboard.scss"
 
 import { Link, useHistory } from "react-router-dom"
-import Button from "../../app/components/UI/Button"
+import Button from "app/components/UI/Button"
 import MutuableQuery from "app/components/other/MutuableQuery"
 import useTranslation from "resources/hooks/useTranslation"
 import { fetchNewsList } from "app/api/actions"

@@ -6,3 +6,5 @@
 
 // Route.path("/admin", view("home"), ["ExactPath"])
 // Route.path("/admin/profile", view("profile"))
+
+export { }

@@ -3,11 +3,8 @@
 ** Full License is in the root directory
 */
 
-import { User } from "../../../resources/interfaces/user"
 // SCSS
 import "../../../assets/scss/components/table.scss"
-import { useSelector } from "react-redux"
-import BrowserHistory from "resources/stores/BrowserHistory"
 
 interface TableProps {
   thead: string | string[]
@@ -38,19 +35,6 @@ function Table({ thead: rawThead, theadExtra, children }: TableProps) {
         </tbody>
       </table>
     </div>
-  )
-}
-
-export function TableUser(user: Pick<User, "id" | "photo" | "firstname" | "lastname">) {
-  const currentUser = useSelector(state => state.user)
-  return (
-    <td>
-      <div className="usual-table__user">
-        <img src={user.photo} alt="avatar" className="usual-table__avatar" />
-        <span>{user.firstname} {user.lastname}</span>
-        <a className="ghost" onClick={() => BrowserHistory.push("/profile/" + (user.id === currentUser.id ? "" : user.id))} />
-      </div>
-    </td>
   )
 }
 

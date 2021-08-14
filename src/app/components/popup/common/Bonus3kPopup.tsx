@@ -14,8 +14,6 @@ import { TimerCountDown } from "app/components/UI/Timer"
 import Input from "app/components/UI/Input"
 import Button from "app/components/UI/Button"
 import { classWithModifiers, inter } from "resources/utils"
-import AuthPopup from "./AuthPopup"
-import { useSelector } from "react-redux"
 import { QueryProvider, useContextQuery } from "app/components/other/MutuableQuery"
 import { fetchGiveawayInfo, fetchGiveawaySave } from "app/api/actions"
 import { Person } from "resources/interfaces/user"
@@ -25,10 +23,6 @@ import Popup from "app/controllers/Popup"
 import PlayersListPopup from "./PlayersListPopup"
 
 export default function Bonus3kPopup() {
-  const user = useSelector(state => state.user)
-  if (!user.authed) {
-    return <AuthPopup />
-  }
   return (
     <PopupDefaultLayout className="bonus-3k" width="70em">
       <QueryProvider action={fetchGiveawayInfo}>

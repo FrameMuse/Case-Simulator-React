@@ -3,13 +3,12 @@
 ** Full License is in the root directory
 */
 
-import { Article } from "../../app/components/formatting/article"
+import { Article } from "app/components/formatting/article"
 import { ViewProps } from "../../resources/interfaces/router"
 import Inventory from "./inventory"
 import UpgradeMaster from "./UpgradeMaster"
 
 // SVG
-import FrequentQuestions from "views/support/FrequentQuestions"
 import useTranslation from "resources/hooks/useTranslation"
 import { useState } from "react"
 
@@ -33,9 +32,6 @@ export default (props: ViewProps) => {
         <Features.Feature title="Получите рандомный предмет" icon={<SVGIcon />} />
         <Features.Feature title="Получите предмет от нашего бота или продайте сайту по цене Steam" icon={<SVGIcon />} />
       </Features> */}
-      <section className="section section--1">
-        <FrequentQuestions defaultQuestion="upgrades" />
-      </section>
     </>
   )
 }
