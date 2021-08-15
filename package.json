@@ -5,8 +5,8 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build -- --profile",
+    "start": "react-scripts build -- --profile",
+    "dev": "react-scripts start",
     "test": "react-scripts test",
     "fix": "eslint src --fix"
   },
