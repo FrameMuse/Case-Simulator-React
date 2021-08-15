@@ -3,14 +3,10 @@
 ** Full License is in the root directory
 */
 
-export interface CasePreviewProps extends CaseOpenState {
+export interface CasePreviewProps {
   id: number
   title: string
-  image: string
-  time: number
   price: number
-  oldPrice: number
-  payForBonus: number
 }
 
 export interface CaseOpenState {
@@ -49,5 +45,8 @@ export interface CaseStateConditionProps {
 export interface CasesListProps {
   id: number
   theme: string
-  cases: CasePreviewProps[]
+  cases: {
+    id: number
+    price: number
+  }[]
 }

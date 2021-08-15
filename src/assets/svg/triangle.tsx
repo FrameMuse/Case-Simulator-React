@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { ComponentProps, memo } from "react"
+import { ComponentProps } from "react"
 
 export function TriangleSVGExpensive(props: ComponentProps<"svg">) {
   return (
@@ -13,4 +13,4 @@ export function TriangleSVGExpensive(props: ComponentProps<"svg">) {
   )
 }
 
-export default memo(TriangleSVGExpensive)
+export default TriangleSVGExpensive

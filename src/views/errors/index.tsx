@@ -25,7 +25,6 @@ const weaponDrop: WeaponDropProps = {
   type: 0,
   status: 0,
   item: {
-    hidden: 0,
     id: 11,
     name: "asd", price: 2, subname: "asd", class_name: "uncommon",
     StatTrack: 1

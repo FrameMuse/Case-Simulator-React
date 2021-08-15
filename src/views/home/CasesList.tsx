@@ -6,7 +6,7 @@
 import { useSelector } from "react-redux"
 import { classWithModifiers } from "resources/utils"
 import useTranslation from "../../resources/hooks/useTranslation"
-import { CasePreviewProps, CasesListProps } from "../../resources/interfaces/case"
+import { CasesListProps } from "../../resources/interfaces/case"
 import CasePreview from "./CasePreview"
 
 export default function CasesList(props: CasesListProps & { hidden?: boolean }) {
@@ -20,7 +20,7 @@ export default function CasesList(props: CasesListProps & { hidden?: boolean }) 
    * Filter predicate
    * + Drop all cases which aren't in price range
    */
-  function casePriceRange(caseProps: CasePreviewProps): boolean {
+  function casePriceRange(caseProps: CasesListProps["cases"][0]): boolean {
     if (!fromToRange || caseProps.price <= 0) {
       return true
     }
@@ -36,7 +36,7 @@ export default function CasesList(props: CasesListProps & { hidden?: boolean }) 
     return true
   }
 
-  function caseNameSearch(caseProps: CasePreviewProps): boolean {
+  function caseNameSearch(caseProps: CasesListProps["cases"][0]): boolean {
     const caseTitle = cases[caseProps.id]?.["title"]?.toLowerCase() || [""]
 
     for (const letter of search.toLowerCase()) {
@@ -57,11 +57,11 @@ export default function CasesList(props: CasesListProps & { hidden?: boolean }) 
         <p className="cases-list__desc">{themeTranslation.desc}</p>
       </div>
       <div className="cases-list__container">
-        {props.cases.map(caseProps => {
-          const caseTranslation = cases[caseProps.id]
-          const shoudBeDisplayed = caseNameSearch(caseProps) && casePriceRange(caseProps)
+        {props.cases.map(Case => {
+          const caseTranslation = cases[Case.id]
+          const shoudBeDisplayed = caseNameSearch(Case) && casePriceRange(Case)
           return (
-            <CasePreview hidden={!shoudBeDisplayed} key={"case_preview_" + caseProps.id} {...caseTranslation} {...caseProps} />
+            <CasePreview hidden={!shoudBeDisplayed} key={"case_preview_" + Case.id} title={caseTranslation?.title || ""} {...Case} />
           )
         })}
       </div>

@@ -27,7 +27,6 @@ import store from "./redux/store"
 import Enhancments from "./Enhancments"
 import { ClientContextProvider } from "react-fetching-library"
 import { ClientAPI } from "./api/client"
-import Preload from "./Preload"
 import Loader from "./components/other/Loader"
 import MiniWheel from "./components/other/MiniWheel"
 import ErrorsStack from "./components/other/ErrorsStack"
@@ -64,14 +63,12 @@ export default class App extends Component {
     return (
       <StrictMode>
         <ClientContextProvider client={ClientAPI}>
-          <Preload>
-            <Provider store={store}>
-              <BrowserRouter history={BrowserHistory}>
-                <Enhancments />
-                <StandoffCase />
-              </BrowserRouter>
-            </Provider>
-          </Preload>
+          <Provider store={store}>
+            <BrowserRouter history={BrowserHistory}>
+              <Enhancments />
+              <StandoffCase />
+            </BrowserRouter>
+          </Provider>
         </ClientContextProvider>
       </StrictMode>
     )

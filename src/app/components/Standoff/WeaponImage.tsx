@@ -3,9 +3,9 @@
 ** Full License is in the root directory
 */
 
-import { WeaponItemProps } from "../../../resources/interfaces/weapon"
-import { classWithModifiers, getWeaponImage } from "../../../resources/utils"
-import TriangleSVG from "../../../assets/svg/triangle"
+import { WeaponItemProps } from "resources/interfaces/weapon"
+import { classWithModifiers, getWeaponImage } from "resources/utils"
+import TriangleSVG from "assets/svg/triangle"
 
 export default function WeaponImage(props: Partial<Pick<WeaponItemProps, "id" | "class_name">> & { children?: any; disabled?: boolean }) {
   return (

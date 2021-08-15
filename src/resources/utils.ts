@@ -14,6 +14,15 @@ import HTMLParse, { HTMLReactParserOptions } from "html-react-parser"
 import { createElement } from "react"
 import { Link } from "react-router-dom"
 
+/**
+ * 
+ * @param number - dependency 1
+ * @param digits - count of digits to get
+ * @param power - random heart, dependency 2
+ * @returns 
+ */
+export const getMockRandom = (number: number, digits = -2, power = 1.123) => Number(String(number ** power).slice(-digits))
+
 export function download(filename: string, text: string) {
   const element = document.createElement("a")
   element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text))
@@ -29,7 +38,7 @@ export function download(filename: string, text: string) {
 
 export function getWeaponImage(id?: number, emptyImage?: boolean) {
   if (id && id > 0) {
-    return "/assets/images/weapon/" + id + ".png"
+    return "/assets/images/weapons/" + id + ".png"
   }
 
   if (emptyImage) {
@@ -60,7 +69,7 @@ export function getCaseImage(id?: number) {
   if (id == null) {
     return PNGEmpty
   }
-  return "/assets/images/case/" + "ru" + "/id_" + id + ".png"
+  return "/assets/images/cases/id_" + id + ".png"
 }
 
 export function getRankImage(rank: number) {

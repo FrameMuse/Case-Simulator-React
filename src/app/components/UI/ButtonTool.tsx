@@ -42,7 +42,7 @@ function ButtonTool(props: ButtonDefaultProps | ButtonActionProps) {
 
   useEffect(() => {
     function handle(event: KeyboardEvent) {
-      const { key, repeat, ctrlKey, shiftKey, isTrusted } = event
+      const { key, repeat, isTrusted } = event
       if (!repeat && isTrusted) {
         // if (ctrlKey && shiftKey) {
         const keys = props.keyPress instanceof Array ? props.keyPress : [props.keyPress]
@@ -119,13 +119,13 @@ function useButtonAction<A = React.MouseEvent<HTMLButtonElement, MouseEvent>>(bu
     const { current: button } = buttonRef
 
 
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<void>((resolve) => {
       if (!button) {
         return
         // return reject("Button is null")
       }
 
-      const { form, clientWidth } = button
+      const { form } = button
 
       // Check form validation
       if (form) {

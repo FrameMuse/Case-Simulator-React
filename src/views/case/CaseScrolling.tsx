@@ -3,12 +3,13 @@
 ** Full License is in the root directory
 */
 
-import { useLayoutEffect, useState } from "react"
+import { memo, useLayoutEffect, useState } from "react"
 import Weapon from "app/components/Standoff/Weapon"
 import { randomInt } from "../../resources/utils/random"
-import { CaseContainerState } from "./CaseContainer"
+import { CaseComponentState } from "./CaseComponent"
+import { WeaponItemProps } from "resources/interfaces/weapon"
 
-export default function CaseScrolling({ onScrollingEnd, scrollWeapons, currentDropIndex }: Pick<CaseContainerState, "currentDropIndex" | "scrollWeapons"> & { onScrollingEnd: () => void }) {
+export default function CaseScrolling({ onScrollingEnd, scrollWeapons, currentDropIndex }: Pick<CaseComponentState, "currentDropIndex" | "scrollWeapons"> & { onScrollingEnd: () => void }) {
   const [indent, setIndent] = useState<number | null>(null)
   const [innerRef, setInnerRef] = useState<HTMLElement | null>(null)
   const [clientContainer, setClientContainer] = useState<HTMLElement | null>(null)
@@ -57,13 +58,21 @@ export default function CaseScrolling({ onScrollingEnd, scrollWeapons, currentDr
     <div className="case-page-scroll" ref={setClientContainer}>
       {scrollWeapons.map((weaponItemList, key) => (
         <div className="case-page-scroll__section" style={{ "--weapon-scroll-x": indent ? indent + randomInt(-100, 100) + "px" : null }} key={"scroll_section" + key}>
-          <div className="case-page-scroll__inner" ref={setInnerRef} onTransitionEnd={onScrollingEnd}>
-            {weaponItemList.map((item, index) => (
-              <Weapon key={"scroll_weapon_" + item.id + index} item={item} />
-            ))}
-          </div>
+          <MemoScrollInner weaponItemList={weaponItemList} onTransitionEnd={onScrollingEnd} setInnerRef={setInnerRef} />
         </div>
       ))}
     </div>
   )
 }
+
+function ScrollInner(props: { weaponItemList: WeaponItemProps[]; onTransitionEnd: any; setInnerRef: any }) {
+  return (
+    <div className="case-page-scroll__inner" ref={props.setInnerRef} onTransitionEnd={props.onTransitionEnd}>
+      {props.weaponItemList.map((item, index) => (
+        <Weapon key={"scroll_weapon_" + item.id + index} item={item} />
+      ))}
+    </div>
+  )
+}
+
+const MemoScrollInner = memo(ScrollInner, () => true)

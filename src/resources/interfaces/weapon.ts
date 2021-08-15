@@ -15,7 +15,6 @@ export interface WeaponItemProps {
   id: number
   name: string
   price: number
-  hidden: number // Boolean
   subname: string
   StatTrack: number // Boolean
   class_name: WeaponRarity

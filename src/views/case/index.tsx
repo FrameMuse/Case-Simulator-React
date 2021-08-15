@@ -4,24 +4,23 @@
 */
 
 // SCSS
-import "../../assets/scss/views/case.scss"
+import "assets/scss/views/case.scss"
 // STAFF
 import { Article } from "app/components/formatting/article"
-import { ViewProps } from "../../resources/interfaces/router"
-import { getCasePage } from "app/api/actions"
-import useTranslation from "../../resources/hooks/useTranslation"
-import { QueryProvider } from "app/components/other/MutuableQuery"
-import { useEffect, useState } from "react"
-import { classWithModifiers } from "../../resources/utils"
+import { ViewProps } from "resources/interfaces/router"
+import useTranslation from "resources/hooks/useTranslation"
+import { useEffect } from "react"
 import ClientSocket from "app/socket/ClientSocket"
+import CaseContainer from "./CaseContainer"
+import Inventory from "./inventory"
+import DataBase from "database"
+import { WeaponItemProps } from "resources/interfaces/weapon"
+import { getMockRandom } from "resources/utils"
 
 export default (props: ViewProps<{ caseId: number, isBonus?: boolean }>) => {
-  const { caseId, isBonus } = props.match.params
-
-  const casePageTrans = useTranslation(trans => trans.views.case)
+  const { caseId } = props.match.params
+  const weapons = DataBase.data.Weapons.slice(-getMockRandom(caseId, 2)) as WeaponItemProps[]
   const caseTranslation = useTranslation(trans => trans.cases[caseId])
-
-  const [multiplier, setMultiplier] = useState(1)
 
   useEffect(() => {
     return () => {
@@ -30,30 +29,12 @@ export default (props: ViewProps<{ caseId: number, isBonus?: boolean }>) => {
   }, [])
 
   return (
-    <QueryProvider action={getCasePage(caseId)}>
-      <div className="case">
-        <Article title={caseTranslation.title} type="center" className="case-page-article">
-          {caseTranslation.desc}
-        </Article>
-        {/* <CaseContainer setMultiplier={setMultiplier} /> */}
-      </div>
-    </QueryProvider>
-  )
-}
-
-interface CaseBenefitProps {
-  symbol: string
-  color?: "orange" | "green"
-  children: any
-}
-
-function CaseBenefit(props: CaseBenefitProps) {
-  return (
-    <div className="case-benefits__benefit">
-      <div className={classWithModifiers("case-benefits__circle", [props.color])}>
-        <span className="case-benefits__symbol">{props.symbol}</span>
-      </div>
-      <span className="case-benefits__desc">{props.children}</span>
+    <div className="case">
+      <Article title={caseTranslation.title} type="center" className="case-page-article">
+        {caseTranslation.desc}
+      </Article>
+      <CaseContainer id={caseId} weapons={weapons} />
+      <Inventory weapons={weapons} />
     </div>
   )
 }

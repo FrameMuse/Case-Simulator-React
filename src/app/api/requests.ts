@@ -3,7 +3,7 @@
 ** Full License is in the root directory
 */
 
-import { CaseOpenState, CasePreviewProps, CasesListProps } from "../../resources/interfaces/case"
+import { CasePreviewProps, CasesListProps } from "../../resources/interfaces/case"
 import { PaginationType } from "../../resources/interfaces/Object"
 import { GameStats, User } from "../../resources/interfaces/user"
 import { WeaponDropProps, WeaponItemProps } from "../../resources/interfaces/weapon"
@@ -34,10 +34,7 @@ export interface GetCasePageRequest {
   case: {
     id: number
     price: number
-    free_count: number
-    payForBonus: number // Boolean
-    time: number
-  } & CaseOpenState
+  }
   items: WeaponItemProps[]
 }
 

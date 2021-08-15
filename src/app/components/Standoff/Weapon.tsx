@@ -4,13 +4,13 @@
 */
 
 // SCSS
-import "../../../assets/scss/components/weapon.scss"
+import "assets/scss/components/weapon.scss"
 // STAFF
 import Button from "../UI/Button"
 import { memo, PureComponent } from "react"
-import { WeaponDropProps, WeaponItemProps } from "../../../resources/interfaces/weapon"
-import { classWithModifiers } from "../../../resources/utils"
-import TriangleSVG from "../../../assets/svg/triangle"
+import { WeaponDropProps, WeaponItemProps } from "resources/interfaces/weapon"
+import { classWithModifiers } from "resources/utils"
+import TriangleSVG from "assets/svg/triangle"
 import TextOverflow from "../formatting/TextOverflow"
 import WeaponImage from "./WeaponImage"
 import { Translate } from "app/controllers/Translation"

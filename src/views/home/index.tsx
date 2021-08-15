@@ -3,24 +3,22 @@
 ** Full License is in the root directory
 */
 
+import DataBase from "database"
 import { Fragment } from "react"
 import Banners from "./banners"
-import CasesLists from "./cases_lists"
-import Filters from "./filters"
-import Menu from "./menu"
+import CasesList from "./CasesList"
 
 export default () => {
   return (
     <Fragment>
       <Banners />
       <Fragment>
-        <div className="home-filters">
+        {/* <div className="home-filters">
           <Filters />
-          <Menu themes={[]} defaultTopic="summer_pack" />
-        </div>
+          <Menu themes={["asd"]} defaultTopic="summer_pack" />
+        </div> */}
         {/* <section className="section section--1"> */}
-        <CasesLists lists={[]} />
-        {/* </section> */}
+        <CasesList id={1} theme="asd" cases={DataBase.data.Cases} />
       </Fragment>
     </Fragment>
   )

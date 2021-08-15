@@ -199,7 +199,7 @@ $case-open-gap: 1.5em;
 .case-page-scroll__inner {
   display: flex;
   // animation: CaseScroll 15s 250ms cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  transition: transform 15s 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: transform 5s 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
   @include Perfomance("transform");
   transform: translateX(calc(var(--weapon-scroll-x) * -1));
   user-select: none;
