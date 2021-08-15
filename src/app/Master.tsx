@@ -80,7 +80,7 @@ function StandoffCase() {
     <Suspense fallback={<Loader />}>
       <Header />
       <main>
-        <Router lazy loginByPassword="I think I see the future" />
+        <Router lazy />
       </main>
       <Footer />
       <MiniWheel />

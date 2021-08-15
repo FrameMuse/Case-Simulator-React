@@ -35,10 +35,6 @@ function LiveFeed() {
           <span className="live-feed__status" />
           <h2 className="live-feed__title">{liveFeedTrans.title}</h2>
         </div>
-        <div className="live-feed-filter">
-          <span className={classWithModifiers("live-feed-filter__value", [filter && "active"])} onClick={() => setFilter(true)}>{liveFeedTrans.best}</span>
-          <span className={classWithModifiers("live-feed-filter__value", [!filter && "active"])} onClick={() => setFilter(false)}>{liveFeedTrans.all}</span>
-        </div>
       </div>
       <div className="live-feed__container">
         {liveFeed.map((element, index) => (

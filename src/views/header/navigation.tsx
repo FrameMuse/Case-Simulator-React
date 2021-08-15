@@ -17,12 +17,12 @@ function Navigation() {
     <nav className="navigation">
       <div className="navigation__inner">
         <NavLink to="/" exact>{navigation.home}</NavLink>
-        <NavLink to="/contract">{navigation.contract}</NavLink>
+        {/* <NavLink to="/contract">{navigation.contract}</NavLink>
         <NavLink to="/upgrade">{navigation.upgrade}</NavLink>
         <NavLink to="/bonuses">{navigation.bonuses}</NavLink>
         <NavLink to="/top">{navigation.top}</NavLink>
         <NavLink to="/battles" newby>{navigation.battles}</NavLink>
-        <NavLink to="/support">{navigation.support}</NavLink>
+        <NavLink to="/support">{navigation.support}</NavLink> */}
         {/* {process.env.NODE_ENV === "development" && <NavLink to="/errors" newby>ER RORS</NavLink>} */}
         {/* <NavLink to="/battle_pass">{navigation.battle_pass}</NavLink> */}
       </div>

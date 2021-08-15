@@ -57,9 +57,7 @@ export class WeaponComponent<P = {}, S = {}, SS = {}> extends PureComponent<Weap
       <div className={classWithModifiers("weapon", this.modifiers)}>
         <div className="weapon__layout">
           {this.renderTop()}
-          <WeaponImage {...this.props.item}>
-            <a className="ghost" rel="noreferrer noopener" target="_blank" href="https://standoffmarket.ru/" />
-          </WeaponImage>
+          <WeaponImage {...this.props.item} />
           {this.renderBottom()}
         </div>
       </div>

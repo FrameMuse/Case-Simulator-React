@@ -13,7 +13,7 @@ import useTranslation from "resources/hooks/useTranslation"
 
 export default function MiniWheel() {
   const trans = useTranslation(trans => trans.popup.miniWheel)
-
+  return null
   return (
     <div className="mini-wheel">
       <div className="mini-wheel__content">

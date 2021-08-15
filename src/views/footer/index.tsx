@@ -8,8 +8,6 @@ import "../../assets/scss/views/footer.scss"
 // IMAGES
 // STAFF
 import GoUp from "./GoUp"
-import { StandoffLogo } from "app/components/UI/Logo"
-import SocialNets from "./SocialNets"
 import useTranslation from "resources/hooks/useTranslation"
 
 export default function Footer() {
@@ -20,22 +18,9 @@ export default function Footer() {
         <GoUp />
       </section>
       <section>
-        <div className="footer__logos">
-          <StandoffLogo />
-          <div className="logo">
-            <img
-              src="https://standoffmarket.ru/assets/img/logo.png"
-              alt="logo"
-              className="logo__image"
-            />
-            <a className="ghost" href="https://standoffmarket.ru/" rel="noopener noreferrer" />
-          </div>
-        </div>
-        <SocialNets />
-      </section>
-      <section>
         <p className="footer__desc">
-          Copyright © 2019 - 2021 StandoffCase.net
+          Copy of StandoffCase [08.13.2021]. <br />
+          Changes: No Laravel, local database, no users, no profiles, no socket; only home, case pages available; other minor changes.
         </p>
       </section>
     </footer>
