@@ -1,0 +1,15 @@
+runtime: nodejs # or another supported version
+env: flex
+
+manual_scaling:
+  instances: 1
+resources:
+  cpu: shared
+  memory_gb: 0.9
+  disk_size_gb: 10
+
+handlers:
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: "npm build"

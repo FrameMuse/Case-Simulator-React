@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build -- --profile",
     "test": "react-scripts test",
     "fix": "eslint src --fix"
   },
