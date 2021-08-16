@@ -1,30 +1,13 @@
 import CaseComponent from "./CaseComponent"
-import Game from "app/components/Standoff/Game"
 import CaseScrolling from "views/case/CaseScrolling"
 import SelectorPoints from "app/components/UI/SelectorPoints"
 import ButtonTool from "app/components/UI/ButtonTool"
 import Button from "app/components/UI/Button"
 import { classWithModifiers, getCaseImage } from "resources/utils"
-import Error from "app/components/other/Error"
+import CaseFinal from "./CaseFinal"
 
 class CaseContainer extends CaseComponent {
   render() {
-    if (this.state.error) {
-      return (
-        <div className="case-page">
-          <Error {...this.state.error} onClick={() => this.open()} />
-        </div>
-      )
-    }
-
-    // if (this.state.loading) {
-    //   return (
-    //     <div className="case-page">
-    //       <Loader />
-    //     </div>
-    //   )
-    // }
-
     return (
       <div className="case-page">
         <div className="case-page__content">
@@ -52,11 +35,11 @@ class CaseContainer extends CaseComponent {
           )}
         </div>
         <div className="case-page-preview__buttons">
-          <ButtonTool disabled={loading} padding="1.25em" color="yellow" keyPress="Enter" onClick={() => this.open()}>{this.trans.buttons?.open}</ButtonTool>
+          <ButtonTool disabled={loading} padding="1.25em" color="yellow" keyPress="Enter" onClick={() => this.run()}>{this.trans.buttons?.open}</ButtonTool>
           {this.cost > 0 && (
             <Button color="green" className="case-page-preview__price" style={{ width: (Case.price * this.multiplierOptions.slice(-1)[0]).toPrice().length * 2 + "ch" }}>{this.cost.toPrice()}</Button>
           )}
-          <ButtonTool disabled={loading} padding="1.25em" color="yellow" keyPress={["f", "а"]} onClick={() => this.open(true)}>{this.trans.buttons?.openFast}</ButtonTool>
+          <ButtonTool disabled={loading} padding="1.25em" color="yellow" keyPress={["f", "а"]} onClick={() => this.finish()}>{this.trans.buttons?.openFast}</ButtonTool>
         </div>
         {Case.price > 0 && (
           <div className="case-page__multiple">
@@ -73,34 +56,15 @@ class CaseContainer extends CaseComponent {
 
   renderScrolling() {
     return (
-      <CaseScrolling onScrollingEnd={() => this.finish()} {...this.case} {...this.state} />
-    )
-  }
-
-  sellDrop(id: number) {
-    if (this.state.drops.length <= 1) {
-      this.wait()
-    } else {
-      this.setState(state => ({
-        drops: state.drops.filter(drop => drop.id !== id),
-      }))
-    }
-
-  }
-  onExit = () => {
-    this.wait()
-  }
-  onSellDrop = (id: number) => {
-    this.sellDrop(id)
-  }
-  renderFinal() {
-    return (
-      <Game.Final
+      <CaseScrolling
         drops={this.state.drops}
-        onExit={this.onExit}
-        onSellDrop={this.onSellDrop}
-      />
+        weapons={this.props.weapons}
+        onScrollingEnd={() => this.finish()} />
     )
+  }
+
+  renderFinal() {
+    return <CaseFinal drops={this.state.drops} onExit={() => this.reset()} />
   }
 }
 

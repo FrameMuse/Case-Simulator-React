@@ -3,28 +3,45 @@
 ** Full License is in the root directory
 */
 
-import { memo, useLayoutEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import Weapon from "app/components/Standoff/Weapon"
 import { randomInt } from "../../resources/utils/random"
-import { CaseComponentState } from "./CaseComponent"
-import { WeaponItemProps } from "resources/interfaces/weapon"
+import { WeaponDropProps, WeaponItemProps } from "resources/interfaces/weapon"
+import { shuffleWeaponItems } from "./CaseHelpers"
 
-export default function CaseScrolling({ onScrollingEnd, scrollWeapons, currentDropIndex }: Pick<CaseComponentState, "currentDropIndex" | "scrollWeapons"> & { onScrollingEnd: () => void }) {
+interface CaseScrollingProps {
+  drops: WeaponDropProps[]
+  weapons: WeaponItemProps[]
+  onScrollingEnd(): void
+}
+
+const DEFAULT_DROP_PUT_INDEX = 24
+
+function CaseScrolling(props: CaseScrollingProps) {
   const [indent, setIndent] = useState<number | null>(null)
   const [innerRef, setInnerRef] = useState<HTMLElement | null>(null)
-  const [clientContainer, setClientContainer] = useState<HTMLElement | null>(null)
+  const [scrollContainer, setScrollContainer] = useState<HTMLElement | null>(null)
 
-  function calcIndent(ref: HTMLElement) {
-    const target = ref.children[currentDropIndex] as HTMLElement // currentDropIndex is index of target to scroll to
+  // const weaponScrolls = getWeaponScrolls(props.drops, props.weapons, DEFAULT_DROP_PUT_INDEX)
+
+  function mixedWeapons(dropToPut: WeaponDropProps) {
+    const items = shuffleWeaponItems(props.weapons)
+    items.splice(DEFAULT_DROP_PUT_INDEX, 0, dropToPut.item)
+
+    return items
+  }
+
+  function calcIndent(ref: HTMLElement, index: number) {
+    const target = ref.children[index] as HTMLElement
     // console.log(target, currentDropIndex)
 
-    if (!clientContainer) {
+    if (!scrollContainer) {
       throw new Error("clientContainer is null")
     }
 
     if (target) {
       const { offsetLeft, offsetWidth } = target
-      const halfContentWidth = clientContainer.clientWidth / 2
+      const halfContentWidth = scrollContainer.clientWidth / 2
       const halfChildWidth = offsetWidth / 2
 
       // console.log('====================================')
@@ -42,7 +59,7 @@ export default function CaseScrolling({ onScrollingEnd, scrollWeapons, currentDr
   useLayoutEffect(() => {
     function calcEvent() {
       if (innerRef) {
-        calcIndent(innerRef)
+        calcIndent(innerRef, DEFAULT_DROP_PUT_INDEX)
       }
     }
 
@@ -55,24 +72,18 @@ export default function CaseScrolling({ onScrollingEnd, scrollWeapons, currentDr
   }, [innerRef])
 
   return (
-    <div className="case-page-scroll" ref={setClientContainer}>
-      {scrollWeapons.map((weaponItemList, key) => (
+    <div className="case-page-scroll" ref={setScrollContainer}>
+      {props.drops.map((drop, key) => (
         <div className="case-page-scroll__section" style={{ "--weapon-scroll-x": indent ? indent + randomInt(-100, 100) + "px" : null }} key={"scroll_section" + key}>
-          <MemoScrollInner weaponItemList={weaponItemList} onTransitionEnd={onScrollingEnd} setInnerRef={setInnerRef} />
+          <div className="case-page-scroll__inner" ref={setInnerRef} onTransitionEnd={props.onScrollingEnd}>
+            {mixedWeapons(drop).map((weapon, index) => (
+              <Weapon key={"scroll_weapon_" + weapon.id + index} item={weapon} />
+            ))}
+          </div>
         </div>
       ))}
     </div>
   )
 }
 
-function ScrollInner(props: { weaponItemList: WeaponItemProps[]; onTransitionEnd: any; setInnerRef: any }) {
-  return (
-    <div className="case-page-scroll__inner" ref={props.setInnerRef} onTransitionEnd={props.onTransitionEnd}>
-      {props.weaponItemList.map((item, index) => (
-        <Weapon key={"scroll_weapon_" + item.id + index} item={item} />
-      ))}
-    </div>
-  )
-}
-
-const MemoScrollInner = memo(ScrollInner, () => true)
+export default CaseScrolling

@@ -20,7 +20,6 @@ import { ClientAPI } from "app/api/client"
 import { fetchBattleCancel, postSellItem } from "app/api/actions"
 import shuffleArray from "../../resources/utils/shufle"
 import Error, { ErrorObject } from "app/components/other/Error"
-import CaseScrolling from "../case/CaseScrolling"
 import { connect } from "react-redux"
 import Weapon from "app/components/Standoff/Weapon"
 import BrowserHistory from "resources/stores/BrowserHistory"
@@ -400,7 +399,8 @@ class Battle extends PureComponent<BattleProps, BattleState> {
     if (this.state.ownerDrop) {
       const item = this.state.ownerDrop.item
       const items = this.getScrollingItems(item)
-      return <CaseScrolling currentDropIndex={items.indexOf(item)} onScrollingEnd={() => this.finish()} scrollWeapons={[items]} />
+      return null
+      // return <CaseScrolling currentDropIndex={items.indexOf(item)} onScrollingEnd={() => this.finish()} weaponItems={[items]} />
     }
 
     return <Error message="Неизвестная ошибка: 66" />
@@ -409,7 +409,8 @@ class Battle extends PureComponent<BattleProps, BattleState> {
     if (this.state.opponentDrop) {
       const item = this.state.opponentDrop.item
       const items = this.getScrollingItems(item)
-      return <CaseScrolling currentDropIndex={items.indexOf(item)} onScrollingEnd={() => this.finish()} scrollWeapons={[items]} />
+      return null
+      // return <CaseScrolling currentDropIndex={items.indexOf(item)} onScrollingEnd={() => this.finish()} weaponItems={[items]} />
     }
 
     return <Error message="Неизвестная ошибка: 67" />

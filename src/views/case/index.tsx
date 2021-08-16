@@ -19,7 +19,7 @@ import { getMockRandom } from "resources/utils"
 
 export default (props: ViewProps<{ caseId: number, isBonus?: boolean }>) => {
   const { caseId } = props.match.params
-  const weapons = DataBase.data.Weapons.slice(-getMockRandom(caseId, 2)) as WeaponItemProps[]
+  const weapons = DataBase.data.Weapons.slice(0, getMockRandom(caseId, 2)) as WeaponItemProps[]
   const caseTranslation = useTranslation(trans => trans.cases[caseId])
 
   useEffect(() => {

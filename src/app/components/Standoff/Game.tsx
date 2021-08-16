@@ -28,11 +28,11 @@ namespace Game {
   }
   export abstract class Component<P = {}, S extends state = state, SS = {}> extends ReactComponent<P, S, SS> {
     // Actions
-    abstract wait(): void
+    abstract reset(): void
     abstract run(): void
     abstract finish(): void
     // Renders
-    abstract render(): any
+    abstract render(): JSX.Element
   }
 
 
