@@ -46,6 +46,7 @@ export default function Enhancments() {
 
     history.listen((location) => {
       if (!location) return null
+      if ((location.state as any)?.noScrollBack) return null
       if (location.pathname !== prevLocation?.pathname) {
         if (location.pathname.search("profile/") < 0) {
           window.scrollTo(0, 0)

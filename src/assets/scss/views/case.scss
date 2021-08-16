@@ -62,6 +62,8 @@ $case-open-gap: 1.5em;
 }
 
 .case-page-preview {
+  position: static;
+
   @include display(grid, items, null, center);
   row-gap: $case-open-gap;
   width: 60em;
@@ -74,23 +76,54 @@ $case-open-gap: 1.5em;
 }
 
 .case-page-preview__preview {
-  display: grid;
-  place-items: center;
+  position: static;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25em;
+  height: 25em;
   // align-items: center;
   // justify-items: center;
 }
 
 .case-page-preview__image {
-  width: 25em;
+  position: absolute;
+  top: 0;
 
-  @include Mobile {
-    width: 20em;
+  width: inherit;
+  animation: 1s previewAnimation;
+
+  &--stock {
+    animation: unset;
   }
 
   &--locked {
     @include DarkFilter;
   }
+
+  @include Mobile {
+    width: 20em;
+  }
+
+  @keyframes previewAnimation {
+    from {
+      top: calc((1px * var(--image-start-y)) - 129.5px);
+      left: calc(1px * var(--image-start-x));
+      width: calc(#{$case-width} - 2em);
+      // height: $case-image-height;
+    }
+
+    to {
+      top: 0;
+      left: calc(50% - (25em/2));
+      width: inherit;
+      // height: inherit;
+    }
+  }
 }
+
 
 .case-page-preview__buttons {
   display: flex;

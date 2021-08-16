@@ -29,7 +29,7 @@ interface CaseComponentState {
 }
 
 
-abstract class CaseComponent extends Game.Component<CaseComponentProps, CaseComponentState> {
+abstract class CaseComponent<P = {}> extends Game.Component<CaseComponentProps & P, CaseComponentState> {
   state: CaseComponentState = {
     status: "waiting",
     openCount: 0,

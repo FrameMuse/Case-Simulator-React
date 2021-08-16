@@ -6,8 +6,6 @@
 @import "../shared";
 
 $indent: 2.5em;
-$case-width: var(--case-width, 25em);
-$case-image-height: var(--case-image-height, 25em);
 
 .cases-lists {
   @include grid($indent 0);
@@ -17,6 +15,9 @@ $case-image-height: var(--case-image-height, 25em);
 }
 
 .cases-list {
+  // background: white;
+  // border: 0.5em solid #eaeaea;
+
   &--bonus {
     background: url("../../images/bg/smoke.png") no-repeat center/cover;
   }
@@ -45,7 +46,7 @@ $case-image-height: var(--case-image-height, 25em);
 .cases-list__container {
   --case-grid-template: repeat(auto-fill, minmax(#{$case-width}, 1fr));
   $gridTemplate: var(--case-grid-template);
-  @include grid(1em, null, $gridTemplate);
+  @include grid(5em, null, $gridTemplate);
   @include indent;
 
   @include Mobile {
@@ -61,7 +62,9 @@ $case-image-height: var(--case-image-height, 25em);
   width: $case-width;
 
   padding: 2em;
+  // border: 1px solid #dbdbdb;
   border-radius: 0.75em;
+  // box-shadow: 0 0 20px -12px #777;
   transition: 300ms background-color;
   cursor: pointer;
 
@@ -197,6 +200,7 @@ $case-image-height: var(--case-image-height, 25em);
 .case-preview__timer {
   margin-top: 1rem;
   font-size: 75%;
+
   // @include font(1.5em, 600) {
   //   // color: color(Blue-2);
   // }

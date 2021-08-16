@@ -10,7 +10,7 @@ interface StaticContext {
 }
 
 export type View<P = {}> = ((props: ViewProps<P>) => JSX.Element) | React.LazyExoticComponent<React.ComponentType<any>>
-export type ViewProps<Params = {}> = RouteComponentProps<Params, StaticContext, unknown>
+export type ViewProps<Params = {}, State = unknown> = RouteComponentProps<Params, StaticContext, State>
 
 export type RouteFlag = "DemoExclude" | "ExactPath"
 export type Routes = Record<string, RouterComponentProps>

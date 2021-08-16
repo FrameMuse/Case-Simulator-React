@@ -140,10 +140,10 @@ export function clickElementWithId(id: string) {
   return delay(0)
 }
 
-export function scrollIntoView(string: string, smooth = true): void {
+export function scrollIntoView(id: string, smooth = true): void {
 
-  if (typeof string === "string") {
-    const element: HTMLElement | null = document.getElementById(string)
+  if (typeof id === "string") {
+    const element: HTMLElement | null = document.getElementById(id)
     if (element) {
       element.scrollIntoView({
         behavior: smooth ? "smooth" : "auto",

@@ -5,8 +5,10 @@ import ButtonTool from "app/components/UI/ButtonTool"
 import Button from "app/components/UI/Button"
 import { classWithModifiers, getCaseImage } from "resources/utils"
 import CaseFinal from "./CaseFinal"
+import { CaseLocationState } from "."
+import BrowserHistory from "resources/stores/BrowserHistory"
 
-class CaseContainer extends CaseComponent {
+class CaseContainer extends CaseComponent<{ locationState?: CaseLocationState }> {
   render() {
     return (
       <div className="case-page">
@@ -24,10 +26,22 @@ class CaseContainer extends CaseComponent {
     const Case = this.case
     const { loading } = this.state
     const modifiers: string[] = []
+    const locationState = this.props.locationState as CaseLocationState
+    const rect = locationState?.snapshot?.current?.rect
+    const clearLocationState = () => BrowserHistory.replace("/case/" + this.props.id, { noScrollBack: true })
+    if (rect == null) {
+      modifiers.push("stock")
+    }
     return (
       <div className="case-page-preview">
         <div className="case-page-preview__preview">
-          <img src={getCaseImage(this.props.id)} alt="case" className={classWithModifiers("case-page-preview__image", modifiers)} />
+          <img
+            src={getCaseImage(this.props.id)}
+            alt="case"
+            className={classWithModifiers("case-page-preview__image", modifiers)}
+            style={{ "--image-start-y": rect?.y, "--image-start-x": rect?.x }}
+            onAnimationEnd={clearLocationState}
+          />
           {modifiers.includes("locked") && (
             <div className="case-page-lock">
               <span className="case-page-lock__icon icon" />
