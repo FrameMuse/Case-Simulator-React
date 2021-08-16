@@ -4,15 +4,15 @@
 */
 
 // SCSS
-import "../../assets/scss/views/wheel.scss"
+import "assets/scss/views/wheel.scss"
 // IMAGES
-import WheelBonusesBg from "../../assets/images/wheel-bonus-bg.png"
+import WheelBonusesBg from "assets/images/wheel-bonus-bg.png"
 // STAFF
 import { fetchWheelItems, fetchWheelPromocode } from "app/api/actions"
 import { QueryProvider, useContextQuery } from "app/components/other/MutuableQuery"
 import WheelInventory from "./WheelInventory"
 import WheelPage from "./WheelPage"
-import useTranslation from "../../resources/hooks/useTranslation"
+import useTranslation from "resources/hooks/useTranslation"
 import { Article } from "app/components/formatting/article"
 import { useSelector } from "react-redux"
 import Input from "app/components/UI/Input"
