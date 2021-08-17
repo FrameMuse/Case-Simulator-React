@@ -55,7 +55,7 @@ abstract class CaseComponent<P = {}> extends Game.Component<CaseComponentProps &
   }
 
   async run() {
-    await SoundController.play("cases", true)
+    // await SoundController.play("cases", true)
 
     this.setState({
       status: "running",
@@ -67,7 +67,7 @@ abstract class CaseComponent<P = {}> extends Game.Component<CaseComponentProps &
   }
 
   async finish() {
-    await SoundController.play("getItem")
+    // await SoundController.play("getItem")
 
     this.setState({
       status: "finished",

@@ -374,7 +374,7 @@ function ContractSwitchContent() {
       )
 
     case "finished":
-      SoundController.play("contract")
+      // SoundController.play("contract")
       return (
         <ContractFinal
           wait={() => (setStatus("waiting"), dispatch({ type: "CONTRACT/CLEAR" }))}

@@ -265,7 +265,7 @@ class WheelPage extends WheelTemplate {
           winBonusId: payload.id
         })
 
-        SoundController.play("roulette", true)
+        // SoundController.play("roulette", true)
         this.animateWheelSite(() => {
           this.nextTriangle()
         }).then(async () => {
@@ -275,7 +275,7 @@ class WheelPage extends WheelTemplate {
             ...this.context.payload,
             countBonuses: this.context.payload.countBonuses + 1
           })
-          SoundController.play("wheelItem")
+          // SoundController.play("wheelItem")
         })
       })
   }

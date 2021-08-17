@@ -4,28 +4,28 @@
 */
 
 import { PureComponent } from "react"
-import { WeaponDropProps, WeaponItemProps } from "../../resources/interfaces/weapon"
-import { classWithModifiers, inter } from "../../resources/utils"
-import ButtonTool from "app/components/UI/ButtonTool"
-import Tumbler from "app/components/UI/Tumbler"
+import { WeaponDropProps, WeaponItemProps } from "resources/interfaces/weapon"
+import { classWithModifiers, inter } from "resources/utils"
 // SCSS
-import "../../assets/scss/views/upgrade-master.scss"
+import "assets/scss/views/upgrade-master.scss"
 // Images
-import PNGPodium from "../../assets/images/podium.png"
+import PNGPodium from "assets/images/podium.png"
 import { ClientAPI } from "app/api/client"
 import { postUpgradeWeapon } from "app/api/actions"
 import { connect } from "react-redux"
-import { User } from "../../resources/interfaces/user"
+import { User } from "resources/interfaces/user"
 import { ErrorObject } from "app/components/other/Error"
-import AuthRequired from "app/components/other/AuthRequired"
 import WeaponImage from "app/components/Standoff/WeaponImage"
-import Hint from "app/components/UI/Hint"
 import { Translate } from "app/controllers/Translation"
-import Game from "app/components/Standoff/Game"
-import Icon from "app/components/UI/Icon"
 import store from "app/redux/store"
 import { addNotify } from "app/redux/reducers/errors-stack"
 import SoundController from "app/controllers/SoundController"
+import Tumbler from "app/components/UI/Tumbler"
+import AuthRequired from "app/components/other/AuthRequired"
+import ButtonTool from "app/components/UI/ButtonTool"
+import Hint from "app/components/UI/Hint"
+import Icon from "app/components/UI/Icon"
+import Game from "app/components/Standoff/Game"
 
 type CasePageStatus = "waiting" | "running" | "finished"
 
@@ -110,21 +110,19 @@ export class UpgradeMaster extends PureComponent<UpgradeMasterProps, UpgradeMast
         .requestUpgrade(this.state.upgradeBy, this.props.weapon.id, this.state.upgradeBy === "amount" ? (this.state.price || 0) : this.props?.drop?.id || 0)
         .then(({ error, payload }) => {
           if (error || !payload) return
-          SoundController.play("upgrade")?.then(() => {
-            this.setState({
-              status: "running",
-              ...payload
-            })
+          // SoundController.play("upgrade")?.then(() => {
+          this.setState({
+            status: "running",
+            ...payload
           })
+          // })
         })
-        .then(() => {
-          this.props.setChance(0)
-        })
+      this.props.setChance(0)
     }
   }
 
   async finish() {
-    await SoundController.play("getItem")
+    // await  SoundController.play("getItem")
 
     this.setStatus("finished")
 

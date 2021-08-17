@@ -17,7 +17,7 @@ import { useEffect } from "react"
 export default function Newsboard() {
   const translation = useTranslation()
   useEffect(() => {
-    SoundController.play("notice")
+    // SoundController.play("notice")
     return () => {
       SoundController.pause("notice")
     }

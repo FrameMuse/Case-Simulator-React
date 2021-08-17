@@ -122,7 +122,7 @@ class Battle extends PureComponent<BattleProps, BattleState> {
     const { battle } = this.props
 
     if (battle.id === payload.id) {
-      await SoundController.play("rouletteBattle")
+      // await SoundController.play("rouletteBattle")
 
       this.setState({
         ...payload,
@@ -373,7 +373,7 @@ class Battle extends PureComponent<BattleProps, BattleState> {
       // soldOpponent: false
     })
 
-    SoundController.play("getItemBattle")
+    // SoundController.play("getItemBattle")
 
 
     if (!this.didIWin && this.state.referred && this.state.garant) {
