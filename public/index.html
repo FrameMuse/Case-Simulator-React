@@ -1,48 +1,90 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="/assets/images/favicons/64.png" />
-  <link rel="apple-touch-icon" href="/assets/images/favicons/256.png" />
-  <meta name="theme-color" content="#eeda2b" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="#eeda2b">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <!-- <meta id="viewport" name="viewport" content="width=1300, shrink-to-fit=no"> -->
-  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="manifest" href="manifest.json" />
+		<link rel="apple-touch-icon" href="/assets/images/favicons/64.png" />
+		<link rel="apple-touch-icon" href="/assets/images/favicons/256.png" />
+		<meta name="theme-color" content="#eeda2b" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="#eeda2b" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<!-- <meta id="viewport" name="viewport" content="width=1300, shrink-to-fit=no"> -->
+		<meta
+			id="viewport"
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+		/>
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Заходи и открывай кейсы Standoff 2 со мной!">
-  <meta property="og:description" content="STANDOFFCASE - самый прибыльный сайт для открытия кейсов Standoff 2! Вас ждет более 100 кейсов! Моментальный вывод в Стандофф! Открывай у нас :)">
-  <meta property="og:site_name" content="standoffcase.net">
-  <meta property="og:url" content="https://standoffcase.net">
-  <meta property="og:image" content="https://standoffcase.net/assets/images/preview.png">
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:title"
+			content="Заходи и открывай кейсы Standoff 2 со мной!"
+		/>
+		<meta
+			property="og:description"
+			content="STANDOFFCASE - самый прибыльный сайт для открытия кейсов Standoff 2! Вас ждет более 100 кейсов! Моментальный вывод в Стандофф! Открывай у нас :)"
+		/>
+		<meta property="og:site_name" content="standoffcase.net" />
+		<meta property="og:url" content="https://standoffcase.net" />
+		<meta
+			property="og:image"
+			content="https://standoffcase.net/assets/images/preview.png"
+		/>
 
-  <link rel="shortcut icon" href="/assets/images/favicons/512.png" type="image/png">  
-  <meta name="keywords" content="открытие кейсов standoff 2, открытие кейсов стандофф 2, открытие кейсов, standoff 2, standoff, стандофф 2, стандофф, кейсы стандофф, кейсы standoff 2, кейсы standoff, открытие кейсов стандофф, открытие кейсов standoff, standoff case, standoffcase, стандофф кейсы, standoff кейсы, скины standoff 2, скины стандофф 2, нож standoff 2, нож стандофф 2, керамбит голд, karambit gold, голда стандофф, голда standoff">
-  <meta name="description" content="STANDOFFCASE - самый прибыльный сайт для открытия кейсов Standoff 2! Вас ждет более 100 кейсов! Моментальный вывод в Стандофф! Открывай у нас :)">
-  
-  <audio src="/assets/sounds/cases.mp3" preload="auto"></audio>
-  <audio src="/assets/sounds/getItem.mp3" preload="auto"></audio>
-  <!-- <link rel="stylesheet" href="/assets/fonts/Manrope/Manrope.css"> -->
-  <link rel="stylesheet" href="/assets/css/main.css">
-  <title>StandoffCase - открывай лучшие кейсы Standoff 2</title>
-</head>
-<body>
-  <div id="app"></div>
-  <div id="reports"></div>
-  <div id="serviceWorker-update"></div>
-  <!-- <script type="text/javascript" src="//www.gstatic.com/firebasejs/3.6.8/firebase.js"></script> -->
-  <!-- <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script> -->
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141264514-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+		<link
+			rel="shortcut icon"
+			href="/assets/images/favicons/512.png"
+			type="image/png"
+		/>
+		<meta
+			name="keywords"
+			content="открытие кейсов standoff 2, открытие кейсов стандофф 2, открытие кейсов, standoff 2, standoff, стандофф 2, стандофф, кейсы стандофф, кейсы standoff 2, кейсы standoff, открытие кейсов стандофф, открытие кейсов standoff, standoff case, standoffcase, стандофф кейсы, standoff кейсы, скины standoff 2, скины стандофф 2, нож standoff 2, нож стандофф 2, керамбит голд, karambit gold, голда стандофф, голда standoff"
+		/>
+		<meta
+			name="description"
+			content="STANDOFFCASE - самый прибыльный сайт для открытия кейсов Standoff 2! Вас ждет более 100 кейсов! Моментальный вывод в Стандофф! Открывай у нас :)"
+		/>
 
-  gtag('config', 'UA-141264514-1');
-</script>
-</body>
+		<audio src="/assets/sounds/cases.mp3" preload="auto"></audio>
+		<audio src="/assets/sounds/getItem.mp3" preload="auto"></audio>
+		<!-- <link rel="stylesheet" href="/assets/fonts/Manrope/Manrope.css"> -->
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<title>StandoffCase - открывай лучшие кейсы Standoff 2</title>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-8BD43M030Y"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag("js", new Date())
+
+			gtag("config", "G-8BD43M030Y")
+		</script>
+	</head>
+	<body>
+		<div id="app"></div>
+		<div id="reports"></div>
+		<div id="serviceWorker-update"></div>
+		<!-- <script type="text/javascript" src="//www.gstatic.com/firebasejs/3.6.8/firebase.js"></script> -->
+		<!-- <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script> -->
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=UA-141264514-1"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag("js", new Date())
+
+			gtag("config", "UA-141264514-1")
+		</script>
+	</body>
 </html>
