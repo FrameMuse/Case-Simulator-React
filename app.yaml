@@ -1,13 +1,14 @@
 runtime: nodejs16 # or another supported version
 # env: flex
+default_expiration: "1m"
 automatic_scaling:
   max_instances: 1
 # manual_scaling:
 #   instances: 1
-# resources:
-#   cpu: 1
-#   memory_gb: 0.9
-#   disk_size_gb: 10
+resources:
+  cpu: 1
+  memory_gb: 0.9
+  disk_size_gb: 10
 
 # handlers:
 #   - url: /.*
